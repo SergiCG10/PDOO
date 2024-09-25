@@ -6,7 +6,7 @@ package irrgarten;
 
 /**
  *
- * @author WillyRex
+ * @author usuario
  */
 public enum GameCharacter {
     PLAYER, MONSTER

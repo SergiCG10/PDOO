@@ -6,7 +6,7 @@ package irrgarten;
 
 /**
  *
- * @author Paco De Lucía
+ * @author usuario
  */
 public enum Orientation {
     VERTICAL, HORIZONTAL
