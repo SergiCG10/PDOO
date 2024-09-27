@@ -11,8 +11,9 @@ public class Irrgarten {
      */
     public static void main(String[] args) {
         Weapon w=new Weapon(2f,5);
-
+        Shield s=new Shield(3f,4);
         System.out.print(w.toString());
+        System.out.print(s.toString());
     }
     
 }
