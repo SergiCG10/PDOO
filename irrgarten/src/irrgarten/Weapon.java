@@ -1,18 +1,33 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package irrgarten;
+
 
 /**
  *
- * @author usuario
+ * @author Faraon Love Shady (si no me acuerdo de quitar esto soy gay)
  */
 public class Weapon {
     
-    private
-    float power;
-    int uses;
     
+    private float power;
+    private int uses;
+
     
+    public Weapon(float p, int us){
+        power=p;
+        uses=us;
+    }
+    
+    public float attack(){
+        float damage=0f;
+        if(uses>0){
+            damage=power;
+            uses--;
+        }
+        
+        return damage;
+    }
+    public String toString(){
+        return "W["+power+", "+uses+"]\n";
+    }
 }
