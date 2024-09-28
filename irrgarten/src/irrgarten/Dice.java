@@ -24,17 +24,10 @@ public class Dice {
         return generator.nextInt(nplayers);
     }
     public float randomIntelligence(){
-        float intelligence=0f;
-        int random_int=generator.nextInt(1001);
-        intelligence=(float)(random_int)/100;
-        //System.out.println(intelligence);
-        return intelligence;
+        return generator.nextFloat(MAX_INTELLIGENCE);
     }
     public float randomStrength(){
-        float strength=0f;
-        int random_int=generator.nextInt(1001);
-        strength=(float)(random_int)/100;
-        return strength;
+        return generator.nextFloat(MAX_STRENGTH);
     }
     public boolean resurrectPlayer(){
         boolean resurrect=false; 
@@ -51,6 +44,24 @@ public class Dice {
     }
     public int healthReward(){
         return generator.nextInt(HEALTH_REWARD+1);
+    }
+    public float weaponPower(){
+        return generator.nextFloat(MAX_ATTACK);
+    }
+    public float shieldPower(){
+        return generator.nextFloat(MAX_SHIELD);
+    }
+    public int usesLeft(){
+        return generator.nextInt(MAX_USES+1);
+    }
+    public float intensity(float competence){
+        return generator.nextFloat(competence);
+    }
+    public boolean discardElement(int usesLeft){
+        boolean discard=true;
+        if(usesLeft==MAX_USES)
+               discard=false;
+        return discard;
     }
 }
     
