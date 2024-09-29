@@ -30,4 +30,8 @@ public class Weapon {
     public String toString(){
         return "W["+power+", "+uses+"]\n";
     }
+    public boolean discard(){
+        Dice dice=new Dice();
+        return dice.discardElement(uses);
+    }
 }

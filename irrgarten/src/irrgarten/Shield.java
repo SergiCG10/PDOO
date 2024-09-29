@@ -23,4 +23,8 @@ public class Shield {
     public String toString(){
         return "S["+protection+", "+uses+"]\n";
     }
+    public boolean discard(){
+        Dice dice=new Dice();
+        return dice.discardElement(uses);
+    }
 }

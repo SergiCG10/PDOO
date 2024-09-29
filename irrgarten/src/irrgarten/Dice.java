@@ -58,10 +58,14 @@ public class Dice {
         return generator.nextFloat(competence);
     }
     public boolean discardElement(int usesLeft){
-        boolean discard=true;
-        if(usesLeft==MAX_USES)
-               discard=false;
-        return discard;
+        if(usesLeft==MAX_USES){
+           return false;
+        }
+        if(usesLeft==0){
+            return true;
+        }
+        double discard_Prob=1.0-((double)usesLeft/MAX_USES);
+        return generator.nextDouble()<discard_Prob;
     }
 }
     
