@@ -54,12 +54,17 @@ public class TestP1 {
             System.out.println("iteracion"+i+"\n");
             System.out.println("Resucita el jugador?: "+dice.resurrectPlayer());
         }*/
-        for(int i=0;i<100;i++){
+        /*for(int i=0;i<100;i++){
             System.out.println("iteracion"+i+"\n");
-            System.out.println("Poder del arma: "+dice.shieldPower());
-            /*dice.intensity(10);
-            dice.weaponPower();
-            */
-        }
+            System.out.println("Poder del escudo: "+dice.shieldPower());
+        }*/
+        /*for(int i=0;i<100;i++){
+            System.out.println("iteracion"+i+"\n");
+            System.out.println("Poder del arma: "+dice.weaponPower());
+        }*/
+        /*for(int i=0;i<100;i++){
+            System.out.println("iteracion"+i+"\n");
+            System.out.println("intensidad: "+dice.intensity(10));
+        }*/
     }
 }
