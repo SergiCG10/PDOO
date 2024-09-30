@@ -75,19 +75,3 @@ class Dice
     end
 end
 
-dc = Dice.new
-n = 10
-# n.times do puts dc.randomPos(10) end
-# n.times do puts dc.whoStarts(5) end
-# n.times do puts dc.randomIntelligence end
-# n.times do puts dc.randomStrength end
-# n.times do puts dc.resurrectPlayer end
-# n.times do puts dc.weaponsReward end
-# n.times do puts dc.shieldsReward end
-# n.times do puts dc.healthReward end
-# n.times do puts dc.weaponPower end
-# n.times do puts dc.shieldPower end
-# n.times do puts dc.usesLeft end
-# n.times do puts dc.intensity(0.7) end
-i=5;
-5.times do puts dc.discardElement(i); i-=1; end
