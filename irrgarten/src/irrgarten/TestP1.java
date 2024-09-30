@@ -20,11 +20,32 @@ public class TestP1 {
         Weapon w2=new Weapon(2.7f,3);
         Shield s1=new Shield(1.5f,4);
         Shield s2=new Shield(2f,2);
+        boolean descartar = false;
         
-        for(int i=0;i<100;i++){
+        
+        /*System.out.println("El estado del arma es: "+w1.toString());
+        while(!descartar){
+            System.out.println("El jugador hace "+w1.attack()+" puntos de daño");
+            System.out.println("El estado del arma es: "+w1.toString());
+            descartar = w1.discard();
+            System.out.println("El arma se descarta: "+descartar );
+            
+        }*/
+        
+        descartar = false;
+        System.out.println("El estado del escudo es: "+s2.toString());
+        while(!descartar){
+            System.out.println("El jugador tiene "+s2.protect() +" puntos de defensa");
+            System.out.println("El estado del escudo es: "+s2.toString());
+            descartar = s2.discard();
+            System.out.println("El escudo se descarta: "+descartar );
+            
+        }
+        
+        /*for(int i=0;i<100;i++){
             System.out.println("iteracion"+i+"\n");
             System.out.println("El jugador recibe "+dice.healthReward()+" puntos de salud");            
-        }
+        }*/
         /*for(int i=0;i<100;i++){
             System.out.println("iteracion"+i+"\n");
             System.out.println("El jugador recibe "+dice.weaponsReward()+" armas");            
