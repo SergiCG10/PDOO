@@ -15,10 +15,10 @@ class Weapon
     #Funcion attack de la clase weapon
     def attack
     	damage=0;
-        if(uses>0){
-            damage=power;
-            uses--;
-        }
+        if( @uses > 0 )
+            damage=@power;
+            @uses -= 1;
+        end
         
         return damage;
     end
@@ -26,7 +26,9 @@ class Weapon
     #Funcion to_s de la clase weapon
     def to_s
     	
-    end
-    
-    
-    
+    end    
+end
+
+objeto = Weapon.new(2,0)
+puts objeto.attack   
+objeto.to_s
