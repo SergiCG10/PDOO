@@ -37,7 +37,41 @@ class Dice
     end
     
     def weaponsReward
-    	return @generator.rand(@@WEAPONS_REWARD);
+    	return @generator.rand(@@WEAPONS_REWARD+1);
+    end
+    
+    def shieldsReward
+    	return @generator.rand(@@SHIELDS_REWARD+1);
+    end
+    
+    def healthReward
+    	return @generator.rand(@@HEALTH_REWARD+1);
+    end
+    
+    def weaponPower
+    	return @generator.rand * @@MAX_ATTACK;
+    end
+    
+    def shieldPower
+    	return @generator.rand * @@MAX_SHIELD;
+    end
+    
+    def usesLeft
+    	return @generator.rand(@@MAX_USES+1);
+    end
+    
+    def intensity(competence)
+    	return @generator.rand * competence;
+    end
+    
+    def discardElement(usesLeft)
+    	discard = true;
+    	if (usesLeft == @@MAX_USES)
+    	    discard = false;
+    	elsif(usesLeft != 0)
+    	    discard = @generator.rand < 1 - usesLeft.to_f/@@MAX_USES;
+    	end
+    	return discard; 
     end
 end
 
@@ -47,5 +81,13 @@ n = 10
 # n.times do puts dc.whoStarts(5) end
 # n.times do puts dc.randomIntelligence end
 # n.times do puts dc.randomStrength end
-n.times do puts dc.resurrectPlayer end
-# 100.times do puts dc.weaponsReward end
+# n.times do puts dc.resurrectPlayer end
+# n.times do puts dc.weaponsReward end
+# n.times do puts dc.shieldsReward end
+# n.times do puts dc.healthReward end
+# n.times do puts dc.weaponPower end
+# n.times do puts dc.shieldPower end
+# n.times do puts dc.usesLeft end
+# n.times do puts dc.intensity(0.7) end
+i=5;
+5.times do puts dc.discardElement(i); i-=1; end
