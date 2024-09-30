@@ -1,23 +1,30 @@
-
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
+ */
 package irrgarten;
 
 /**
  *
- * @author Mangel
+ * @author usuario
  */
 public class TestP1 {
-    public void main()
-    {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        
         Dice dice=new Dice();
         Weapon w1=new Weapon(1.4f,5);
         Weapon w2=new Weapon(2.7f,3);
         Shield s1=new Shield(1.5f,4);
         Shield s2=new Shield(2f,2);
         
-        /*for(int i=0;i<100;i++){
+        for(int i=0;i<100;i++){
             System.out.println("iteracion"+i+"\n");
             System.out.println("El jugador recibe "+dice.healthReward()+" puntos de salud");            
-        }*/
+        }
         /*for(int i=0;i<100;i++){
             System.out.println("iteracion"+i+"\n");
             System.out.println("El jugador recibe "+dice.weaponsReward()+" armas");            
@@ -67,4 +74,5 @@ public class TestP1 {
             System.out.println("intensidad: "+dice.intensity(10));
         }*/
     }
+    
 }
