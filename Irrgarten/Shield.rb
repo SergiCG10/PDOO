@@ -1,8 +1,6 @@
 #Clase Shield
 
 class Shield
-
-#Hay que pensar si son con uno o dos @
     @@protection
     @@uses
     

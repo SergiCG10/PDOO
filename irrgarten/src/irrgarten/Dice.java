@@ -30,11 +30,7 @@ public class Dice {
         return generator.nextFloat(MAX_STRENGTH);
     }
     public boolean resurrectPlayer(){
-        boolean resurrect=false; 
-        float prob=generator.nextFloat();
-            if(prob<=RESURRECT_PROB)
-                resurrect=true;
-        return resurrect;
+        return generator.nextFloat() < RESURRECT_PROB;
     }
     public int weaponsReward(){
         return generator.nextInt(WEAPONS_REWARD+1);

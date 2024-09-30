@@ -1,8 +1,6 @@
 #Clase Weapon
 
 class Weapon
-
-#Hay que pensar si son con uno o dos @
     @@power
     @@uses
     
@@ -26,5 +24,5 @@ class Weapon
     #Funcion to_s de la clase weapon
     def to_s
     	return "[" + @power.to_s +  ", " + @uses.to_s + "]"; 
-    end    
+    end  
 end
