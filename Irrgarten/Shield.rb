@@ -1,16 +1,16 @@
 #Clase Shield
-
+require_relative 'Dice'
 class Shield
     @@protection
     @@uses
     
-    #Constructor de la clase weapon
+    #Constructor de la clase shield
     def initialize(pr, u)
     	@protection=pr
     	@uses=u
     end
     
-    #Funcion attack de la clase weapon
+    #Funcion protect de la clase shield
     def protect
     	defense=0;
         if( @uses > 0 )
@@ -21,8 +21,15 @@ class Shield
         return defense;
     end
     
-    #Funcion to_s de la clase weapon
+    #Funcion to_s de la clase shield
     def to_s
     	return "[" + @protection.to_s +  ", " + @uses.to_s + "]"; 
-    end    
+    end  
+    #Funcion discard de la clase shield
+    def
+    discard
+    	dice=Dice.new
+    	return dice.discardElement(@uses)
+    end
 end
+

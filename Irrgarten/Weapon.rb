@@ -1,5 +1,5 @@
 #Clase Weapon
-
+require_relative 'Dice'
 class Weapon
     @@power
     @@uses
@@ -24,5 +24,11 @@ class Weapon
     #Funcion to_s de la clase weapon
     def to_s
     	return "[" + @power.to_s +  ", " + @uses.to_s + "]"; 
-    end  
+    end 
+    #Funcion discard de la clase weapon
+    def discard
+    	dice=Dice.new
+    	return dice.discardElement(@uses)
+    end
+     
 end
