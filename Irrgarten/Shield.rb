@@ -1,30 +1,30 @@
-#Clase Weapon
+#Clase Shield
 
-class Weapon
+class Shield
 
 #Hay que pensar si son con uno o dos @
-    @@power
+    @@protection
     @@uses
     
     #Constructor de la clase weapon
-    def initialize(pw, u)
-    	@power=pw
+    def initialize(pr, u)
+    	@protection=pr
     	@uses=u
     end
     
     #Funcion attack de la clase weapon
-    def attack
-    	damage=0;
+    def protect
+    	defense=0;
         if( @uses > 0 )
-            damage=@power;
+            defense=@protection;
             @uses -= 1;
         end
         
-        return damage;
+        return defense;
     end
     
     #Funcion to_s de la clase weapon
     def to_s
-    	return "[" + @power.to_s +  ", " + @uses.to_s + "]"; 
+    	return "[" + @protection.to_s +  ", " + @uses.to_s + "]"; 
     end    
 end
