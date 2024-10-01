@@ -2,8 +2,12 @@
 package irrgarten;
 
 /**
- *
- * @author Mangel y el calvo de SERGIO  
+ * @author Miguel Ángel Luque Gómez
+ * @correo e.mangelluqg@go.ugr.es
+ * 
+ * @author Sergio Calvo González
+ * @author e.sergiocg10@go.ugr.es
+ * 
  */
 public class TestP1 {
 

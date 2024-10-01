@@ -4,7 +4,7 @@ import java.util.Random;
  /**
  * Clase Dice. Representación de la clase dice con sus métodos y variables 
  * 
- * @author Miguel Ángel Luque
+ * @author Miguel Ángel Luque Gómez
  * @correo e.mangelluqg@go.ugr.es
  * 
  * @author Sergio Calvo González
