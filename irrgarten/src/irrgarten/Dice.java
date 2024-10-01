@@ -1,10 +1,15 @@
 package irrgarten;
 import java.util.Random;
 
-/**
- *
- * @author Miguel Ángel Luque Gómez
+ /**
+ * Clase Dice. Representación de la clase dice con sus métodos y variables 
+ * 
+ * @author Miguel Ángel Luque
+ * @correo e.mangelluqg@go.ugr.es
+ * 
  * @author Sergio Calvo González
+ * @author e.sergiocg10@go.ugr.es
+ * 
  */
 public class Dice {     
     private static int MAX_USES=5;              //Número máximo de usos de un objeto
@@ -19,8 +24,8 @@ public class Dice {
     private Random generator = new Random();    //Variable generadora de números aleatorios   
     
     /**
-     * Funcion randomPos. Muestra un valor entero aleatorio en el intervalo 
-     * [0,max) que muestra el valor de fila o de columna donde empezará el jugador
+     * Funcion randomPos. Devuelve un valor que muestra el valor de fila o 
+     * de columna donde empezará el jugador
      * @param max Número de filas o de columnas del laberinto
      * @return valor entero aletorio en el intervalo [0, max)
      */
@@ -29,8 +34,7 @@ public class Dice {
     }
     
     /**
-     * Funcion whoStars. Devuelve un número entero aleatorio en el intervalo 
-     * [0, nplayers) que muestra que jugador empieza.
+     * Funcion whoStars. Devuelve un número que muestra que jugador empieza.
      * @param nplayers Número de jugadores en la partida
      * @return Un número entero aleatorio en el intervalo [0, nplayers)
      */
@@ -39,8 +43,8 @@ public class Dice {
     }
     
     /**
-     * Funcion randomIntelligence. Devuelve en valor aleatorio en el intervalo
-     * [0, MAX_INTELLIGENCE) que mostrará la inteligencia del personaje
+     * Funcion randomIntelligence. Devuelve un valor aleatorio que mostrará 
+     * la inteligencia del personaje
      * @return Un número aleatorio con coma flotante en el intervalo [0, MAX_INTELLIGENCE)
      */
     public float randomIntelligence(){
@@ -48,8 +52,8 @@ public class Dice {
     }
     
     /**
-     * Funcion randomStrength. Devuelve en valor aleatorio en el intervalo
-     * [0, MAX_STRENGTH) que mostrará la fuerza del personaje
+     * Funcion randomStrength. Devuelve en valor aleatorio que mostrará 
+     * la fuerza del personaje
      * @return Un número aleatorio con coma flotante en el intervalo [0, MAX_STRENGTH)
      */
     public float randomStrength(){
@@ -57,9 +61,9 @@ public class Dice {
     }
     
     /**
-     * Funcion resurrectPlayer. Devuelve true si el personaje debe de revivir, 
-     * false si no, calculandose de forma que si un float es menor que la probabilidad
-     * de revivir, devuelve true, si no, false.
+     * Funcion resurrectPlayer. Devuelve si el personaje debe de revivir.
+     * @brief La probabilidad se calcula de forma que si un float aleatorio es 
+     * menor que la probabilidad de revivir, devuelve true, si no, false.
      * @return True si el personaje revive, false si no. 
      */
     public boolean resurrectPlayer(){
@@ -67,8 +71,7 @@ public class Dice {
     }
     
     /**
-     * Funcion weaponsReward. Devuelve un valor aleatorio entero en el intervalo
-     * [0, WEAPONS_REWARD] que son el número de armas que recibe como recompensa
+     * Funcion weaponsReward. Devuelve el número aleatorio de armas que recibe como recompensa
      * @return Valor entero aleatorio en el intervalo [0, WEAPONS_REWARD]
      */
     public int weaponsReward(){
@@ -76,8 +79,7 @@ public class Dice {
     }
     
     /**
-     * Funcion shieldsReward. Devuelve un valor aleatorio entero en el intervalo
-     * [0, SHIELDS_REWARD] que son el número de escudos que recibe como recompensa
+     * Funcion shieldsReward. Devuelve el número aleatorio de escudos que recibe como recompensa
      * @return Valor entero aleatorio en el intervalo [0, SHIELDS_REWARD]
      */
     public int shieldsReward(){
@@ -85,8 +87,7 @@ public class Dice {
     }
     
     /**
-     * Funcion healthReward. Devuelve un valor aleatorio entero en el intervalo
-     * [0, HEALTH_REWARD] que son el número de vidas que recibe como recompensa
+     * Funcion healthReward. Devuelve el número aleatorio de vidas que recibe como recompensa
      * @return Valor entero aleatorio en el intervalo [0, HEALTH_REWARD]
      */
     public int healthReward(){
@@ -94,8 +95,7 @@ public class Dice {
     }
     
     /**
-     * Funcion weaponPower. Devuelve un valor float aleatorio en el intervalo 
-     * [0, MAX_ATTACK) que representaŕa el valor de daño de un arma
+     * Funcion weaponPower. Devuelve un valor que representará el valor de daño de un arma
      * @return Valor con coma flotante aleatorio en el intervalo [0, MAX_ATTACK)
      */
     public float weaponPower(){
@@ -103,8 +103,7 @@ public class Dice {
     }
     
     /**
-     * Funcion weaponPower. Devuelve un valor float aleatorio en el intervalo 
-     * [0, MAX_SHIELD) que representaŕa el valor de defensa de un escudo
+     * Funcion weaponPower. Devuelve un valor que representará el valor de defensa de un escudo
      * @return Valor con coma flotante aleatorio en el intervalo [0, MAX_SHIELD)
      */
     public float shieldPower(){
@@ -112,8 +111,7 @@ public class Dice {
     }
     
     /**
-     * Funcion usesLeft. Devuelve un valor entero aleatorio en el intervalo 
-     * [0, MAX_USES] que mostrará el número de usos restantes de un arma o escudo
+     * Funcion usesLeft. Devuelve el número aleatorio de usos restantes de un arma o escudo
      * @return Número entero aleatorio en el intervalo [0, MAX_USES]
      */
     public int usesLeft(){
@@ -121,8 +119,7 @@ public class Dice {
     }
     
     /**
-     * Funcion intensity. Devuelve un valor aleatorio con coma flotante en el
-     * intervalo [0, competence) que muestra el grado de intensidad de una acción
+     * Funcion intensity. Devuelve un valor aleatorio que muestra el grado de intensidad de una acción
      * @param competence
      * @return Valor  aleatorio con coma flotante en el intervalo [0, competence)
      */
@@ -132,10 +129,12 @@ public class Dice {
     
     /**
      * Funcion discardElement. Muestra true si se debe de descartar o no un objeto. 
-     * Se calcula de forma que si tiene el número máximo de usos, no se descartará, 
-     * si tiene 0 se descartará de forma asegurada, y en cualquier otro caso, la
-     * probabilidad de que se descarte será proporcionalmente inversa al número de
-     * usos que le quedan respecto al número máximo de usos. 
+     * @brief Se calcula si se decarta de forma que :
+     *  Si tiene el número máximo de usos, no se descartará, 
+     *  Si tiene 0 se descartará de forma asegurada
+     *  En cualquier otro caso, la probabilidad de que se descarte será 
+     *  proporcionalmente inversa al número de usos que le quedan respecto 
+     *  al número máximo de usos. 
      * @param usesLeft Número de usos restantes
      * @return True si se descarta, false si no
      */
