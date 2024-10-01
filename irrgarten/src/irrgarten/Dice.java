@@ -3,56 +3,142 @@ import java.util.Random;
 
 /**
  *
- * @author Mangel y Sergio Calvo
+ * @author Miguel Ángel Luque Gómez
+ * @author Sergio Calvo González
  */
-public class Dice {
-    private static int MAX_USES=5;
-    private static float MAX_INTELLIGENCE=10f;
-    private static float MAX_STRENGTH=10f;
-    private static float RESURRECT_PROB=0.3f;
-    private static int WEAPONS_REWARD=2;
-    private static int SHIELDS_REWARD=3;
-    private static int HEALTH_REWARD=5;
-    private static int MAX_ATTACK=3;
-    private static int MAX_SHIELD=2;
-    private Random generator = new Random();
+public class Dice {     
+    private static int MAX_USES=5;              //Número máximo de usos de un objeto
+    private static float MAX_INTELLIGENCE=10f;  //Número máximo de inteligencia para un personaje
+    private static float MAX_STRENGTH=10f;      //Número máximo de fuerza para un personaje
+    private static float RESURRECT_PROB=0.3f;   //Probabilidad de resucitar de un personaje
+    private static int WEAPONS_REWARD=2;        //Número de armas máximas como recompensa
+    private static int SHIELDS_REWARD=3;        //Número de escudos máximos como recompensa
+    private static int HEALTH_REWARD=5;         //Número de vidas máximas como recompensa
+    private static int MAX_ATTACK=3;            //Número máximo de ataque para un arma
+    private static int MAX_SHIELD=2;            //Número máximo de protección para un escudo
+    private Random generator = new Random();    //Variable generadora de números aleatorios   
     
+    /**
+     * Funcion randomPos. Muestra un valor entero aleatorio en el intervalo 
+     * [0,max) que muestra el valor de fila o de columna donde empezará el jugador
+     * @param max Número de filas o de columnas del laberinto
+     * @return valor entero aletorio en el intervalo [0, max)
+     */
     public int randomPos(int max){
         return generator.nextInt(max);    
     }
+    
+    /**
+     * Funcion whoStars. Devuelve un número entero aleatorio en el intervalo 
+     * [0, nplayers) que muestra que jugador empieza.
+     * @param nplayers Número de jugadores en la partida
+     * @return Un número entero aleatorio en el intervalo [0, nplayers)
+     */
     public int whoStarts(int nplayers){
         return generator.nextInt(nplayers);
     }
+    
+    /**
+     * Funcion randomIntelligence. Devuelve en valor aleatorio en el intervalo
+     * [0, MAX_INTELLIGENCE) que mostrará la inteligencia del personaje
+     * @return Un número aleatorio con coma flotante en el intervalo [0, MAX_INTELLIGENCE)
+     */
     public float randomIntelligence(){
         return generator.nextFloat(MAX_INTELLIGENCE);
     }
+    
+    /**
+     * Funcion randomStrength. Devuelve en valor aleatorio en el intervalo
+     * [0, MAX_STRENGTH) que mostrará la fuerza del personaje
+     * @return Un número aleatorio con coma flotante en el intervalo [0, MAX_STRENGTH)
+     */
     public float randomStrength(){
         return generator.nextFloat(MAX_STRENGTH);
     }
+    
+    /**
+     * Funcion resurrectPlayer. Devuelve true si el personaje debe de revivir, 
+     * false si no, calculandose de forma que si un float es menor que la probabilidad
+     * de revivir, devuelve true, si no, false.
+     * @return True si el personaje revive, false si no. 
+     */
     public boolean resurrectPlayer(){
         return generator.nextFloat() < RESURRECT_PROB;
     }
+    
+    /**
+     * Funcion weaponsReward. Devuelve un valor aleatorio entero en el intervalo
+     * [0, WEAPONS_REWARD] que son el número de armas que recibe como recompensa
+     * @return Valor entero aleatorio en el intervalo [0, WEAPONS_REWARD]
+     */
     public int weaponsReward(){
         return generator.nextInt(WEAPONS_REWARD+1);
     }
+    
+    /**
+     * Funcion shieldsReward. Devuelve un valor aleatorio entero en el intervalo
+     * [0, SHIELDS_REWARD] que son el número de escudos que recibe como recompensa
+     * @return Valor entero aleatorio en el intervalo [0, SHIELDS_REWARD]
+     */
     public int shieldsReward(){
         return generator.nextInt(SHIELDS_REWARD+1);
     }
+    
+    /**
+     * Funcion healthReward. Devuelve un valor aleatorio entero en el intervalo
+     * [0, HEALTH_REWARD] que son el número de vidas que recibe como recompensa
+     * @return Valor entero aleatorio en el intervalo [0, HEALTH_REWARD]
+     */
     public int healthReward(){
         return generator.nextInt(HEALTH_REWARD+1);
     }
+    
+    /**
+     * Funcion weaponPower. Devuelve un valor float aleatorio en el intervalo 
+     * [0, MAX_ATTACK) que representaŕa el valor de daño de un arma
+     * @return Valor con coma flotante aleatorio en el intervalo [0, MAX_ATTACK)
+     */
     public float weaponPower(){
         return generator.nextFloat(MAX_ATTACK);
     }
+    
+    /**
+     * Funcion weaponPower. Devuelve un valor float aleatorio en el intervalo 
+     * [0, MAX_SHIELD) que representaŕa el valor de defensa de un escudo
+     * @return Valor con coma flotante aleatorio en el intervalo [0, MAX_SHIELD)
+     */
     public float shieldPower(){
         return generator.nextFloat(MAX_SHIELD);
     }
+    
+    /**
+     * Funcion usesLeft. Devuelve un valor entero aleatorio en el intervalo 
+     * [0, MAX_USES] que mostrará el número de usos restantes de un arma o escudo
+     * @return Número entero aleatorio en el intervalo [0, MAX_USES]
+     */
     public int usesLeft(){
         return generator.nextInt(MAX_USES+1);
     }
+    
+    /**
+     * Funcion intensity. Devuelve un valor aleatorio con coma flotante en el
+     * intervalo [0, competence) que muestra el grado de intensidad de una acción
+     * @param competence
+     * @return Valor  aleatorio con coma flotante en el intervalo [0, competence)
+     */
     public float intensity(float competence){
         return generator.nextFloat(competence);
     }
+    
+    /**
+     * Funcion discardElement. Muestra true si se debe de descartar o no un objeto. 
+     * Se calcula de forma que si tiene el número máximo de usos, no se descartará, 
+     * si tiene 0 se descartará de forma asegurada, y en cualquier otro caso, la
+     * probabilidad de que se descarte será proporcionalmente inversa al número de
+     * usos que le quedan respecto al número máximo de usos. 
+     * @param usesLeft Número de usos restantes
+     * @return True si se descarta, false si no
+     */
     public boolean discardElement(int usesLeft){
         if(usesLeft==MAX_USES){
            return false;
