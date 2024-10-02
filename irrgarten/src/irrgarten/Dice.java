@@ -5,10 +5,10 @@ import java.util.Random;
  * Clase Dice. Representación de la clase dice con sus métodos y variables 
  * 
  * @author Miguel Ángel Luque Gómez
- * @correo e.mangelluqg@go.ugr.es
+ * correo e.mangelluqg@go.ugr.es
  * 
  * @author Sergio Calvo González
- * @author e.sergiocg10@go.ugr.es
+ * correo e.sergiocg10@go.ugr.es
  * 
  */
 public class Dice {     
@@ -62,7 +62,7 @@ public class Dice {
     
     /**
      * Funcion resurrectPlayer. Devuelve si el personaje debe de revivir.
-     * @brief La probabilidad se calcula de forma que si un float aleatorio es 
+     * La probabilidad se calcula de forma que si un float aleatorio es 
      * menor que la probabilidad de revivir, devuelve true, si no, false.
      * @return True si el personaje revive, false si no. 
      */
@@ -129,7 +129,7 @@ public class Dice {
     
     /**
      * Funcion discardElement. Muestra true si se debe de descartar o no un objeto. 
-     * @brief Se calcula si se decarta de forma que :
+     *  Se calcula si se decarta de forma que :
      *  Si tiene el número máximo de usos, no se descartará, 
      *  Si tiene 0 se descartará de forma asegurada
      *  En cualquier otro caso, la probabilidad de que se descarte será 

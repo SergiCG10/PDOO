@@ -12,64 +12,60 @@ class Dice
     
     @@generator = Random.new;
     
-    def initialize
-    	@generator = Random.new;
+    def self.randomPos(max)
+    	return @@generator.rand(max);
     end
     
-    def randomPos(max)
-    	return @generator.rand(max);
+    def self.whoStarts(nPlayers)
+    	return @@generator.rand(nPlayers);
     end
     
-    def whoStarts(nPlayers)
-    	return @generator.rand(nPlayers);
+    def self.randomIntelligence
+    	return @@generator.rand*@@MAX_INTELLIGENCE;
     end
     
-    def randomIntelligence
-    	return @generator.rand*@@MAX_INTELLIGENCE;
+    def self.randomStrength
+    	return @@generator.rand*@@MAX_STRENGTH;
     end
     
-    def randomStrength
-    	return @generator.rand*@@MAX_STRENGTH;
+    def self.resurrectPlayer
+    	return @@generator.rand < @@RESURRECT_PROB;
     end
     
-    def resurrectPlayer
-    	return @generator.rand < @@RESURRECT_PROB;
+    def self.weaponsReward
+    	return @@generator.rand(@@WEAPONS_REWARD+1);
     end
     
-    def weaponsReward
-    	return @generator.rand(@@WEAPONS_REWARD+1);
+    def self.shieldsReward
+    	return @@generator.rand(@@SHIELDS_REWARD+1);
     end
     
-    def shieldsReward
-    	return @generator.rand(@@SHIELDS_REWARD+1);
+    def self.healthReward
+    	return @@generator.rand(@@HEALTH_REWARD+1);
     end
     
-    def healthReward
-    	return @generator.rand(@@HEALTH_REWARD+1);
+    def self.weaponPower
+    	return @@generator.rand * @@MAX_ATTACK;
     end
     
-    def weaponPower
-    	return @generator.rand * @@MAX_ATTACK;
+    def self.shieldPower
+    	return @@generator.rand * @@MAX_SHIELD;
     end
     
-    def shieldPower
-    	return @generator.rand * @@MAX_SHIELD;
+    def self.usesLeft
+    	return @@generator.rand(@@MAX_USES+1);
     end
     
-    def usesLeft
-    	return @generator.rand(@@MAX_USES+1);
+    def self.intensity(competence)
+    	return @@generator.rand * competence;
     end
     
-    def intensity(competence)
-    	return @generator.rand * competence;
-    end
-    
-    def discardElement(usesLeft)
+    def self.discardElement(usesLeft)
     	discard = true;
     	if (usesLeft == @@MAX_USES)
     	    discard = false;
     	elsif(usesLeft != 0)
-    	    discard = @generator.rand < 1 - usesLeft.to_f/@@MAX_USES;
+    	    discard = @@generator.rand < 1 - usesLeft.to_f/@@MAX_USES;
     	end
     	return discard; 
     end

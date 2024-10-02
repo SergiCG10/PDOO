@@ -4,10 +4,10 @@ package irrgarten;
  * Clase GameState. Implementación de la clase GameState con sus métodos y variables.
  * 
  * @author Miguel Ángel Luque Gómez
- * @correo e.mangelluqg@go.ugr.es
+ * correo e.mangelluqg@go.ugr.es
  * 
  * @author Sergio Calvo González
- * @author e.sergiocg10@go.ugr.es
+ * correo e.sergiocg10@go.ugr.es
  * 
  */
 public class GameState {

@@ -7,10 +7,10 @@ package irrgarten;
  *  - HORIZONTAL
  * 
  * @author Miguel Ángel Luque Gómez
- * @correo e.mangelluqg@go.ugr.es
+ * correo e.mangelluqg@go.ugr.es
  * 
  * @author Sergio Calvo González
- * @author e.sergiocg10@go.ugr.es
+ * correo e.sergiocg10@go.ugr.es
  * 
  */
 public enum Orientation {

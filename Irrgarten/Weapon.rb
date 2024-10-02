@@ -27,8 +27,7 @@ class Weapon
     end 
     #Funcion discard de la clase weapon
     def discard
-    	dice=Dice.new
-    	return dice.discardElement(@uses)
+    	return Dice.discardElement(@uses)
     end
      
 end

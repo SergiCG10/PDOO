@@ -26,10 +26,8 @@ class Shield
     	return "[" + @protection.to_s +  ", " + @uses.to_s + "]"; 
     end  
     #Funcion discard de la clase shield
-    def
-    discard
-    	dice=Dice.new
-    	return dice.discardElement(@uses)
+    def discard
+    	return Dice.discardElement(@uses)
     end
 end
 
