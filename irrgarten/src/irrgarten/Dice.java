@@ -12,16 +12,16 @@ import java.util.Random;
  * 
  */
 public class Dice {     
-    private static int MAX_USES=5;              //Número máximo de usos de un objeto
-    private static float MAX_INTELLIGENCE=10f;  //Número máximo de inteligencia para un personaje
-    private static float MAX_STRENGTH=10f;      //Número máximo de fuerza para un personaje
-    private static float RESURRECT_PROB=0.3f;   //Probabilidad de resucitar de un personaje
-    private static int WEAPONS_REWARD=2;        //Número de armas máximas como recompensa
-    private static int SHIELDS_REWARD=3;        //Número de escudos máximos como recompensa
-    private static int HEALTH_REWARD=5;         //Número de vidas máximas como recompensa
-    private static int MAX_ATTACK=3;            //Número máximo de ataque para un arma
-    private static int MAX_SHIELD=2;            //Número máximo de protección para un escudo
-    private static Random generator = new Random();    //Variable generadora de números aleatorios   
+    private static final int MAX_USES=5;              //Número máximo de usos de un objeto
+    private static final float MAX_INTELLIGENCE=10f;  //Número máximo de inteligencia para un personaje
+    private static final float MAX_STRENGTH=10f;      //Número máximo de fuerza para un personaje
+    private static final float RESURRECT_PROB=0.3f;   //Probabilidad de resucitar de un personaje
+    private static final int WEAPONS_REWARD=2;        //Número de armas máximas como recompensa
+    private static final int SHIELDS_REWARD=3;        //Número de escudos máximos como recompensa
+    private static final int HEALTH_REWARD=5;         //Número de vidas máximas como recompensa
+    private static final int MAX_ATTACK=3;            //Número máximo de ataque para un arma
+    private static final int MAX_SHIELD=2;            //Número máximo de protección para un escudo
+    private static final Random generator = new Random();    //Variable generadora de números aleatorios   
     
     /**
      * Funcion randomPos. Devuelve un valor que muestra el valor de fila o 
