@@ -1,0 +1,8 @@
+lib/Dice.rb 43b467afc97966065559607e5f3a137c81dc220a
+lib/Shield.rb 3b51205e05104bbb03af9570283cf6b0cc8ea4b8
+lib/TestP1.rb 6bebc2322036c51745ae7ddd92a0b39ca4d507cf
+lib/Weapon.rb fb08ee2d91766ccb3430cd4032adf57b7d601ed1
+lib/GameState.rb 64dcee8957c09222e89b1f8ded955f72ad3a76ea
+lib/Directions.rb 9936933f9df574a39ae7fa5a3555a38fae5fa6c9
+lib/Orientations.rb 01915e00d4ee017b5a81a61ab94d8e52c28e3738
+lib/GameCharacter.rb 1870e2b71b666f712dc9c0dfcff179a260e30f56
