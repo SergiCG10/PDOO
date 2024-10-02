@@ -11,7 +11,6 @@ package irrgarten;
  */
 public class TestP1 {
       
-    Dice dice=new Dice();
     Weapon w1=new Weapon(1.4f,5);
     Weapon w2=new Weapon(2.7f,3);
     Shield s1=new Shield(1.5f,4);
@@ -51,55 +50,55 @@ public class TestP1 {
         System.out.println("Comenzamos a comprobar la clase Dice: \n\n");
         for(int i=0;i<100;i++){
             System.out.println("iteracion"+i+"\n");
-            System.out.println("El jugador recibe "+dice.healthReward()+" puntos de salud");            
+            System.out.println("El jugador recibe "+Dice.healthReward()+" puntos de salud");            
         }
         for(int i=0;i<100;i++){
             System.out.println("iteracion"+i+"\n");
-            System.out.println("El jugador recibe "+dice.weaponsReward()+" armas");            
+            System.out.println("El jugador recibe "+Dice.weaponsReward()+" armas");            
         }
         for(int i=0;i<100;i++){
             System.out.println("iteracion"+i+"\n");
-            System.out.println("El jugador recibe "+dice.shieldsReward()+" escudos");            
+            System.out.println("El jugador recibe "+Dice.shieldsReward()+" escudos");            
         }
         for(int i=0;i<100;i++){
             System.out.println("iteracion"+i+"\n");
-            System.out.println("El jugador empieza en la posicion "+dice.randomPos(50));
+            System.out.println("El jugador empieza en la posicion "+Dice.randomPos(50));
         }
         for(int i=0;i<100;i++){
             System.out.println("iteracion"+i+"\n");
-            System.out.println("Es el turno del jugador "+dice.whoStarts(4));
+            System.out.println("Es el turno del jugador "+Dice.whoStarts(4));
         }
         for(int i=0;i<100;i++){
             System.out.println("iteracion"+i+"\n");
-            System.out.println("Inteligencia asignada: "+dice.randomIntelligence());
+            System.out.println("Inteligencia asignada: "+Dice.randomIntelligence());
         }
         for(int i=0;i<100;i++){
             System.out.println("iteracion"+i+"\n");
-            System.out.println("Fuerza asignada: "+dice.randomStrength());
+            System.out.println("Fuerza asignada: "+Dice.randomStrength());
         }
         for(int i=0;i<100;i++){
             System.out.println("iteracion"+i+"\n");
-            System.out.println("Usos restantes: "+dice.usesLeft());
+            System.out.println("Usos restantes: "+Dice.usesLeft());
         }
         for(int i=0;i<100;i++){
             System.out.println("iteracion"+i+"\n");
-            System.out.println("Objeto descartado: "+dice.discardElement(dice.usesLeft()));
+            System.out.println("Objeto descartado: "+Dice.discardElement(Dice.usesLeft()));
         }
         for(int i=0;i<100;i++){
             System.out.println("iteracion"+i+"\n");
-            System.out.println("Resucita el jugador?: "+dice.resurrectPlayer());
+            System.out.println("Resucita el jugador?: "+Dice.resurrectPlayer());
         }
         for(int i=0;i<100;i++){
             System.out.println("iteracion"+i+"\n");
-            System.out.println("Poder del escudo: "+dice.shieldPower());
+            System.out.println("Poder del escudo: "+Dice.shieldPower());
         }
         for(int i=0;i<100;i++){
             System.out.println("iteracion"+i+"\n");
-            System.out.println("Poder del arma: "+dice.weaponPower());
+            System.out.println("Poder del arma: "+Dice.weaponPower());
         }
         for(int i=0;i<100;i++){
             System.out.println("iteracion"+i+"\n");
-            System.out.println("intensidad: "+dice.intensity(10));
+            System.out.println("intensidad: "+Dice.intensity(10));
         }
     }
 }

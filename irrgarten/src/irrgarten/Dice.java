@@ -21,7 +21,7 @@ public class Dice {
     private static int HEALTH_REWARD=5;         //Número de vidas máximas como recompensa
     private static int MAX_ATTACK=3;            //Número máximo de ataque para un arma
     private static int MAX_SHIELD=2;            //Número máximo de protección para un escudo
-    private Random generator = new Random();    //Variable generadora de números aleatorios   
+    private static Random generator = new Random();    //Variable generadora de números aleatorios   
     
     /**
      * Funcion randomPos. Devuelve un valor que muestra el valor de fila o 
@@ -29,7 +29,7 @@ public class Dice {
      * @param max Número de filas o de columnas del laberinto
      * @return valor entero aletorio en el intervalo [0, max)
      */
-    public int randomPos(int max){
+    public static int randomPos(int max){
         return generator.nextInt(max);    
     }
     
@@ -38,7 +38,7 @@ public class Dice {
      * @param nplayers Número de jugadores en la partida
      * @return Un número entero aleatorio en el intervalo [0, nplayers)
      */
-    public int whoStarts(int nplayers){
+    public static int whoStarts(int nplayers){
         return generator.nextInt(nplayers);
     }
     
@@ -47,7 +47,7 @@ public class Dice {
      * la inteligencia del personaje
      * @return Un número aleatorio con coma flotante en el intervalo [0, MAX_INTELLIGENCE)
      */
-    public float randomIntelligence(){
+    public static float randomIntelligence(){
         return generator.nextFloat(MAX_INTELLIGENCE);
     }
     
@@ -56,7 +56,7 @@ public class Dice {
      * la fuerza del personaje
      * @return Un número aleatorio con coma flotante en el intervalo [0, MAX_STRENGTH)
      */
-    public float randomStrength(){
+    public static float randomStrength(){
         return generator.nextFloat(MAX_STRENGTH);
     }
     
@@ -66,7 +66,7 @@ public class Dice {
      * menor que la probabilidad de revivir, devuelve true, si no, false.
      * @return True si el personaje revive, false si no. 
      */
-    public boolean resurrectPlayer(){
+    public static boolean resurrectPlayer(){
         return generator.nextFloat() < RESURRECT_PROB;
     }
     
@@ -74,7 +74,7 @@ public class Dice {
      * Funcion weaponsReward. Devuelve el número aleatorio de armas que recibe como recompensa
      * @return Valor entero aleatorio en el intervalo [0, WEAPONS_REWARD]
      */
-    public int weaponsReward(){
+    public static int weaponsReward(){
         return generator.nextInt(WEAPONS_REWARD+1);
     }
     
@@ -82,7 +82,7 @@ public class Dice {
      * Funcion shieldsReward. Devuelve el número aleatorio de escudos que recibe como recompensa
      * @return Valor entero aleatorio en el intervalo [0, SHIELDS_REWARD]
      */
-    public int shieldsReward(){
+    public static int shieldsReward(){
         return generator.nextInt(SHIELDS_REWARD+1);
     }
     
@@ -90,7 +90,7 @@ public class Dice {
      * Funcion healthReward. Devuelve el número aleatorio de vidas que recibe como recompensa
      * @return Valor entero aleatorio en el intervalo [0, HEALTH_REWARD]
      */
-    public int healthReward(){
+    public static int healthReward(){
         return generator.nextInt(HEALTH_REWARD+1);
     }
     
@@ -98,7 +98,7 @@ public class Dice {
      * Funcion weaponPower. Devuelve un valor que representará el valor de daño de un arma
      * @return Valor con coma flotante aleatorio en el intervalo [0, MAX_ATTACK)
      */
-    public float weaponPower(){
+    public static float weaponPower(){
         return generator.nextFloat(MAX_ATTACK);
     }
     
@@ -106,7 +106,7 @@ public class Dice {
      * Funcion weaponPower. Devuelve un valor que representará el valor de defensa de un escudo
      * @return Valor con coma flotante aleatorio en el intervalo [0, MAX_SHIELD)
      */
-    public float shieldPower(){
+    public static float shieldPower(){
         return generator.nextFloat(MAX_SHIELD);
     }
     
@@ -114,7 +114,7 @@ public class Dice {
      * Funcion usesLeft. Devuelve el número aleatorio de usos restantes de un arma o escudo
      * @return Número entero aleatorio en el intervalo [0, MAX_USES]
      */
-    public int usesLeft(){
+    public static int usesLeft(){
         return generator.nextInt(MAX_USES+1);
     }
     
@@ -123,7 +123,7 @@ public class Dice {
      * @param competence
      * @return Valor  aleatorio con coma flotante en el intervalo [0, competence)
      */
-    public float intensity(float competence){
+    public static float intensity(float competence){
         return generator.nextFloat(competence);
     }
     
@@ -138,7 +138,7 @@ public class Dice {
      * @param usesLeft Número de usos restantes
      * @return True si se descarta, false si no
      */
-    public boolean discardElement(int usesLeft){
+    public static boolean discardElement(int usesLeft){
         if(usesLeft==MAX_USES){
            return false;
         }

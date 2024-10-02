@@ -56,7 +56,6 @@ public class Weapon {
      * @return True si se descarta, false si no.
      */
     public boolean discard(){
-        Dice dice=new Dice();
-        return dice.discardElement(uses);
+        return Dice.discardElement(uses);
     }
 }
