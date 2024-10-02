@@ -3,6 +3,6 @@ lib/Shield.rb 3b51205e05104bbb03af9570283cf6b0cc8ea4b8
 lib/TestP1.rb 6bebc2322036c51745ae7ddd92a0b39ca4d507cf
 lib/Weapon.rb fb08ee2d91766ccb3430cd4032adf57b7d601ed1
 lib/GameState.rb 64dcee8957c09222e89b1f8ded955f72ad3a76ea
-lib/Directions.rb 9936933f9df574a39ae7fa5a3555a38fae5fa6c9
+lib/Directions.rb 2d18deb0fe64545612fd916e67d4acafaa7b6a0c
 lib/Orientations.rb 475c0892f4d8054c6628bbdda3872145ceefeda4
-lib/GameCharacter.rb 1870e2b71b666f712dc9c0dfcff179a260e30f56
+lib/GameCharacter.rb 74272ad9b1ca851468d47e5a374b5cb3da95843d
