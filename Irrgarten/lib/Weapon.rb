@@ -9,9 +9,6 @@ require_relative 'Dice'
 # correo e.sergiocg10@go.ugr.es
 #
 class Weapon
-    @@power
-    @@uses
-    
     # Constructor por parámetro de la clase Weapon
     # @param p daño del arma a crear
     # @param us usos del arma a crear

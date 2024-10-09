@@ -10,6 +10,7 @@ w1=Weapon.new(3,4)
 s1=Shield.new(2,2)
 gm=GameCharacter::PLAYER;
 puts gm
+
 #Comprobando la clase Weapon
 n=100
 w1.to_s

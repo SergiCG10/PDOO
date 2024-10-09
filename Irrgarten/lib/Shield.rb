@@ -9,9 +9,6 @@ require_relative 'Dice'
 # correo e.sergiocg10@go.ugr.es
 #
 class Shield
-    @@protection
-    @@uses
-    
     # Constructor por parámetro de la clase Shield
     # @param p defensa del escudo a crear
     # @param us usos del escudo a crear
