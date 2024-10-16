@@ -81,7 +81,7 @@ public class Player {
     
     public String toString(){
         String info = name + "\n";
-        info += "\nIntelligence: " + Float.toString(intelligence);
+        info += "\nIntelligence: " + intelligence;
         info += "\nStregth: " + strength;
         info += "\nHealth: " + health;
         info += "\nPosition: (" + row + ", " + col + ")";

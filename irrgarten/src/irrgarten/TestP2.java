@@ -9,9 +9,9 @@ package irrgarten;
  * @author usuario
  */
 public class TestP2 {
-    static Player player = new Player('1', 5f , 5f);
+    static Game gm = new Game(4);
     
     public static void tP2(){
-        System.out.println("Mostramos el jugador por pantalla: \n" + player.toString());
+        System.out.println("Monstramos las características del juego: \n" + gm.toString());
     }
 }
