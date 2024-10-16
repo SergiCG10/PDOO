@@ -24,7 +24,7 @@ public class Monster {
         health=(float)INITIAL_HEALTH;
     }
     public boolean dead(){
-        return (health==0);
+        return (health<=0);
     }
     public float attack(){
         return Dice.intensity(strength);

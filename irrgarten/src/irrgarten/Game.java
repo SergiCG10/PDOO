@@ -4,6 +4,7 @@
  */
 package irrgarten;
 
+import java.util.ArrayList;
 /**
  *
  * @author usuario
@@ -12,6 +13,9 @@ public class Game {
     private static int MAX_ROUNDS = 10;
     private int currentPlayerIndex;
     private String log;
+    
+    private ArrayList<Monster> monsters = new ArrayList<>();
+    private ArrayList<Player> players = new ArrayList<>();
     
     //Game(int nplayers)
     
