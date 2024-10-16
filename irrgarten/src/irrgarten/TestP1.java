@@ -11,13 +11,13 @@ package irrgarten;
  */
 public class TestP1 {
       
-    Weapon w1=new Weapon(1.4f,5);
-    Weapon w2=new Weapon(2.7f,3);
-    Shield s1=new Shield(1.5f,4);
-    Shield s2=new Shield(2f,2);
-    boolean descartar = false;
+    static Weapon w1=new Weapon(1.4f,5);
+    static Weapon w2=new Weapon(2.7f,3);
+    static Shield s1=new Shield(1.5f,4);
+    static Shield s2=new Shield(2f,2);
+    static boolean descartar = false;
     
-    public void tP1(){
+    public static void tP1(){
         System.out.println("Comenzamos a comprobar el enumerado GameCharacter:");
         GameCharacter gm = GameCharacter.MONSTER;
         System.out.print(gm + "\n\n");

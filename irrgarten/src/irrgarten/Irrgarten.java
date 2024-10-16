@@ -16,9 +16,8 @@ public class Irrgarten {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        TestP1 tp1 = new TestP1();
-        tp1.tP1();
-        
+        //TestP1.tP1();
+        TestP2.tP2();       
     }
     
 }
