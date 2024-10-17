@@ -49,9 +49,20 @@ public class Game {
         return new GameState( labyrinth.toSring(), allPlayers, allMonsters, currentPlayerIndex, this.finished(), log);
     }
     
+    //Cómo configuramos el laberinto?
     //private void configureLabyrinth()
     
-    //private void nextPlayer()
+    private void nextPlayer(){
+        //Actualizar los dos atributos del jugador current?
+        players.set(currentPlayerIndex, currentPlayer);
+        
+        if(currentPlayerIndex + 1 == players.size()){
+            currentPlayerIndex = 0;
+        }else{
+            currentPlayerIndex++;
+        }
+        currentPlayer = players.get(currentPlayerIndex);
+    }
     
     //Practica 3
     //private Directions actualDirection(Directions preferredDirection)
