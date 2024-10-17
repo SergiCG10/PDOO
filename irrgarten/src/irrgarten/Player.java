@@ -80,7 +80,7 @@ public class Player {
     //public void receiveReward()
     
     public String toString(){
-        String info = name + "\n";
+        String info = "\n" + name + "\n";
         info += "\nIntelligence: " + intelligence;
         info += "\nStregth: " + strength;
         info += "\nHealth: " + health;
@@ -93,6 +93,7 @@ public class Player {
         for(int i = 0; i <shields.size() ; i++){
             info += shields.get(i).toString();
         }
+        info += "\n";
         
         return info;
     }

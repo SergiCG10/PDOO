@@ -16,6 +16,8 @@ public class Game {
     
     private ArrayList<Player> players = new ArrayList<>();
     private ArrayList<Monster> monsters = new ArrayList<>();
+    private Player currentPlayer;
+    private Labyrinth labyrinth;
     
     Game(int nplayers){
         for(int i =0; i < nplayers; i++){
@@ -25,14 +27,26 @@ public class Game {
             players.add(p);
         }
     }
-    //public boolean finished()
+    
+    public boolean finished(){
+        return labyrinth.haveAWinner();
+    }
     
     //Practica 3
     //public boolean nextStep(Directions preferredDirection)
     
     public GameState getGameState(){
-        //return new GameState( laberinto(string), jugadores(string), monstruos(string), currentPlayerIndex, this.finished(), log del anterior turno(string));
-        return null;
+        String  allPlayers = "";
+        String allMonsters = "";
+        
+        for(int i = 0; i < players.size(); i++){
+            allPlayers += players.get(i).toString();
+        }
+        
+        for(int i = 0; i < monsters.size(); i++){
+            allMonsters += monsters.get(i).toString();
+        }
+        return new GameState( labyrinth.toSring(), allPlayers, allMonsters, currentPlayerIndex, this.finished(), log);
     }
     
     //private void configureLabyrinth()
@@ -51,17 +65,31 @@ public class Game {
     //Practica 3
     //private void manageResurrection()
     
-    //private void logPlayerWon()
+    private void logPlayerWon(){
+        log += "El jugador ha ganado el combate\n";
+    }
     
-    //private void logMonsterWon()
+    private void logMonsterWon(){
+        log += "El monstruo ha ganado el combate\n";
+    }
     
-    //private void logResurrected()
+    private void logResurrected(){
+        log += "El jugador ha resucitado\n";
+    }
     
-    //private void logPlayerSkipTurn()
+    private void logPlayerSkipTurn(){
+        log += "El jugador ha perdido turno por estar muerto\n";
+    }
     
-    //private void logPlayerNoOrderns()
+    private void logPlayerNoOrderns(){
+        log += "El jugador no ha podido seguir las instrucciones\n";
+    }
     
-    //private void logNoMonster()
+    private void logNoMonster(){
+        log += "El jugador se ha movido a una celda vacía o no ha podido moverse\n";
+    }
     
-    //provate void logRounds(int rounds, int max)
+    private void logRounds(int rounds, int max){
+        log += "Se han producido " + rounds + " de " + max + "\n";
+    }
 }
