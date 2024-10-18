@@ -14,7 +14,6 @@ import java.util.ArrayList;
  * 
  * @author Sergio Calvo González
  * correo: e.sergiocg10@go.ugr.es
- * 
  */
 public class Game {
     private static int MAX_ROUNDS = 10; //Número de rondas máximas que se van a jugar
