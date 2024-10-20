@@ -11,7 +11,11 @@ package irrgarten;
  * correo: e.sergiocg10@go.ugr.es
  */
 public class Monster {
+<<<<<<< HEAD
     private static final int INVALID_POS=-1;            //Variable que indica 
+=======
+    private static final int INVALID_POS=-1;    //Variable que indica la posición inicial del monstruo
+>>>>>>> refs/remotes/origin/main
     private static final int INITIAL_HEALTH=5;  //Salud inicial del monstruo
     private String name;                        //Nombre del monstruo
     private float strength;                     //Fuerza del monstruo

@@ -39,6 +39,8 @@ public class Game {
             Player p = new Player(c ,Dice.randomIntelligence(), Dice.randomStrength() );
             players.add(p);
         }
+            currentPlayerIndex = 0;
+            log = "";
     }
     
     /**

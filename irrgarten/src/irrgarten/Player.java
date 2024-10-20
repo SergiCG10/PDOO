@@ -13,6 +13,7 @@ import java.util.ArrayList;
  * correo: e.sergiocg10@go.ugr.es
  */      
 public class Player {
+    private static final int INVALID_POS=-1;//Variable que indica la posición inicial del monstruo
     private static int MAX_WEAPONS = 2;     //Número de armas máximas que puede llevar el jugador
     private static int MAX_SHIELDS = 3;     //Número de escudos máximos que puede llevar el jugador
     private static int INITIAL_HEALTH = 3;  //Cantidad de vida con la que empieza el jugador
@@ -43,8 +44,8 @@ public class Player {
         intelligence = howsmart;
         strength = howstrong;
         health = (float)INITIAL_HEALTH;
-        row = -1; //No sé si deberíamos de cambiar el -1 por una variable FILA_INICIAl
-        col = -1; //Igual que con row
+        row = INVALID_POS; 
+        col = INVALID_POS;
     }
     
     /**
