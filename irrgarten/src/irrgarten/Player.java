@@ -14,8 +14,7 @@ import java.util.ArrayList;
  * 
  * @author Sergio Calvo González
  * correo: e.sergiocg10@go.ugr.es
- */
-       
+ */      
 public class Player {
     private static int MAX_WEAPONS = 2;     //Número de armas máximas que puede llevar el jugador
     private static int MAX_SHIELDS = 3;     //Número de escudos máximos que puede llevar el jugador
