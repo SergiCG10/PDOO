@@ -70,7 +70,7 @@ public class Game {
         for(int i = 0; i < monsters.size(); i++){
             allMonsters += monsters.get(i).toString();
         }
-        return new GameState( labyrinth.toSring(), allPlayers, allMonsters, currentPlayerIndex, this.finished(), log);
+        return new GameState( labyrinth.toString(), allPlayers, allMonsters, currentPlayerIndex, this.finished(), log);
     }
     
     //Cómo configuramos el laberinto?
