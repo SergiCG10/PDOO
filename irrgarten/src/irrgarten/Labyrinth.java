@@ -16,8 +16,8 @@ public class Labyrinth {
    private static final char MONSTER_CHAR='M';
    private static final char COMBAT_CHAR='C';
    private static final char EXIT_CHAR='E';
-   //private static finalint ROW=0;
-   //private static final int COL=1;
+   private static final int ROW=0;
+   private static final int COL=1;
    private int nRows;
    private int nCols;
    private int exitRow;
@@ -81,6 +81,46 @@ public class Labyrinth {
               monsterPos(row,col) || exitPos(row,col))); 
    }
    public void updateOldPos(int row, int col){
-       
+       if(posOK(row,col)){
+           if(labyrinth[row][col]== COMBAT_CHAR){
+               labyrinth[row][col]=MONSTER_CHAR;
+           }
+           else{
+               labyrinth[row][col]=EMPTY_CHAR;
+           }
+       }
    }
+   public int[] dir2Pos(int row, int col, Directions direction){
+       int pos[]=new int[2];
+       if(Directions.UP==direction){
+           pos[ROW]=row-1;
+           pos[COL]=col;
+       }
+       else if(Directions.DOWN==direction){
+           pos[ROW]=row+1;
+           pos[COL]=col;
+       }
+       else if(Directions.RIGHT==direction){
+           pos[ROW]=row;
+           pos[COL]=col+1;
+       }
+       else{
+           pos[ROW]=row;
+           pos[COL]=col-1;
+       }
+       return pos;
+   }
+
+    public int[] randomEmptyPos(){
+        int pos[]=new int[2];
+        pos[ROW]=Dice.randomPos(nRows);
+        pos[COL]=Dice.randomPos(nCols);
+        while(!emptyPos(pos[ROW],pos[COL])){
+            pos[ROW]=Dice.randomPos(nRows);
+            pos[COL]=Dice.randomPos(nCols);  
+        }
+        return pos;
+    }
+
 }
+
