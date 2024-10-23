@@ -83,8 +83,7 @@ public class Game {
      * y pasa al siguiente jugador. 
      */
     private void nextPlayer(){
-        //Actualizar los dos atributos del jugador current?
-        players.set(currentPlayerIndex, currentPlayer);
+        players.set(currentPlayerIndex, currentPlayer);//Intercambiamos la variable de jugador actual por el jugador correspondiente en el vector
         
         if(currentPlayerIndex + 1 == players.size()){
             currentPlayerIndex = 0;
