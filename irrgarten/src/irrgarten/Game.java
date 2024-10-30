@@ -75,8 +75,14 @@ public class Game {
         return new GameState( labyrinth.toString(), allPlayers, allMonsters, currentPlayerIndex, this.finished(), log);
     }
     
-    //Cómo configuramos el laberinto?
-    //private void configureLabyrinth()
+    
+    private void configureLabyrinth(){
+        int nRows = 7;
+        int nCols = 7;
+        labyrinth = new Labyrinth(nRows, nCols, nRows -1, nCols -1);
+        
+        
+    }
     
     /**
      * Funcion nextPlayer. La funcion almacena los cambios en el jugador actual

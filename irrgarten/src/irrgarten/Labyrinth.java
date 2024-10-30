@@ -1,6 +1,10 @@
 package irrgarten;
-import java.util.ArrayList;
 
+import java.io.File;
+import java.io.FileWriter;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.Scanner;
 /**
  * Clase Labyrinth.
  * 
@@ -40,6 +44,7 @@ public class Labyrinth {
    private Monster monsters[][];       // Matriz que almacena las posiciones de los monstruos
    private Player players[][];         // Matriz que almacena las posiciones de los jugadores
 
+   private static String magic_str = "LABYRINTHFILE";
     /**
     * Constructor de la clase Labyrinth.
     * 
@@ -85,6 +90,7 @@ public class Labyrinth {
    
    public String toString(){
        String state="";
+       System.out.println(nRows + " " + nCols);
        for(int i=0;i<nRows;i++){
            for(int j=0;j<nCols;j++){
                state+="["+labyrinth[i][j]+"]";
@@ -252,6 +258,203 @@ public class Labyrinth {
         }
         return pos;
     }
+    
+    void addBlock(Orientation orientation, int startRow,int startCol, int length){
+        int row = startRow;
+        int col = startCol;
+        int incRow;
+        int incCol;
+        if(orientation == Orientation.HORIZONTAL){
+            incRow = 0;
+            incCol = 1;
+        }else{
+            incRow = 1;
+            incCol = 0;
+        }
+        while( (posOK(row, col) && emptyPos(row, col)) && length > 0){
+            labyrinth[row][col] = BLOCK_CHAR;
+            length -= 1;
+            row +=incRow;
+            col +=incCol;
+        }
+    }
+    
+    ////Funciones adicionales para crear, cargar y guardar laberintos////
+    
+    public void createLabyrinth(){
+        String saveRoute = "../labyrinths/labyrinth";
+        
+        try {
+            File createdLabyrinth = new File(saveRoute);            
+            if (createdLabyrinth.createNewFile()) {
+                System.out.println("Fichero "+ createdLabyrinth.getName() +" creado");
+            }            
+            else {
+                boolean exist = true;
+                int i = 1;
+                String newName = saveRoute + i;
 
+                while(exist){
+                    createdLabyrinth = new File(newName);
+                    exist = createdLabyrinth.exists();
+                    i++;
+                    newName = saveRoute + i;
+                }
+                saveRoute = newName;
+            }
+        }catch(IOException error){
+            System.out.println("Error al crear el fichero");
+        }
+        
+        boolean getOut = false;
+        int xPos, yPos;
+        int eleccion;
+        int largo;
+        Scanner read = new Scanner(System.in);
+        Orientation or = Orientation.HORIZONTAL;
+        boolean linea = true;
+        
+        System.out.println("Introduzca el tamaño del laberinto (filas columnas)");
+        nRows = read.nextInt();
+        nCols = read.nextInt();
+        while(nRows <= 0 && nCols <= 0){
+            System.out.println("Introduzca un tamaño adecuado del laberinto (filas columnas)");
+            nRows = read.nextInt();
+            nCols = read.nextInt();
+        }
+        labyrinth=new char[nRows][nCols];
+        monsters=new Monster[nRows][nCols];
+        players=new Player[nRows][nCols];
+        
+        for(int i=0;i<nRows;i++){
+           for(int j=0;j<nCols;j++){
+               labyrinth[i][j]=EMPTY_CHAR;
+           }
+        }
+        
+        System.out.println("Introduzca la casilla de salida (filas columnas");
+        exitRow = read.nextInt();
+        exitCol = read.nextInt();
+        
+        labyrinth[exitRow][exitCol] = EXIT_CHAR;
+        while(!getOut){
+            System.out.println("Introduzca que posición desea de modificar");
+            xPos = read.nextInt();
+            yPos = read.nextInt();
+            System.out.println("¿En que orientación desea rellenar? Ponga el valor correspondiente a su elección\nNo desea rellenar: 0\nHorizontal: 1\nVertical: 2\n");
+            eleccion = read.nextInt();
+            switch(eleccion){
+                case 0: 
+                    linea = false;
+                    break;
+                case 1:
+                    or = Orientation.HORIZONTAL;
+                    break;
+                case 2:
+                    or = Orientation.VERTICAL;
+                    break;
+            }
+            
+            if(linea){
+                System.out.println("Introduzca como de largo desea que sea la linea a cambiar");
+                largo = read.nextInt();
+            }else{
+                largo = 1;
+            }
+            linea = true;
+            
+            this.addBlock(or, xPos, yPos, largo);
+            System.out.println("El laberinto queda así:");
+            System.out.println(this.toRealRepresentation() + "\n\n");
+            System.out.println("¿Desea salir? Introduzca 0 para confirmar");
+            eleccion = read.nextInt();
+            getOut = eleccion == 0;
+        }
+        saveLabyrinth(saveRoute);
+    }
+    
+    public void loadLabyrinth(String route){
+        File fichero = new File(route);
+        try{
+            Scanner scan = new Scanner(fichero);
+            
+            String mstr = scan.nextLine();
+            
+            if(mstr.equals(magic_str)){
+                nRows = scan.nextInt();
+                nCols = scan.nextInt();
+                labyrinth=new char[nRows][nCols];
+                players=new Player[nRows][nCols];
+                monsters=new Monster[nRows][nCols]; 
+                scan.nextLine();
+                String lab = scan.nextLine();
+                
+                for(int i =0; i < this.nRows; i++){
+                    for(int j = 0; j < this.nCols; j++){
+                        labyrinth[i][j] = lab.charAt(i*nRows + j);
+                    }
+                }
+                
+            }else{
+                System.out.print("Error el archivo no es un laberinto");
+            }
+            scan.close();
+            
+        }catch(Exception e){
+            System.out.print("Error al abrir el archivo");
+            e.printStackTrace();
+        }
+    }
+            
+    public void saveLabyrinth(String route){
+        File fichero = new File(route);
+        try{
+            FileWriter writer = new FileWriter(fichero);
+            
+            writer.write(magic_str +  "\n");
+            writer.write(this.nRows + " " + this.nCols + "\n");
+            for(int i =0; i < this.nRows; i++){
+                for(int j = 0; j < this.nCols; j++){
+                    writer.write(labyrinth[i][j]);
+                }
+            }
+            writer.close();
+        }catch(Exception e){
+            System.out.print("Error al abrir el archivo");
+        }
+        
+        
+    }
+    
+    public String toRealRepresentation(){
+        labyrinth[1][1] = MONSTER_CHAR;
+        String laberinto = "";
+        for(int i =0; i < nCols + 2; i++){
+            laberinto += " ■";
+        }
+        laberinto += "\n";
+        for(int i =0; i < nRows; i++){
+            laberinto += " ■";
+            for(int j =0; j <nCols; j++){
+                if(labyrinth[i][j] == BLOCK_CHAR ){
+                    laberinto += " ■";
+                }else if(labyrinth[i][j] == EMPTY_CHAR){
+                    laberinto += " □";
+                }else if(labyrinth[i][j] == MONSTER_CHAR){
+                    laberinto += " M";
+                }else if(labyrinth[i][j]== COMBAT_CHAR){
+                    laberinto += " ⚔";
+                }else{
+                    laberinto += " ✪";
+                }
+            }
+            laberinto += " ■\n";
+        }
+        for(int i =0; i < nCols + 2; i++){
+            laberinto += " ■";
+        }
+        laberinto += "\n";
+        return laberinto;
+    }
 }
 
