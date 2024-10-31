@@ -48,7 +48,7 @@ public class Dice {
      * @return Un número aleatorio con coma flotante en el intervalo [0, MAX_INTELLIGENCE)
      */
     public static float randomIntelligence(){
-        return generator.nextFloat(MAX_INTELLIGENCE);
+        return generator.nextFloat()*MAX_INTELLIGENCE;
     }
     
     /**
@@ -57,7 +57,7 @@ public class Dice {
      * @return Un número aleatorio con coma flotante en el intervalo [0, MAX_STRENGTH)
      */
     public static float randomStrength(){
-        return generator.nextFloat(MAX_STRENGTH);
+        return generator.nextFloat()*MAX_STRENGTH;
     }
     
     /**
@@ -99,7 +99,7 @@ public class Dice {
      * @return Valor con coma flotante aleatorio en el intervalo [0, MAX_ATTACK)
      */
     public static float weaponPower(){
-        return generator.nextFloat(MAX_ATTACK);
+        return generator.nextFloat()*MAX_ATTACK;
     }
     
     /**
@@ -124,7 +124,7 @@ public class Dice {
      * @return Valor  aleatorio con coma flotante en el intervalo [0, competence)
      */
     public static float intensity(float competence){
-        return generator.nextFloat(competence);
+        return generator.nextFloat()*competence;
     }
     
     /**
