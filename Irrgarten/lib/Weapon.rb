@@ -18,6 +18,7 @@ class Weapon
     	@uses=u
     end
     
+    
     # Función Attack. Devuelve el valor de daño del arma
     # y decrementa su uso en uno
     # @return Valor de ataque. 0 si no le quedan usos, power si no.
