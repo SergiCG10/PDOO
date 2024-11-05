@@ -213,6 +213,7 @@ class Player
 	end
 		
 end
+<<<<<<< HEAD
 
 #p=Player.new("1", 3,2)
 #w=Weapon.new(2,3)
@@ -232,3 +233,5 @@ end
 #puts "defensive energy" 
 #puts p.defensiveEnergy
 
+=======
+>>>>>>> df393e1d10a4e81d9d1108d5bcff0cd5bffa1052
