@@ -2,7 +2,6 @@ package irrgarten;
 
 import java.io.File;
 import java.io.FileWriter;
-import java.io.FileReader;
 import java.io.IOException;
 import java.util.Scanner;
 /**
@@ -90,7 +89,6 @@ public class Labyrinth {
    
    public String toString(){
        String state="";
-       System.out.println(nRows + " " + nCols);
        for(int i=0;i<nRows;i++){
            for(int j=0;j<nCols;j++){
                state+="["+labyrinth[i][j]+"]";
@@ -149,7 +147,7 @@ public class Labyrinth {
  */
    
    public boolean monsterPos(int row, int col){
-       return(labyrinth[row][col]==MONSTER_CHAR);
+       return(monsters[row][col] != null);
    }
    
 /**
