@@ -17,10 +17,7 @@ class Player
 	@@MAX_WEAPONS=2
 	@@MAX_SHIELDS=3
 	@@INITIAL_HEALTH=3
-	@@HITS2LOSE=3
-	@weapons
-	@shields
-	
+	@@HITS2LOSE=3	
      
      # Constructor por parámetro de la clase Player.
      # 
