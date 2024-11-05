@@ -1,4 +1,6 @@
 require_relative 'Dice'
+require_relative 'Directions'
+require_relative 'Orientations'
 # Clase Labyrinth. Implementación de la clase Labyrinth, de sus métodos y variables.
 # 
 # @author Miguel Ángel Luque Gómez
@@ -65,7 +67,7 @@ class Labyrinth
      #def validMoves(row, col)
      #end
      
-     #private 
+     private 
      
      def posOK(row, col)
      	return  (row < @nRows && row >= 0) && (col < @nCols && col >= 0)
@@ -104,11 +106,11 @@ class Labyrinth
      def dir2Pos(row, col, direction)
      	pos = [ row, col];
      	
-     	if(direction == Directions.left)
+     	if(direction == Directions::LEFT)
      		pos[@@COL] -= 1;
-     	elsif(direction == Directions.right)
+     	elsif(direction == Directions::RIGHT)
      		pos[@@COL] += 1;
-     	elsif(direction == Directions.up)
+     	elsif(direction == Directions::UP)
  			pos[@@ROW] -= 1;
      	else
      		pos[@@ROW] += 1;
@@ -132,6 +134,3 @@ class Labyrinth
      
      #private : posOK , :emptyPos, :monsterPos, :exitPos, :combatPos, :canStepOn, :updateOldPos, :dir2Pos, :randomEmptyPos
 end
-
-lab = Labyrinth.new(10,10,9,9)
-puts lab.to_s

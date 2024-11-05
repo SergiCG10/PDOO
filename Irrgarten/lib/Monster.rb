@@ -14,7 +14,7 @@ class Monster
     @@INITIAL_HEALTH = 5;
     @@OUT_POS = -1;	
     
-    def	initialize(name, howsmart, horwstrong)
+    def	initialize(name, howsmart, howstrong)
 	@name = name;
 	@intelligence = howsmart;  
 	@strength = howstrong;

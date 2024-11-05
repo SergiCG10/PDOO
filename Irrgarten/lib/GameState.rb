@@ -1,11 +1,5 @@
 class GameState
-	@@labyrinth
-	@@players
-	@@monsters
-	@@currentPlayer
-	@@winner
-	@@log
-	
+		
 	#Constructor de la clase GameState
 	def initialize(lab, pl, monst, cp, w, l)
 		@labyrinth=lab
