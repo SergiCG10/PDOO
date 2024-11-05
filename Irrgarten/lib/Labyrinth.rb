@@ -118,11 +118,11 @@ class Labyrinth
      
      def randomEmptyPos
      	pos = Array.new(2);
-        pos[ROW]=Dice.randomPos(nRows);
-        pos[COL]=Dice.randomPos(nCols);
-        while !emptyPos(pos[ROW],pos[COL]) do 
-            pos[ROW]=Dice.randomPos(nRows);
-            pos[COL]=Dice.randomPos(nCols);  
+        pos[@@ROW]=Dice.randomPos(@nRows);
+        pos[@@COL]=Dice.randomPos(@nCols);
+        while !emptyPos(pos[@@ROW],pos[@@COL]) do 
+            pos[@@ROW]=Dice.randomPos(@nRows);
+            pos[@@COL]=Dice.randomPos(@nCols);  
         end
         return pos;
      end
@@ -135,4 +135,3 @@ end
 
 lab = Labyrinth.new(10,10,9,9)
 puts lab.to_s
-
