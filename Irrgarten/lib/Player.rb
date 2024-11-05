@@ -213,22 +213,3 @@ class Player
 	end
 		
 end
-
-p=Player.new("1", 3,2)
-w=Weapon.new(2,3)
-s=Shield.new(1,2)
-w1=p.newWeapon
-w2=p.newWeapon
-s1=p.newShield
-s2=p.newShield
-s3=p.newShield
-p.shields.push(s1)
-p.shields.push(s2)
-p.shields.push(s3)
-puts p.toString
-puts "\nsuma defensa escudos"
-sum=p.sumShields
-puts sum
-puts "defensive energy" 
-puts p.defensiveEnergy
-

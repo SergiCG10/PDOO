@@ -35,7 +35,7 @@ public class Game {
     Game(int nplayers){
         for(int i =0; i < nplayers; i++){
             // Al valor de 1 en ascii (49), le sumamos i para obtener el valor de jugador en forma de char
-            char c = (char)(i + '1'); 
+            char c = (char)(i + '0'); 
             Player p = new Player(c ,Dice.randomIntelligence(), Dice.randomStrength() );
             players.add(p);
         }
