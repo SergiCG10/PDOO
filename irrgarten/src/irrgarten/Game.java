@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package irrgarten;
 
 import java.util.ArrayList;
@@ -35,7 +32,7 @@ public class Game {
     Game(int nplayers){
         for(int i =0; i < nplayers; i++){
             // Al valor de 1 en ascii (49), le sumamos i para obtener el valor de jugador en forma de char
-            char c = (char)(i + '0'); 
+            char c = (char)(i + '1'); 
             Player p = new Player(c ,Dice.randomIntelligence(), Dice.randomStrength() );
             players.add(p);
         }
