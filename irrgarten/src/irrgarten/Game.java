@@ -50,7 +50,9 @@ public class Game {
     }
     
     //Practica 3
-    //public boolean nextStep(Directions preferredDirection)
+    public boolean nextStep(Directions preferredDirection){
+        return true;
+    }
     
     /**
      * Funcion getGameState. Almacena los valores del juego actual y los devuelve.
