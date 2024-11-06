@@ -29,7 +29,7 @@ class Labyrinth
      	@monsters = Array.new(@nRows){Array.new(@nCols, nil)};
      	@labyrinth = Array.new(@nRows){Array.new(@nCols, @@EMPTY_CHAR)};
      	
-     	@labyrinth[@exitRow][@exitCol] = @@EXIT_CHAR;
+     	@labyrinth[@exitRow][@exitCol] = @@EXIT_CHAR
      end
      
      #def spreadPlayers(players)
@@ -104,8 +104,9 @@ class Labyrinth
      end
      
      def dir2Pos(row, col, direction)
-     	pos = [ row, col];
-     	
+     	pos =Array.new(2);
+     	pos[@@ROW]=row
+     	pos[@@COL]=col
      	if(direction == Directions::LEFT)
      		pos[@@COL] -= 1;
      	elsif(direction == Directions::RIGHT)
@@ -134,3 +135,6 @@ class Labyrinth
      
      #private : posOK , :emptyPos, :monsterPos, :exitPos, :combatPos, :canStepOn, :updateOldPos, :dir2Pos, :randomEmptyPos
 end
+
+lab=Labyrinth.new(5,5,5,5)
+lab.dir2Pos(3,3,Directions::RIGHT)
