@@ -10,8 +10,8 @@ require_relative 'Dice'
 #
 class Shield
     # Constructor por parámetro de la clase Shield
-    # @param p defensa del escudo a crear
-    # @param us usos del escudo a crear
+    # @param pr defensa del escudo a crear
+    # @param u usos del escudo a crear
     #
     def initialize(pr, u)
     	@protection=pr

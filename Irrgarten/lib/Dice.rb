@@ -32,7 +32,7 @@ class Dice
     end
 
 # Funcion whoStars. Devuelve un número que muestra que jugador empieza.
-# @param nplayers Número de jugadores en la partida
+# @param nPlayers Número de jugadores en la partida
 # @return Un número entero aleatorio en el intervalo [0, nplayers)
 
     def self.whoStarts(nPlayers)

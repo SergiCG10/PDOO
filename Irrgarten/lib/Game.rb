@@ -30,7 +30,7 @@ class Game
 	end
 	
 	def finished
-		#@labyrinth.haveAWinner
+		@labyrinth.haveAWinner
 	end
 	
 	def getGameState

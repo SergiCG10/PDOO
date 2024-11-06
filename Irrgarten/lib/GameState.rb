@@ -1,3 +1,13 @@
+# Clase Player
+
+# Clase Player. Representación de la clase player con sus métodos y variables 
+# 
+# @author Miguel Ángel Luque Gómez
+# correo e.mangelluqg@go.ugr.es
+  
+# @author Sergio Calvo González
+# correo e.sergiocg10@go.ugr.es
+ 
 class GameState
 		
 	#Constructor de la clase GameState

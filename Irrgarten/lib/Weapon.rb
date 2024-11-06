@@ -10,8 +10,8 @@ require_relative 'Dice'
 #
 class Weapon
     # Constructor por parámetro de la clase Weapon
-    # @param p daño del arma a crear
-    # @param us usos del arma a crear
+    # @param pw daño del arma a crear
+    # @param u usos del arma a crear
     #
     def initialize(pw, u)
     	@power=pw
