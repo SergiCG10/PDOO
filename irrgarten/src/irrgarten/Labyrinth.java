@@ -257,19 +257,20 @@ public class Labyrinth {
         }
         return pos;
     }
-    
+    //P3
     void addBlock(Orientation orientation, int startRow,int startCol, int length){
-        int row = startRow;
-        int col = startCol;
+
         int incRow;
         int incCol;
-        if(orientation == Orientation.HORIZONTAL){
-            incRow = 0;
-            incCol = 1;
-        }else{
+        if(orientation == Orientation.VERTICAL){
             incRow = 1;
             incCol = 0;
+        }else{
+            incRow = 0;
+            incCol = 1;
         }
+        int row = startRow;
+        int col = startCol;
         while( (posOK(row, col) && emptyPos(row, col)) && length > 0){
             labyrinth[row][col] = BLOCK_CHAR;
             length -= 1;
@@ -317,6 +318,15 @@ public class Labyrinth {
         int [] newPos=this.dir2Pos(oldRow, oldCol, direction);
         Monster monster=this.putPlayer2D(oldRow, oldCol, newPos[ROW], newPos[COL], player);
         return monster;
+    }
+    
+    public void spreadPlayers(Player [] players)
+    {
+        for(int i=0;i<players.length;i++){
+            Player p=players[i];
+            int [] pos=this.randomEmptyPos();
+            Monster monster=this.putPlayer2D(-1, -1, pos[ROW], pos[COL], p);
+        }
     }
     
     ////Funciones adicionales para crear, cargar y guardar laberintos////

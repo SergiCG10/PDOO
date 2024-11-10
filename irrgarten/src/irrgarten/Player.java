@@ -275,7 +275,23 @@ public class Player {
     
     //IMPLEMENTACION P3
     private boolean manageHit(float receivedAttack){
-        return false;
+        float defense=this.defensiveEnergy();
+        if(defense < receivedAttack){
+            this.gotWounded();
+            this.incConsecutiveHits();
+        }
+        else
+            this.resetHits();
+        
+        boolean lose;
+        if(consecutiveHits==HITS2LOSE || this.dead()){
+            this.resetHits();
+            lose=true;
+        }
+        else
+            lose=false;
+        
+        return lose;
     }
     
     /**
