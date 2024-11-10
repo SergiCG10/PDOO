@@ -51,7 +51,29 @@ public class Game {
     
     //Practica 3
     public boolean nextStep(Directions preferredDirection){
-        return true;
+        log="";
+        boolean dead=currentPlayer.dead();
+        if(!dead){
+            Directions direction=this.actualDirection(preferredDirection);
+            if(direction != preferredDirection)
+                this.logPlayerNoOrders();
+            Monster monster=labyrinth.putPlayer(direction, currentPlayer);
+            
+            if(monster==null)
+                this.logNoMonster();
+            else{
+                GameCharacter winner=this.combat(monster);
+                this.manageReward(winner);
+            }  
+        }
+        else{
+            this.manageResurrection();
+        }
+        boolean endGame=this.finished();
+        
+        if(!endGame)
+            this.nextPlayer();
+        return endGame;
     }
     
     /**
@@ -114,13 +136,51 @@ public class Game {
     }
     
     //Practica 3
-    //private GameCharacter combat(Monster monster)
+    /**
+     * Funcion Combat. Devuelve el gameCharacter ganador de la batalla
+     * @param monster
+     * @return 
+     */
+    private GameCharacter combat(Monster monster)
+    {
+        int rounds=0;
+        GameCharacter winner=GameCharacter.PLAYER;
+        float playerAttack=currentPlayer.attack();
+        boolean lose=monster.defend(playerAttack);
+        
+        for(; rounds<MAX_ROUNDS && !lose ;rounds++)
+        {
+            winner=GameCharacter.MONSTER;
+            float monsterAttack=monster.attack();
+            lose=currentPlayer.defend(monsterAttack);
+            if(!lose){
+                playerAttack=currentPlayer.attack();
+                winner=GameCharacter.PLAYER;
+                lose=monster.defend(playerAttack);
+            }
+        }
+        this.logRounds(rounds, MAX_ROUNDS);
+        return winner;
+    }
     
     //Practica 3
-    //private void manageReward(GameCharacter winner)
+    private void manageReward(GameCharacter winner){
+        if(winner==GameCharacter.PLAYER){
+            currentPlayer.receiveReward();
+            this.logPlayerWon();
+        }
+        else
+            this.logMonsterWon();
+    }
     
     //Practica 3
-    //private void manageResurrection()
+    private void manageResurrection(){
+        boolean resurrect=Dice.resurrectPlayer();
+        if(resurrect)
+            this.logResurrected();
+        else
+            this.logPlayerSkipTurn();
+    }
     
     /**
      * Funcion logPlayerWon. Concatena a la variable log que ha ganado el combate el jugador

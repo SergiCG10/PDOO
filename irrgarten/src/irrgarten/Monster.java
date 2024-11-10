@@ -75,7 +75,16 @@ public class Monster {
     public void gotWounded(){
         health--;
     }
-    /*public boolean defend(float receivedAttack){
-        
-    }*/
+    public boolean defend(float receivedAttack){
+        boolean isDead=this.dead();
+        if(!isDead)
+        {
+            float defensiveEnergy=Dice.intensity(intelligence);
+            if(defensiveEnergy < receivedAttack){
+                this.gotWounded();
+                isDead=this.dead();
+            }
+        }
+        return isDead;
+    }
 }

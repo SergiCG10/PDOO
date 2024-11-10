@@ -278,6 +278,47 @@ public class Labyrinth {
         }
     }
     
+    //P3
+    public Monster putPlayer2D(int oldRow, int oldCol, int row, int col, Player player)
+    {
+        Monster output=null;
+        if(this.canStepOn(row, col)){
+            if(this.posOK(oldRow, oldCol)){
+                Player p=players[oldRow][oldCol];
+                if(p==player){
+                    this.updateOldPos(oldRow, oldCol);
+                    players[oldRow][oldCol]=null;
+                }
+            }
+        
+            boolean monsterPos=this.monsterPos(row, col);
+            if(monsterPos){
+                labyrinth[row][col]=COMBAT_CHAR;
+                output=monsters[row][col];
+            }
+            else{
+                char number=player.getNumber();
+                labyrinth[row][col]=number;
+            }
+            
+            players[row][col]=player;
+            player.setPos(row, col);
+            
+        }
+        return output;
+        
+    }
+    
+    //P3
+    public Monster putPlayer(Directions direction, Player player)
+    {
+        int oldRow=player.getRow();
+        int oldCol=player.getCol();
+        int [] newPos=this.dir2Pos(oldRow, oldCol, direction);
+        Monster monster=this.putPlayer2D(oldRow, oldCol, newPos[ROW], newPos[COL], player);
+        return monster;
+    }
+    
     ////Funciones adicionales para crear, cargar y guardar laberintos////
     
     public void createLabyrinth(){

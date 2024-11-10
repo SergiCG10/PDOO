@@ -149,7 +149,23 @@ public class Player {
     }
     
     //IMPLEMENTACION P3
-    //public void receiveReward()
+    public void receiveReward()
+    {
+        int wReward=Dice.weaponsReward();
+        int sReward=Dice.shieldsReward();
+        for(int i=0;i<wReward;i++)
+        {
+            Weapon wnew=this.newWeapon();
+            this.receiveWeapon(wnew);
+        }
+        for(int i=0;i<sReward;i++)
+        {
+            Shield snew=this.newShield();
+            this.receiveShield(snew);
+        }
+        int extraHealth=Dice.healthReward();
+        health+=extraHealth;
+    }
     
     /**
      * Funcion toString. Devuelve la información del jugador, su vida, inteligencia fuerza
@@ -176,10 +192,32 @@ public class Player {
     }
     
     //IMPLEMENTACION P3
-    //private void receiveWeapon(Weapon w)
+    private void receiveWeapon(Weapon w)
+    {
+        for(int i=0;i<weapons.size();i++){
+            Weapon wi=weapons.get(i);   //el diag dice algo de next pero no me sale la funcion
+            boolean discard=wi.discard();
+            if(discard)
+                weapons.remove(wi);
+        }
+        int size=weapons.size();
+        if(size<MAX_WEAPONS)
+            weapons.add(w);
+    }
     
     //IMPLEMENTACION P3
-    //private void receiveShield(Shield s)
+    private void receiveShield(Shield s)
+    {
+        for(int i=0;i<shields.size();i++){
+            Shield si=shields.get(i);
+            boolean discard=si.discard();
+            if(discard)
+                shields.remove(si);
+        }
+        int size=shields.size();
+        if(size<MAX_SHIELDS)
+            shields.add(s);
+    }
     
     /**
      * Funcion newWeapon. Crea y devuelve una nueva arma con parámetros aleatorios
