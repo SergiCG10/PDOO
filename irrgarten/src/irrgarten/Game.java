@@ -99,7 +99,19 @@ public class Game {
     }
     
     //Practica 3
-    //private Directions actualDirection(Directions preferredDirection)
+    /**
+     * Funcion actualDirection. Devuelve el resultado  del ultimo step 
+     * @param preferredDirection
+     * @return 
+     */
+    private Directions actualDirection(Directions preferredDirection)
+    {
+        int row=currentPlayer.getRow();
+        int col=currentPlayer.getCol();
+        ArrayList<Directions> validMoves=labyrinth.validMoves(row, col);
+        Directions dir=currentPlayer.move(preferredDirection, validMoves);
+        return dir;
+    }
     
     //Practica 3
     //private GameCharacter combat(Monster monster)

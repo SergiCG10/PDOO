@@ -110,7 +110,24 @@ public class Player {
     }
     
     //IMPLEMENTACION P3
-    //public Directions move(Directions direction, Directions validMoves[] )
+    public Directions move(Directions direction, ArrayList<Directions> validMoves )
+    {
+        Directions move;
+        int size=validMoves.size();
+        boolean contained=false;
+        for(int i=0;i<size && !contained;i++){
+            if(validMoves.get(i)==direction){
+                contained=true;
+            }
+        }
+        if(size>0 && !contained)
+        {
+            Directions firstElement=validMoves.get(0);
+            move=firstElement;
+        }else
+            move=direction;
+        return move;
+    }
     
     /**
      * Funcion attack. Devuelve el valor de ataque del jugador, calculandolo
