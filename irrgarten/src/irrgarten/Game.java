@@ -188,9 +188,10 @@ public class Game {
     //Practica 3
     private void manageResurrection(){
         boolean resurrect=Dice.resurrectPlayer();
-        if(resurrect)
+        if(resurrect){
+            this.currentPlayer.resurrect();
             this.logResurrected();
-        else
+        }else
             this.logPlayerSkipTurn();
     }
     
