@@ -1,4 +1,5 @@
 require_relative 'Dice'
+require_relative 'Player'
 require_relative 'Directions'
 require_relative 'Orientations'
 # Clase Labyrinth. Implementación de la clase Labyrinth, de sus métodos y variables.
@@ -32,9 +33,12 @@ class Labyrinth
      	@labyrinth[@exitRow][@exitCol] = @@EXIT_CHAR
      end
      
-     #def spreadPlayers(players)
-     	
-     #end
+     def spreadPlayers(players)
+     	players.each do |p|
+     		pos = randomEmptyPos
+     		putPlayer2D(-1, -1, pos[@@ROW], pos[@@COL], p)
+     	end
+     end
      
      def haveAWinner
      	return @players[@exitRow][@exitCol] != nil;
@@ -44,7 +48,7 @@ class Labyrinth
      	laberinto = "";
      	@nRows.times do |i|
      		@nCols.times do |j|
-    			laberinto+=@labyrinth[i][j]; 			
+    			laberinto+= "[" + @labyrinth[i][j] + "]" 			
        		end
        		laberinto+="\n";
      	end
@@ -56,16 +60,56 @@ class Labyrinth
      	@monsters[row][col] = monster;
      end
      
-     #def putPlayer(direction, player)
+     def putPlayer(direction, player)
+     	oldRow = getRow
+     	oldCol = getCol
+     	newPos = dir2Pos(oldRow, oldCol, direction)
+     	m = putPlayer2D(oldRow, oldCol, newPos[@@ROW], newPos[@@COL], player)
+     	return m 	
+     end
+     
+     def addBlock(orientation, startRow, startCol, length)
      	
-     #end
+     	if orientation == Orientation::VERTICAL
+ 			incRow = 1
+ 			incCol = 0
+     	else
+ 			incRow = 0
+ 			incCol = 1
+     	end
+     	
+     	row = startRow
+     	col = startCol
+     	
+     	while ((posOK(row, col) && emptyPos(row, col))) || (length > 0) do 
+ 			@labyrinth[row][col] = @@BLOCK_CHAR
+ 			length -= 1
+ 			row += incRow
+ 			col += incCol
+     	end
+     end
      
-     #def addBlock(orientation, startRow, startCol, length)
-     
-     #end
-     
-     #def validMoves(row, col)
-     #end
+     def validMoves(row, col)
+     	output = new.Array(0)
+     	
+     	if canStepOn(row +1, col)
+     		output.push(Directions::DOWN)
+     	end
+     	
+     	if canStepOn(row -1, col)
+     		output.push(Directions::UP)
+     	end
+     	
+     	if canStepOn(row, col+1)
+     		output.push(Directions::RIGHT)
+     	end
+     	
+     	if canStepOn(row, col-1)
+     		output.push(Directions::LEFT)
+     	end
+     	
+     	return output
+     end
      
      private 
      
@@ -130,8 +174,30 @@ class Labyrinth
         return pos;
      end
      
-     #def putPlayer2D(oldRow, oldPos, row, col, player)
-     #end
+     def putPlayer2D(oldRow, oldCol, row, col, player)
+     	output = nil
+     	if canStepOn(row, col)
+     		if posOK(oldRow, oldCol)
+     			Player p = @players[oldRow][oldCol]
+     			if p == player
+     				updateOldPos(oldRow, oldCol)
+     				@players[oldRow][oldCol] = nil
+     			end
+     		end
+     		
+     		monsterPos = monsterPos(row, col)
+     		if monsterPos
+     			@labyrinth[row][col] = @@COMBAT_CHAR
+     			output = @monsters[row][col]
+     		else
+     			number = player.getNumber
+     			@labyrinth[row][col] = number
+     		end
+     		@players[row][col] = player
+     		player.setPos(row, col)
+     	end
+     	return output
+     end
      
      #private : posOK , :emptyPos, :monsterPos, :exitPos, :combatPos, :canStepOn, :updateOldPos, :dir2Pos, :randomEmptyPos
 end
