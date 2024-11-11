@@ -110,9 +110,10 @@ public class Labyrinth {
    public void addMonster(int row, int col, Monster monster){
        if(posOK(row,col))
            if(emptyPos(row,col)){
+               monster.setPos(row, col);
                monsters[row][col]=monster;
                labyrinth[row][col]=MONSTER_CHAR;
-               monster.setPos(row, col);
+               
            }
    }
 
@@ -124,7 +125,7 @@ public class Labyrinth {
  * @return true si la posición está dentro de los límites del laberinto, false en caso contrario.
  */
    
-   public boolean posOK(int row, int col){
+   private boolean posOK(int row, int col){
       return(row>=0 && row <nRows && col>=0 && col<nCols); 
    }
    
@@ -136,7 +137,7 @@ public class Labyrinth {
  * @return true si la posición está vacía, false en caso contrario.
  */
    
-   public boolean emptyPos(int row, int col){
+   private boolean emptyPos(int row, int col){
        return(labyrinth[row][col]==EMPTY_CHAR);
    }
    
@@ -148,7 +149,7 @@ public class Labyrinth {
  * @return true si la posición contiene un monstruo, false en caso contrario.
  */
    
-   public boolean monsterPos(int row, int col){
+   private boolean monsterPos(int row, int col){
        return(monsters[row][col] != null);
    }
    
@@ -160,7 +161,7 @@ public class Labyrinth {
  * @return true si la posición es la casilla de salida, false en caso contrario.
  */
    
-   public boolean exitPos(int row, int col){
+   private boolean exitPos(int row, int col){
        return(labyrinth[row][col]==EXIT_CHAR);
    }
    
@@ -172,7 +173,7 @@ public class Labyrinth {
  * @return true si la posición contiene un combate, false en caso contrario.
  */
    
-   public boolean combatPos(int row, int col){
+   private boolean combatPos(int row, int col){
        return(labyrinth[row][col]==COMBAT_CHAR);
    }
    
@@ -186,7 +187,7 @@ public class Labyrinth {
  * @return true si el jugador puede moverse a la posición, false en caso contrario.
  */
    
-   public boolean canStepOn(int row, int col){
+   private boolean canStepOn(int row, int col){
        return(posOK(row,col) && (emptyPos(row,col) || 
               monsterPos(row,col) || exitPos(row,col))); 
    }
@@ -200,7 +201,7 @@ public class Labyrinth {
  * @param col Columna a actualizar.
  */
    
-   public void updateOldPos(int row, int col){
+   private void updateOldPos(int row, int col){
        if(posOK(row,col)){
            if(labyrinth[row][col]== COMBAT_CHAR){
                labyrinth[row][col]=MONSTER_CHAR;
@@ -220,7 +221,7 @@ public class Labyrinth {
  * @return Un array de dos enteros, donde el primer valor es la nueva fila y el segundo la nueva columna.
  */
    
-   public int[] dir2Pos(int row, int col, Directions direction){
+   private int[] dir2Pos(int row, int col, Directions direction){
        int pos[]=new int[2];
        if(Directions.UP==direction){
            pos[ROW]=row-1;
@@ -248,7 +249,7 @@ public class Labyrinth {
  * @return Un array de dos enteros, donde el primer valor es la fila y el segundo la columna de una posición vacía.
  */
 
-    public int[] randomEmptyPos(){
+    private int[] randomEmptyPos(){
         int pos[]=new int[2];
         pos[ROW]=Dice.randomPos(nRows);
         pos[COL]=Dice.randomPos(nCols);
@@ -259,7 +260,7 @@ public class Labyrinth {
         return pos;
     }
     //P3
-    void addBlock(Orientation orientation, int startRow,int startCol, int length){
+    public void addBlock(Orientation orientation, int startRow,int startCol, int length){
 
         int incRow;
         int incCol;
@@ -281,7 +282,7 @@ public class Labyrinth {
     }
     
     //P3
-    public Monster putPlayer2D(int oldRow, int oldCol, int row, int col, Player player)
+    private Monster putPlayer2D(int oldRow, int oldCol, int row, int col, Player player)
     {
         Monster output=null;
         if(this.canStepOn(row, col)){
@@ -330,6 +331,28 @@ public class Labyrinth {
         }
     }
     
+    //P3
+    public ArrayList<Directions> validMoves(int row, int col)
+    {
+        ArrayList<Directions> dir=new ArrayList<>();
+        if(canStepOn(row+1,col))
+            dir.add(Directions.DOWN);
+        if(canStepOn(row-1,col))
+            dir.add(Directions.UP);
+        if(canStepOn(row,col+1))
+            dir.add(Directions.RIGHT);
+        if(canStepOn(row,col-1))
+            dir.add(Directions.LEFT);
+        return dir;
+    }
+    
+    public int getRows(){
+        return nRows;
+    }
+    
+    public int getCols(){
+        return nCols;
+    }
     ////Funciones adicionales para crear, cargar y guardar laberintos////
     
     public void createLabyrinth(){
@@ -511,21 +534,6 @@ public class Labyrinth {
         }
         laberinto += "\n";
         return laberinto;
-    }
-
-    //P3
-    public ArrayList<Directions> validMoves(int row, int col)
-    {
-        ArrayList<Directions> dir=new ArrayList<>();
-        if(canStepOn(row+1,col))
-            dir.add(Directions.DOWN);
-        if(canStepOn(row-1,col))
-            dir.add(Directions.UP);
-        if(canStepOn(row,col+1))
-            dir.add(Directions.RIGHT);
-        if(canStepOn(row,col-1))
-            dir.add(Directions.LEFT);
-        return dir;
     }
 }
 

@@ -11,13 +11,14 @@ require_relative 'Player'
 require_relative 'Monster'
 require_relative 'GameState'
 require_relative 'Labyrinth'
+require_relative 'Orientations'
 class Game
 	@@MAX_ROUNDS=10
 	
 	def initialize (nplayers)
 		@players=Array.new(nplayers)
 		@monsters=Array.new
-		@labyrinth=Labyrinth.configureLabyrinth
+		configureLabyrinth
 		for i in 0..nplayers-1
 			c=(i+1).to_s
 			p=Player.new(c,Dice.randomIntelligence,Dice.randomStrength)	
@@ -25,9 +26,9 @@ class Game
 			p.receiveReward
 			@players.push(p)
 		end
-		@labyrinth.spreadPlayers(players)
+		@labyrinth.spreadPlayers(@players)
 		@currentPlayerIndex=Dice.whoStarts(nplayers)
-		@currentPlayer=@players[currentPlayerIndex]
+		@currentPlayer=@players[@currentPlayerIndex]
 		@log=""
 	end
 	
@@ -61,16 +62,16 @@ class Game
 	  return endGame
 	end
 	
-	def getGameState
+	def game_state
 		allPlayers=""
 		allMonsters=""
 		for i in 0..@players.size-1
-			allPlayers+=@players[i].toString
+			allPlayers+=@players[i].to_s
 		end
 		for i in 0..@monsters.size-1
-			allMonsters+=@monsters[i].toString
+			allMonsters+=@monsters[i].to_s
 		end
-		return GameState.new(@labyrinth.to_s, allPlayers, allMonsters, @currentPlayerIndex, self.finished, @log)
+		return GameState.new(@labyrinth.toRealRepresentation, allPlayers, allMonsters, @currentPlayerIndex, self.finished, @log)
 		
 	end
 	
@@ -78,12 +79,24 @@ class Game
 		nRows=7
 		nCols=7
 		@labyrinth=Labyrinth.new(nRows,nCols,nRows-1,nCols-1)
+		#Añadimos los muros
+		@labyrinth.addBlock(Orientations::VERTICAL, 0, 1, 2)
+		@labyrinth.addBlock(Orientations::HORIZONTAL, 1, 2, 2)
+		@labyrinth.addBlock(Orientations::HORIZONTAL, 0, 5, 1)
+		@labyrinth.addBlock(Orientations::VERTICAL, 2, 5, 2)
+		@labyrinth.addBlock(Orientations::HORIZONTAL, 3, 0, 2)
+		@labyrinth.addBlock(Orientations::HORIZONTAL, 3, 3, 2)
+		@labyrinth.addBlock(Orientations::HORIZONTAL, 5, 0, 4)
+		@labyrinth.addBlock(Orientations::HORIZONTAL, 5, 5, 2)
+		@labyrinth.addBlock(Orientations::VERTICAL, 4, 3, 2)
+				
 		nMonstruos=Dice.randomPos(5)+3
-		pos=Array.new(2)
+		
 		for i in 0..nMonstruos-1
-		  monster=Monster.new ("Orco", Dice.randomIntelligence, Dice.randomStrength)
-		  pos = @labyrinth.randomEmptyPos
-		  @labyrinth.addMonster(pos[0], pos[1], monster)
+		  monster=Monster.new("Orco", Dice.randomIntelligence, Dice.randomStrength)
+		  r = Dice.randomPos( @labyrinth.getRows ) 
+		  c = Dice.randomPos( @labyrinth.getCols )
+		  @labyrinth.addMonster(r, c, monster)
 		  @monsters.push(monster)
 		end
 		#puts @labyrinth.to_s
@@ -127,4 +140,3 @@ class Game
 		@log+="Se han producido " + rounds + " de " + max + "\n"
 	end
 end
-

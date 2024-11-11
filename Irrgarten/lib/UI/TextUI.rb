@@ -57,11 +57,10 @@ module UI
 
     def show_game(game_state)
 		puts "Jugadores:\n"+game_state.getPlayers()
-		puts "Jugadores:\n"+game_state.getPlayers()
         puts "Monstruos:\n"+game_state.getMonsters()
-        puts "Jugador actual:"+ (game_state.getCurrentPlayer() + 1)
+        puts "Jugador actual:"+ (game_state.getCurrentPlayer() + 1).to_s
         puts "\nEstado del laberinto\n"+game_state.getLabyrinth()
-        puts "\nWinner:"+game_state.getWinner()
+        puts "\nWinner:"+game_state.getWinner().to_s
         if(!game_state.getWinner())
             puts "\nLog:"+game_state.getLog()
         end

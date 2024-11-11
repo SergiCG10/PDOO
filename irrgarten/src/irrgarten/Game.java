@@ -30,7 +30,7 @@ public class Game {
      * @param nplayers Número de jugadores que jugarán al juego
      */
     Game(int nplayers){
-        labyrinth = new Labyrinth(1,1,0,0);
+        
         this.configureLabyrinth();
         for(int i =0; i < nplayers; i++){
             // Al valor de 1 en ascii (49), le sumamos i para obtener el valor de jugador en forma de char
@@ -104,15 +104,16 @@ public class Game {
     
     
     private void configureLabyrinth(){
-        
+        labyrinth = new Labyrinth(1,1,0,0);
         this.labyrinth.loadLabyrinth("../labyrinths/lab.txt");
         int nMonstruos = Dice.randomPos(5)+3;
         Monster monster;
         int pos[];
         for(int i = 0; i < nMonstruos; i++ ){
             monster = new Monster ("Orco", Dice.randomIntelligence(), Dice.randomIntelligence());
-            pos = labyrinth.randomEmptyPos();
-            labyrinth.addMonster(pos[0], pos[1], monster);
+            int r = Dice.randomPos( labyrinth.getRows() );
+            int c = Dice.randomPos( labyrinth.getCols() );
+            labyrinth.addMonster(r, c, monster);
             monsters.add(monster);
         }    
     }

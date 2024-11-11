@@ -57,12 +57,20 @@ class Labyrinth
      end 
      
      def addMonster(row, col, monster)
-     	@monsters[row][col] = monster;
+     	if(posOK(row,col))
+           if(emptyPos(row,col))
+               @monsters[row][col] = monster;
+               @labyrinth[row][col]= @@MONSTER_CHAR
+               monster.setPos(row, col)
+           end
+       	end
+     	
+     	
      end
      
      def putPlayer(direction, player)
-     	oldRow = getRow
-     	oldCol = getCol
+     	oldRow = getRows
+     	oldCol = getCols
      	newPos = dir2Pos(oldRow, oldCol, direction)
      	m = putPlayer2D(oldRow, oldCol, newPos[@@ROW], newPos[@@COL], player)
      	return m 	
@@ -70,7 +78,7 @@ class Labyrinth
      
      def addBlock(orientation, startRow, startCol, length)
      	
-     	if orientation == Orientation::VERTICAL
+     	if orientation == Orientations::VERTICAL
  			incRow = 1
  			incCol = 0
      	else
@@ -81,7 +89,7 @@ class Labyrinth
      	row = startRow
      	col = startCol
      	
-     	while ((posOK(row, col) && emptyPos(row, col))) || (length > 0) do 
+     	while ((posOK(row, col) && emptyPos(row, col))) && (length > 0) do 
  			@labyrinth[row][col] = @@BLOCK_CHAR
  			length -= 1
  			row += incRow
@@ -109,6 +117,14 @@ class Labyrinth
      	end
      	
      	return output
+     end
+     
+     def getRows
+     	return @nRows
+     end
+     
+     def getCols
+     	return @nCols
      end
      
      private 
@@ -198,6 +214,37 @@ class Labyrinth
      	end
      	return output
      end
-     
+public     
+     def toRealRepresentation
+     	laberinto = ""
+     	(@nCols +2).times do |i|
+            laberinto += " ■";
+        end
+        laberinto += "\n";
+        @nRows.times do |i|
+            laberinto += " ■";
+             @nCols.times do |j|
+                if(@labyrinth[i][j] == @@BLOCK_CHAR )
+                    laberinto += " ■";
+                elsif(@labyrinth[i][j] == @@EMPTY_CHAR)
+                    laberinto += " □";
+                elsif(@labyrinth[i][j] == @@MONSTER_CHAR)
+                    laberinto += " M";
+                elsif(@labyrinth[i][j]== @@COMBAT_CHAR)
+                    laberinto += " ⚔";
+                elsif (@labyrinth[i][j]== @@EXIT_CHAR)
+                    laberinto += " ✪";
+                else
+                    laberinto += " "+@labyrinth[i][j];
+                end
+            end
+            laberinto += " ■\n";
+        end
+        (@nCols +2).times do |i|
+            laberinto += " ■";
+        end
+        laberinto += "\n";
+     	return laberinto
+     end
      #private : posOK , :emptyPos, :monsterPos, :exitPos, :combatPos, :canStepOn, :updateOldPos, :dir2Pos, :randomEmptyPos
 end
