@@ -112,6 +112,7 @@ public class Labyrinth {
            if(emptyPos(row,col)){
                monsters[row][col]=monster;
                labyrinth[row][col]=MONSTER_CHAR;
+               monster.setPos(row, col);
            }
    }
 
@@ -477,7 +478,6 @@ public class Labyrinth {
     }
     
     public String toRealRepresentation(){
-        labyrinth[1][1] = MONSTER_CHAR;
         String laberinto = "";
         for(int i =0; i < nCols + 2; i++){
             laberinto += " ■";
@@ -494,8 +494,10 @@ public class Labyrinth {
                     laberinto += " M";
                 }else if(labyrinth[i][j]== COMBAT_CHAR){
                     laberinto += " ⚔";
-                }else{
+                }else if (labyrinth[i][j]== EXIT_CHAR){
                     laberinto += " ✪";
+                }else{
+                    laberinto += " "+labyrinth[i][j];
                 }
             }
             laberinto += " ■\n";
