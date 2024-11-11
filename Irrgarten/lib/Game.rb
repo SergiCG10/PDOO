@@ -13,24 +13,52 @@ require_relative 'GameState'
 require_relative 'Labyrinth'
 class Game
 	@@MAX_ROUNDS=10
-	@currentPlayer
-	@labyrinth
 	
 	def initialize (nplayers)
 		@players=Array.new(nplayers)
 		@monsters=Array.new
+		@labyrinth=Labyrinth.configureLabyrinth
 		for i in 0..nplayers-1
 			c=(i+1).to_s
 			p=Player.new(c,Dice.randomIntelligence,Dice.randomStrength)	
 			@players[i]=p
-			#puts @players[i].toString
+			p.receiveReward
+			@players.push(p)
 		end
-		@currentPlayerIndex=0
+		@labyrinth.spreadPlayers(players)
+		@currentPlayerIndex=Dice.whoStarts(nplayers)
+		@currentPlayer=@players[currentPlayerIndex]
 		@log=""
 	end
 	
 	def finished
 		@labyrinth.haveAWinner
+	end
+	
+	#P3
+	def nextStep (preferredDirection)
+	  @log=""
+	  dead=currentPlayer.dead
+	  if(!dead)
+	    direction=actualDirection(preferredDirection)
+	    if(direction != preferredDirection)
+	      self.logPlayerNoOrders
+	    end
+	    monster=labyrinth.putPlayer(direction, currentPlayer)
+	    if(monster == nil)
+	      self.logNoMonster
+	    else
+	      winner=self.combat(monster)
+	      self.manageReward(winner)
+	    end
+	  else
+	    self.manageResurrection
+	  end
+	  endGame=self.finished
+	  if(!endGame)
+	    self.nextPlayer
+	  end
+	  return endGame
 	end
 	
 	def getGameState
@@ -50,6 +78,14 @@ class Game
 		nRows=7
 		nCols=7
 		@labyrinth=Labyrinth.new(nRows,nCols,nRows-1,nCols-1)
+		nMonstruos=Dice.randomPos(5)+3
+		pos=Array.new(2)
+		for i in 0..nMonstruos-1
+		  monster=Monster.new ("Orco", Dice.randomIntelligence, Dice.randomStrength)
+		  pos = @labyrinth.randomEmptyPos
+		  @labyrinth.addMonster(pos[0], pos[1], monster)
+		  @monsters.push(monster)
+		end
 		#puts @labyrinth.to_s
 	end
 	
@@ -91,7 +127,4 @@ class Game
 		@log+="Se han producido " + rounds + " de " + max + "\n"
 	end
 end
-
-g=Game.new(3)
-g.configureLabyrinth
 
