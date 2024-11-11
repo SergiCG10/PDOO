@@ -10,6 +10,7 @@
  
 require_relative 'Weapon'
 require_relative 'Shield'
+require_relative "Directions"
 
 class Player
 	
@@ -95,6 +96,26 @@ class Player
 		@health <=0
 	end
 	
+	def move(direction, validMoves)
+		
+		size = validMoves.size
+		contained = false
+		
+		while ( i < size && !contained ) 
+			if validMoves[i] == direction
+				contained = true
+			end
+			i += 1
+		end
+		if (size > 0 && !contained)
+			firstElement = validMoves[0]
+			move = firstElement
+		else
+			move = direction
+		end
+		return move
+	end
+	
      #
      # Funcion attack. Devuelve el valor de ataque del jugador, calculandolo
      # como la suma del ataque de sus armas y la suma de su fuerza
@@ -113,12 +134,31 @@ class Player
 	def defend(receivedAttack)
 		return manageHit(receivedAttack)
 	end
+	
+	def receiveReward
+		nW = Dice.weaponsReward()
+		nS = Dice.shieldsReward()
+		
+		nW.times do
+		    w = newWeapon
+			receiveWeapon(w)
+		end
+		
+		nS.times do 
+			s = newShield
+			receiveShield(s)
+		end
+		
+		extraHealth = Dice.healthReward
+		@health += extraHealth
+	end
+	
      #
      # Funcion toString. Devuelve la información del jugador, su vida, inteligencia, fuerza
      # y la infomación de sus armas y escudos.
      # @return String con toda la información del jugador
      #
-	def toString
+	def to_s
 		info ="\n"+@name+"\n"
 		info +="\nIntelligence: " + @intelligence.to_s
 		info +="\nStregth: " + @strength.to_s
@@ -136,6 +176,31 @@ class Player
 		end
 		return info
 	end
+	
+	def receiveWeapon(newW)
+		@weapons.each do |w| 
+			if w.discard
+				@weapons.delete(w)
+			end
+		end
+		
+		if @weapons.size < @@MAX_WEAPONS
+			@weapons.push(newW)
+		end
+	end
+	
+	def receiveShield(newS)
+		@shields.each do |s| 
+			if s.discard
+				@weapons.delete(s)
+			end
+		end
+		
+		if @shields.size < @@MAX_SHIELDS
+			@shields.push(newS)
+		end
+	end
+	
     #    
     # Funcion newWeapon. Crea y devuelve una nueva arma con parámetros aleatorios
     # @return arma creada con parámetros aleatorios
@@ -189,8 +254,24 @@ class Player
 	
 	#Implementación P3
 	def manageHit(receivedAttack)
-		return false
+		defense = defensiveEnergy()
+				
+		if defense < receivedAttack
+			gotWounded()
+			incConsecutiveHits()
+		else
+			resetHits()
+		end
+		
+		if (@consecutiveHits == @@HITS2LOSE) || dead()
+			lose = true
+		else
+			lose = false
+		end
+		
+		return lose
 	end
+	
      #	   
      # Funcion resetHits. Resetea el número de golpes recibidos por el jugador
      #
@@ -214,9 +295,6 @@ class Player
 		
 end
 
-#p=Player.new("1", 3,2)
-#w=Weapon.new(2,3)
-#s=Shield.new(1,2)
 #w1=p.newWeapon
 #w2=p.newWeapon
 #s1=p.newShield

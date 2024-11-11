@@ -135,6 +135,3 @@ class Labyrinth
      
      #private : posOK , :emptyPos, :monsterPos, :exitPos, :combatPos, :canStepOn, :updateOldPos, :dir2Pos, :randomEmptyPos
 end
-
-lab=Labyrinth.new(5,5,5,5)
-lab.dir2Pos(3,3,Directions::RIGHT)
