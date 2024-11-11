@@ -178,7 +178,7 @@ public class Player {
         info += "\nStregth: " + strength;
         info += "\nHealth: " + health;
         info += "\nPosition: (" + row + ", " + col + ")";
-        info += "\n\nWepons:\n";
+        info += "\n\nWeapons:\n";
         for(int i = 0; i <weapons.size() ; i++){
             info += weapons.get(i).toString();
         }

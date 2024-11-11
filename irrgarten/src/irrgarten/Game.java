@@ -35,10 +35,12 @@ public class Game {
             // Al valor de 1 en ascii (49), le sumamos i para obtener el valor de jugador en forma de char
             char c = (char)(i + '1'); 
             Player p = new Player(c ,Dice.randomIntelligence(), Dice.randomStrength() );
+            p.receiveReward();
             players.add(p);
         }
             this.labyrinth.spreadPlayers(players);
-            currentPlayerIndex = 0;
+            currentPlayerIndex =0;
+            currentPlayer=players.get(currentPlayerIndex);
             log = "";
     }
     
@@ -95,7 +97,7 @@ public class Game {
         for(int i = 0; i < monsters.size(); i++){
             allMonsters += monsters.get(i).toString();
         }
-        return new GameState( labyrinth.toString(), allPlayers, allMonsters, currentPlayerIndex, this.finished(), log);
+        return new GameState( labyrinth.toRealRepresentation(), allPlayers, allMonsters, currentPlayerIndex, this.finished(), log);
     }
     
     
@@ -103,6 +105,14 @@ public class Game {
         int nRows = 7;
         int nCols = 7;
         labyrinth = new Labyrinth(nRows, nCols, nRows -1, nCols -1);
+        Monster monster=new Monster("ISMAEL",32,80);
+        Monster monster2=new Monster("JAVI(MARICON)",1,0.1f);
+        labyrinth.addMonster(Dice.randomPos(nRows), Dice.randomPos(nCols), monster);
+        labyrinth.addMonster(Dice.randomPos(nRows), Dice.randomPos(nCols), monster2);
+
+        monsters.add(monster);
+        monsters.add(monster2);
+                
         
         
     }
