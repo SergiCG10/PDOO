@@ -44,8 +44,6 @@ class Monster
     	return "M[ name: "+@name.to_s+", intelligence: "+@intelligence.to_s+", stregth: "+@strength.to_s+", row: "+@row.to_s+", col: "+@col.to_s+", health: "+@health.to_s+"]\n";
     end
     
-    private
-    
     def gotWounded
     	@health -= 1;
     end
@@ -67,4 +65,6 @@ class Monster
       end
       return isDead
    end
+   
+   private :gotWounded
 end

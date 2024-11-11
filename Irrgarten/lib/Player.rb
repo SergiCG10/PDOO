@@ -100,7 +100,7 @@ class Player
 		
 		size = validMoves.size
 		contained = false
-		
+		i = 0
 		while ( i < size && !contained ) 
 			if validMoves[i] == direction
 				contained = true
@@ -159,19 +159,19 @@ class Player
      # @return String con toda la información del jugador
      #
 	def to_s
-		info ="\n"+@name+"\n"
-		info +="\nIntelligence: " + @intelligence.to_s
-		info +="\nStregth: " + @strength.to_s
-		info +="\nHealth: " + @health.to_s
-		info +="\nPosition: (" + @row.to_s + ", " + @col.to_s + ")"
-		info +="\n\nWeapons:\n"
+		info ="\n\t"+@name+"\n"
+		info +="\n\tIntelligence: " + @intelligence.to_s
+		info +="\n\tStregth: " + @strength.to_s
+		info +="\n\tHealth: " + @health.to_s
+		info +="\n\tPosition: (" + @row.to_s + ", " + @col.to_s + ")"
+		info +="\n\n\tWeapons:\n"
 		weapons.each do |weapon| 
-			info+=weapon.to_s
+			info+="\t" + weapon.to_s
 			info+="\n"
 		end
-		info +="\n\nShields:\n"
+		info +="\n\n\tShields:\n"
 		shields.each do |shield| 
-			info+=shield.to_s
+			info+="\t" + shield.to_s
 			info+="\n"
 		end
 		return info

@@ -30,19 +30,19 @@ module UI
         case c
           when "\e[A"
             puts "UP ARROW"
-            output = Irrgarten::Directions::UP
+            output = Directions::UP
             got_input = true
           when "\e[B"
             puts "DOWN ARROW"
-            output = Irrgarten::Directions::DOWN
+            output = Directions::DOWN
             got_input = true
           when "\e[C"
             puts "RIGHT ARROW"
-            output = Irrgarten::Directions::RIGHT
+            output = Directions::RIGHT
             got_input = true
           when "\e[D"
             puts "LEFT ARROW"
-            output = Irrgarten::Directions::LEFT
+            output = Directions::LEFT
             got_input = true
           when "\u0003"
             puts "CONTROL-C"
@@ -56,14 +56,14 @@ module UI
     end
 
     def show_game(game_state)
-		puts "Jugadores:\n"+game_state.getPlayers()
-        puts "Monstruos:\n"+game_state.getMonsters()
-        puts "Jugador actual:"+ (game_state.getCurrentPlayer() + 1).to_s
-        puts "\nEstado del laberinto\n"+game_state.getLabyrinth()
+		puts "\nJugadores:\n"+game_state.getPlayers()
+        puts "\nMonstruos:\n\n"+game_state.getMonsters()
+        puts "\nJugador actual:"+ (game_state.getCurrentPlayer() + 1).to_s
         puts "\nWinner:"+game_state.getWinner().to_s
         if(!game_state.getWinner())
             puts "\nLog:"+game_state.getLog()
         end
+        puts "\nEstado del laberinto\n"+game_state.getLabyrinth()
     end
 
   end # class   

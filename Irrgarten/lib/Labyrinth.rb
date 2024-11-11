@@ -62,6 +62,12 @@ class Labyrinth
                @monsters[row][col] = monster;
                @labyrinth[row][col]= @@MONSTER_CHAR
                monster.setPos(row, col)
+           else
+               pos= randomEmptyPos();
+               monster.setPos(pos[@@ROW], pos[@@COL]);
+               @monsters[pos[@@ROW]][pos[@@COL]]=monster;
+               @labyrinth[pos[@@ROW]][pos[@@COL]]=@@MONSTER_CHAR;
+           
            end
        	end
      	
@@ -69,8 +75,8 @@ class Labyrinth
      end
      
      def putPlayer(direction, player)
-     	oldRow = getRows
-     	oldCol = getCols
+     	oldRow = player.getRow
+     	oldCol = player.getCol
      	newPos = dir2Pos(oldRow, oldCol, direction)
      	m = putPlayer2D(oldRow, oldCol, newPos[@@ROW], newPos[@@COL], player)
      	return m 	
@@ -98,7 +104,7 @@ class Labyrinth
      end
      
      def validMoves(row, col)
-     	output = new.Array(0)
+     	output = []
      	
      	if canStepOn(row +1, col)
      		output.push(Directions::DOWN)
@@ -115,7 +121,7 @@ class Labyrinth
      	if canStepOn(row, col-1)
      		output.push(Directions::LEFT)
      	end
-     	
+     
      	return output
      end
      
@@ -194,7 +200,7 @@ class Labyrinth
      	output = nil
      	if canStepOn(row, col)
      		if posOK(oldRow, oldCol)
-     			Player p = @players[oldRow][oldCol]
+     			p = @players[oldRow][oldCol]
      			if p == player
      				updateOldPos(oldRow, oldCol)
      				@players[oldRow][oldCol] = nil
@@ -246,5 +252,5 @@ public
         laberinto += "\n";
      	return laberinto
      end
-     #private : posOK , :emptyPos, :monsterPos, :exitPos, :combatPos, :canStepOn, :updateOldPos, :dir2Pos, :randomEmptyPos
+     #private :posOK , :emptyPos, :monsterPos, :exitPos, :combatPos, :canStepOn, :updateOldPos, :dir2Pos, :randomEmptyPos
 end

@@ -12,6 +12,7 @@ require_relative 'Monster'
 require_relative 'GameState'
 require_relative 'Labyrinth'
 require_relative 'Orientations'
+require_relative 'GameCharacter'
 class Game
 	@@MAX_ROUNDS=10
 	
@@ -19,13 +20,14 @@ class Game
 		@players=Array.new(nplayers)
 		@monsters=Array.new
 		configureLabyrinth
-		for i in 0..nplayers-1
+		
+		nplayers.times do |i|
 			c=(i+1).to_s
 			p=Player.new(c,Dice.randomIntelligence,Dice.randomStrength)	
 			@players[i]=p
 			p.receiveReward
-			@players.push(p)
 		end
+		
 		@labyrinth.spreadPlayers(@players)
 		@currentPlayerIndex=Dice.whoStarts(nplayers)
 		@currentPlayer=@players[@currentPlayerIndex]
@@ -37,15 +39,15 @@ class Game
 	end
 	
 	#P3
-	def nextStep (preferredDirection)
+	def next_step (preferredDirection)
 	  @log=""
-	  dead=currentPlayer.dead
+	  dead=@currentPlayer.dead
 	  if(!dead)
 	    direction=actualDirection(preferredDirection)
 	    if(direction != preferredDirection)
 	      self.logPlayerNoOrders
 	    end
-	    monster=labyrinth.putPlayer(direction, currentPlayer)
+	    monster=@labyrinth.putPlayer(direction, @currentPlayer)
 	    if(monster == nil)
 	      self.logNoMonster
 	    else
@@ -66,14 +68,17 @@ class Game
 		allPlayers=""
 		allMonsters=""
 		for i in 0..@players.size-1
-			allPlayers+=@players[i].to_s
+			allPlayers+= @players[i].to_s
 		end
+	
 		for i in 0..@monsters.size-1
-			allMonsters+=@monsters[i].to_s
+			allMonsters+="\t "+ @monsters[i].to_s 
 		end
 		return GameState.new(@labyrinth.toRealRepresentation, allPlayers, allMonsters, @currentPlayerIndex, self.finished, @log)
 		
 	end
+	
+	private
 	
 	def configureLabyrinth
 		nRows=7
@@ -109,7 +114,61 @@ class Game
 		else
 			@currentPlayerIndex+=1
 		end
-		@currentPlayer=players[@currentPlayerIndex]
+		@currentPlayer=@players[@currentPlayerIndex]
+	end
+	
+	def actualDirection(preferredDirection)
+		r = @currentPlayer.getRow
+		c = @currentPlayer.getCol
+		
+		validMoves = @labyrinth.validMoves(r,c)
+		dir = @currentPlayer.move(preferredDirection, validMoves)
+		return dir
+	end
+	
+	def combat(monster)
+		rounds = 0
+		winner = GameCharacter::PLAYER
+		playerAttack = @currentPlayer.attack
+		puts "Jugador " +  (@currentPlayerIndex + 1).to_s + "hace " + playerAttack.to_s + " daño\n"
+		lose = monster.defend(playerAttack)
+		if lose
+			puts "Monstruo muere\n"
+		end
+		while !lose && rounds < @@MAX_ROUNDS
+			winner = GameCharacter::MONSTER
+			monsterAttack = monster.attack
+			puts "Monstruo hace " + monsterAttack.to_s + " daño\n"
+			lose = @currentPlayer.defend(monsterAttack)
+			if !lose
+				playerAttack = @currentPlayer.attack
+				puts "Jugador " +  (@currentPlayerIndex + 1).to_s + "hace " + playerAttack.to_s + " daño\n"
+				winner = GameCharacter::PLAYER
+				lose = monster.defend(playerAttack)
+			end
+			rounds += 1
+		end
+		logRounds(rounds, @@MAX_ROUNDS)
+		return winner
+	end
+	
+	def manageReward(winner)
+		if(winner == GameCharacter::PLAYER)
+			@currentPlayer.receiveReward
+			logPlayerWon
+		else
+			logMonsterWon
+		end
+	end
+	
+	def manageResurrection
+		resurrect = Dice.resurrectPlayer
+		if resurrect
+			@currentPlayer.resurrect
+			logResurrected
+		else
+			logPlayerSkipTurn
+		end
 	end
 	
 	def logPlayerWon
@@ -137,6 +196,6 @@ class Game
 	end
 	
 	def logRounds(rounds, max)
-		@log+="Se han producido " + rounds + " de " + max + "\n"
+		@log+="Se han producido " + rounds.to_s + " de " + max.to_s + "\n"
 	end
 end

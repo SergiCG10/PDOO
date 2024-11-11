@@ -114,6 +114,11 @@ public class Labyrinth {
                monsters[row][col]=monster;
                labyrinth[row][col]=MONSTER_CHAR;
                
+           }else{
+               int pos[] = this.randomEmptyPos();
+               monster.setPos(pos[ROW], pos[COL]);
+               monsters[pos[ROW]][pos[COL]]=monster;
+               labyrinth[pos[ROW]][pos[COL]]=MONSTER_CHAR;
            }
    }
 
