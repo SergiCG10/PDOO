@@ -1,4 +1,6 @@
 package irrgarten;
+import UI.TextUI;
+import Controller.Controller;
 
 /**
  * @author Miguel Ángel Luque Gómez
@@ -17,7 +19,11 @@ public class Irrgarten {
      */
     public static void main(String[] args) {
         //TestP1.tP1();
-        TestP2.tP2();       
+        //TestP2.tP2();       
+        Game game=new Game(1);
+        TextUI view=new TextUI();
+        Controller controller=new Controller(game, view);
+        controller.play();
     }
     
 }

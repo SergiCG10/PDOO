@@ -320,10 +320,10 @@ public class Labyrinth {
         return monster;
     }
     
-    public void spreadPlayers(Player [] players)
+    public void spreadPlayers(ArrayList<Player> players)
     {
-        for(int i=0;i<players.length;i++){
-            Player p=players[i];
+        for(int i=0;i<players.size();i++){
+            Player p=players.get(i);
             int [] pos=this.randomEmptyPos();
             Monster monster=this.putPlayer2D(-1, -1, pos[ROW], pos[COL], p);
         }

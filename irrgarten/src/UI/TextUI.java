@@ -55,6 +55,12 @@ public class TextUI {
     }
     
     public void showGame(GameState gameState) {   
+        System.out.print("Jugadores:\n"+gameState.getPlayers());
+        System.out.print("Estado del laberinto\n"+gameState.getLabyrinth());
+        System.out.print("Monstruos:\n"+gameState.getMonsters());
+        System.out.print("Jugador actual:\n"+gameState.getCurrentPlayer());
+        System.out.print("Winner:\n"+gameState.getWinner());
+        System.out.print("Log:\n"+gameState.getLog());
     }
     
 }

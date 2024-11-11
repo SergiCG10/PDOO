@@ -30,12 +30,14 @@ public class Game {
      * @param nplayers Número de jugadores que jugarán al juego
      */
     Game(int nplayers){
+        this.configureLabyrinth();
         for(int i =0; i < nplayers; i++){
             // Al valor de 1 en ascii (49), le sumamos i para obtener el valor de jugador en forma de char
             char c = (char)(i + '1'); 
             Player p = new Player(c ,Dice.randomIntelligence(), Dice.randomStrength() );
             players.add(p);
         }
+            this.labyrinth.spreadPlayers(players);
             currentPlayerIndex = 0;
             log = "";
     }
