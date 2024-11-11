@@ -102,13 +102,14 @@ public class Game {
     
     
     private void configureLabyrinth(){
-        int nRows = 7;
-        int nCols = 7;
-        labyrinth = new Labyrinth(nRows, nCols, nRows -1, nCols -1);
-        Monster monster=new Monster("ISMAEL",32,80);
+        
+        this.labyrinth.loadLabyrinth("../labyrinths/lab.txt");
+        Monster monster=new Monster("ISMAEL",9,2);
         Monster monster2=new Monster("JAVI(MARICON)",1,0.1f);
-        labyrinth.addMonster(Dice.randomPos(nRows), Dice.randomPos(nCols), monster);
-        labyrinth.addMonster(Dice.randomPos(nRows), Dice.randomPos(nCols), monster2);
+        int pos[] = labyrinth.randomEmptyPos();
+        labyrinth.addMonster(pos[0], pos[1], monster);
+        pos = labyrinth.randomEmptyPos();
+        labyrinth.addMonster(pos[0], pos[1], monster2);
 
         monsters.add(monster);
         monsters.add(monster2);

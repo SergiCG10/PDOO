@@ -434,6 +434,9 @@ public class Labyrinth {
             if(mstr.equals(magic_str)){
                 nRows = scan.nextInt();
                 nCols = scan.nextInt();
+                exitRow = scan.nextInt();
+                exitCol = scan.nextInt();
+                
                 labyrinth=new char[nRows][nCols];
                 players=new Player[nRows][nCols];
                 monsters=new Monster[nRows][nCols]; 
@@ -464,6 +467,7 @@ public class Labyrinth {
             
             writer.write(magic_str +  "\n");
             writer.write(this.nRows + " " + this.nCols + "\n");
+            writer.write(this.exitRow + " " + this.exitCol + "\n");
             for(int i =0; i < this.nRows; i++){
                 for(int j = 0; j < this.nCols; j++){
                     writer.write(labyrinth[i][j]);
@@ -510,19 +514,18 @@ public class Labyrinth {
     }
 
     //P3
-public ArrayList<Directions> validMoves(int row, int col)
-{
-    ArrayList<Directions> dir=new ArrayList<>();
-    if(canStepOn(row+1,col))
-        dir.add(Directions.DOWN);
-    if(canStepOn(row-1,col))
-        dir.add(Directions.UP);
-    if(canStepOn(row,col+1))
-        dir.add(Directions.RIGHT);
-    if(canStepOn(row,col-1))
-        dir.add(Directions.LEFT);
-    return dir;
-}
-
+    public ArrayList<Directions> validMoves(int row, int col)
+    {
+        ArrayList<Directions> dir=new ArrayList<>();
+        if(canStepOn(row+1,col))
+            dir.add(Directions.DOWN);
+        if(canStepOn(row-1,col))
+            dir.add(Directions.UP);
+        if(canStepOn(row,col+1))
+            dir.add(Directions.RIGHT);
+        if(canStepOn(row,col-1))
+            dir.add(Directions.LEFT);
+        return dir;
+    }
 }
 
