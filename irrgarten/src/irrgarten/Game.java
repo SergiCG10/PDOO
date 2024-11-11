@@ -40,7 +40,8 @@ public class Game {
             players.add(p);
         }
             this.labyrinth.spreadPlayers(players);
-            currentPlayerIndex =0;
+            
+            currentPlayerIndex =Dice.whoStarts(nplayers);
             currentPlayer=players.get(currentPlayerIndex);
             log = "";
     }
@@ -157,17 +158,22 @@ public class Game {
         int rounds=0;
         GameCharacter winner=GameCharacter.PLAYER;
         float playerAttack=currentPlayer.attack();
+        System.out.print("Jugador "+(this.currentPlayerIndex+1)+" hace "+playerAttack+" daño\n");
+        rounds++;
         boolean lose=monster.defend(playerAttack);
-        
+        if(lose)
+            System.out.print("Monstruo muere\n");
         for(; rounds<MAX_ROUNDS && !lose ;rounds++)
         {
             winner=GameCharacter.MONSTER;
             float monsterAttack=monster.attack();
+            System.out.print("monstruo hace "+monsterAttack+" daño\n");
             lose=currentPlayer.defend(monsterAttack);
             if(!lose){
                 playerAttack=currentPlayer.attack();
+                System.out.print("Jugador "+(this.currentPlayerIndex+1)+" hace "+playerAttack+" daño\n");
                 winner=GameCharacter.PLAYER;
-                lose=monster.defend(playerAttack);
+                lose=monster.defend(playerAttack);                    
             }
         }
         this.logRounds(rounds, MAX_ROUNDS);
@@ -242,6 +248,6 @@ public class Game {
      * Funcion logRounds. Concatena a la variable log que han pasado x rondas de MAX_ROUNDS
      */
     private void logRounds(int rounds, int max){
-        log += "Se han producido " + rounds + " de " + max + "\n";
+        log += "Se han producido " + rounds + " de " + max + " rondas\n";
     }
 }

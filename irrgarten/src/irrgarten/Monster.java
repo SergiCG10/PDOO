@@ -81,9 +81,14 @@ public class Monster {
         {
             float defensiveEnergy=Dice.intensity(intelligence);
             if(defensiveEnergy < receivedAttack){
+                System.out.print("\tMonstruo pierde 1 corazon\n");
                 this.gotWounded();
                 isDead=this.dead();
+                if(isDead)
+                    System.out.print("\nMonstruo "+this.name+ " muere\n");
             }
+            else
+                System.out.print("\tMonstruo "+this.name+" se defiende\n");
         }
         return isDead;
     }

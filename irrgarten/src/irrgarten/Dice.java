@@ -107,7 +107,7 @@ public class Dice {
      * @return Valor con coma flotante aleatorio en el intervalo [0, MAX_SHIELD)
      */
     public static float shieldPower(){
-        return generator.nextFloat(MAX_SHIELD);
+        return generator.nextFloat()*MAX_SHIELD;
     }
     
     /**

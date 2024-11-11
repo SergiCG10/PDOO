@@ -152,7 +152,10 @@ public class Player {
     public void receiveReward()
     {
         int wReward=Dice.weaponsReward();
+        System.out.print("\t\tJugador "+this.number+" recibe "+wReward+" armas\n");
         int sReward=Dice.shieldsReward();
+        System.out.print("\t\tJugador "+this.number+" recibe "+sReward+" escudos\n");
+
         for(int i=0;i<wReward;i++)
         {
             Weapon wnew=this.newWeapon();
@@ -165,6 +168,8 @@ public class Player {
         }
         int extraHealth=Dice.healthReward();
         health+=extraHealth;
+        System.out.print("\t\tJugador "+this.number+" recibe "+health+" corazones\n");
+
     }
     
     /**
@@ -279,12 +284,22 @@ public class Player {
         if(defense < receivedAttack){
             this.gotWounded();
             this.incConsecutiveHits();
+            System.out.print("\tJugador pierde un corazon\n"+consecutiveHits+" golpes consecutivos\n");
+
         }
-        else
+        else{
             this.resetHits();
+            System.out.print("\tJugador "+this.number+" se defiende\n");
+        }
         
         boolean lose;
-        if(consecutiveHits==HITS2LOSE || this.dead()){
+        if(consecutiveHits==HITS2LOSE){
+            System.out.print("\tJugador recibe "+HITS2LOSE+" golpes, queda fuera de combate\n");
+            this.resetHits();
+            lose=true;
+        }
+        else if(this.dead()){
+            System.out.print("\nJugador "+this.number+" muere\n");
             this.resetHits();
             lose=true;
         }
