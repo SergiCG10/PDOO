@@ -49,4 +49,22 @@ class Monster
     def gotWounded
     	@health -= 1;
     end
+    
+    def defend(receivedAttack)
+      isDead=self.dead
+      if(!isDead)
+        defensiveEnergy=Dice.intensity(@intelligence)
+        if(defensiveEnergy < receivedAttack)
+          puts "\tMonstruo pierde 1 corazon\n"
+          self.gotWounded
+          isDead=self.dead
+          if(isDead)
+            puts "\tMonstruo "+@name.to_s+" muere\n"
+          end  
+        else
+          puts "\tMonstruo "+@name.to_s+" se defiende\n"
+        end
+      end
+      return isDead
+   end
 end
