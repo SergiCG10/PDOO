@@ -68,8 +68,10 @@ public class Game {
             if(monster==null)
                 this.logNoMonster();
             else{
-                GameCharacter winner=this.combat(monster);
-                this.manageReward(winner);
+                if(!monster.dead() ){
+                    GameCharacter winner=this.combat(monster);
+                    this.manageReward(winner);
+                }
             }  
         }
         else{

@@ -51,8 +51,10 @@ class Game
 	    if(monster == nil)
 	      self.logNoMonster
 	    else
-	      winner=self.combat(monster)
-	      self.manageReward(winner)
+	    	if !monster.dead
+	      		winner=self.combat(monster)
+	      		self.manageReward(winner)
+	      	end
 	    end
 	  else
 	    self.manageResurrection
