@@ -6,7 +6,7 @@
 <title>
   Class: Monster
   
-    &mdash; Documentation by YARD 0.9.26
+    &mdash; Documentation by YARD 0.9.37
   
 </title>
 
@@ -94,7 +94,7 @@
   
   <dl>
     <dt>Defined in:</dt>
-    <dd>lib/Monster.rb</dd>
+    <dd>Monster.rb</dd>
   </dl>
   
 </div>
@@ -402,7 +402,7 @@
 28</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/Monster.rb', line 21</span>
+      <pre class="code"><span class="info file"># File 'Monster.rb', line 21</span>
 
 <span class='kw'>def</span>	<span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span> <span class='id identifier rubyid_howsmart'>howsmart</span><span class='comma'>,</span> <span class='id identifier rubyid_howstrong'>howstrong</span><span class='rparen'>)</span>
 	<span class='ivar'>@name</span> <span class='op'>=</span> <span class='id identifier rubyid_name'>name</span><span class='semicolon'>;</span>
@@ -455,7 +455,7 @@
 38</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/Monster.rb', line 36</span>
+      <pre class="code"><span class="info file"># File 'Monster.rb', line 36</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_attack'>attack</span>
 	<span class='kw'>return</span> <span class='const'><span class='object_link'><a href="Dice.html" title="Dice (class)">Dice</a></span></span><span class='period'>.</span><span class='id identifier rubyid_intensity'><span class='object_link'><a href="Dice.html#intensity-class_method" title="Dice.intensity (method)">intensity</a></span></span><span class='lparen'>(</span><span class='ivar'>@strength</span><span class='rparen'>)</span><span class='semicolon'>;</span>
@@ -496,7 +496,7 @@
 33</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/Monster.rb', line 31</span>
+      <pre class="code"><span class="info file"># File 'Monster.rb', line 31</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_dead'>dead</span>
 	<span class='kw'>return</span> <span class='ivar'>@health</span> <span class='op'>&lt;=</span> <span class='int'>0</span><span class='semicolon'>;</span>
@@ -589,7 +589,7 @@
 75</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/Monster.rb', line 59</span>
+      <pre class="code"><span class="info file"># File 'Monster.rb', line 59</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_defend'>defend</span><span class='lparen'>(</span><span class='id identifier rubyid_receivedAttack'>receivedAttack</span><span class='rparen'>)</span>
    <span class='id identifier rubyid_isDead'>isDead</span><span class='op'>=</span><span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_dead'>dead</span>
@@ -645,7 +645,7 @@
 44</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/Monster.rb', line 41</span>
+      <pre class="code"><span class="info file"># File 'Monster.rb', line 41</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_setPos'>setPos</span><span class='lparen'>(</span><span class='id identifier rubyid_r'>r</span><span class='comma'>,</span> <span class='id identifier rubyid_c'>c</span><span class='rparen'>)</span>
 	<span class='ivar'>@row</span> <span class='op'>=</span> <span class='id identifier rubyid_r'>r</span><span class='semicolon'>;</span>
@@ -687,7 +687,7 @@
 49</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/Monster.rb', line 47</span>
+      <pre class="code"><span class="info file"># File 'Monster.rb', line 47</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_to_s'>to_s</span>
 	<span class='kw'>return</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>M[ name: </span><span class='tstring_end'>&quot;</span></span><span class='op'>+</span><span class='ivar'>@name</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span><span class='op'>+</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>, intelligence: </span><span class='tstring_end'>&quot;</span></span><span class='op'>+</span><span class='ivar'>@intelligence</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span><span class='op'>+</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>, stregth: </span><span class='tstring_end'>&quot;</span></span><span class='op'>+</span><span class='ivar'>@strength</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span><span class='op'>+</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>, row: </span><span class='tstring_end'>&quot;</span></span><span class='op'>+</span><span class='ivar'>@row</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span><span class='op'>+</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>, col: </span><span class='tstring_end'>&quot;</span></span><span class='op'>+</span><span class='ivar'>@col</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span><span class='op'>+</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>, health: </span><span class='tstring_end'>&quot;</span></span><span class='op'>+</span><span class='ivar'>@health</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span><span class='op'>+</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>]\n</span><span class='tstring_end'>&quot;</span></span><span class='semicolon'>;</span>
@@ -702,9 +702,9 @@
 </div>
 
       <div id="footer">
-  Generated by
-  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.26 (ruby-3.0.2).
+  Generated on Thu Nov 14 20:42:04 2024 by
+  <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.9.37 (ruby-3.2.3).
 </div>
 
     </div>

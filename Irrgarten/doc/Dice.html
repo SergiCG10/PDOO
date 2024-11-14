@@ -6,7 +6,7 @@
 <title>
   Class: Dice
   
-    &mdash; Documentation by YARD 0.9.26
+    &mdash; Documentation by YARD 0.9.37
   
 </title>
 
@@ -94,7 +94,7 @@
   
   <dl>
     <dt>Defined in:</dt>
-    <dd>lib/Dice.rb</dd>
+    <dd>Dice.rb</dd>
   </dl>
   
 </div>
@@ -681,7 +681,7 @@
 135</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/Dice.rb', line 127</span>
+      <pre class="code"><span class="info file"># File 'Dice.rb', line 127</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_discardElement'>discardElement</span><span class='lparen'>(</span><span class='id identifier rubyid_usesLeft'>usesLeft</span><span class='rparen'>)</span>
 	<span class='id identifier rubyid_discard'>discard</span> <span class='op'>=</span> <span class='kw'>true</span><span class='semicolon'>;</span>
@@ -746,7 +746,7 @@
 86</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/Dice.rb', line 84</span>
+      <pre class="code"><span class="info file"># File 'Dice.rb', line 84</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_healthReward'>healthReward</span>
 	<span class='kw'>return</span> <span class='cvar'>@@generator</span><span class='period'>.</span><span class='id identifier rubyid_rand'>rand</span><span class='lparen'>(</span><span class='cvar'>@@HEALTH_REWARD</span><span class='op'>+</span><span class='int'>1</span><span class='rparen'>)</span><span class='semicolon'>;</span>
@@ -820,7 +820,7 @@
 115</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/Dice.rb', line 113</span>
+      <pre class="code"><span class="info file"># File 'Dice.rb', line 113</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_intensity'>intensity</span><span class='lparen'>(</span><span class='id identifier rubyid_competence'>competence</span><span class='rparen'>)</span>
 	<span class='kw'>return</span> <span class='cvar'>@@generator</span><span class='period'>.</span><span class='id identifier rubyid_rand'>rand</span> <span class='op'>*</span> <span class='id identifier rubyid_competence'>competence</span><span class='semicolon'>;</span>
@@ -879,7 +879,7 @@
 48</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/Dice.rb', line 46</span>
+      <pre class="code"><span class="info file"># File 'Dice.rb', line 46</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_randomIntelligence'>randomIntelligence</span>
 	<span class='kw'>return</span> <span class='cvar'>@@generator</span><span class='period'>.</span><span class='id identifier rubyid_rand'>rand</span><span class='op'>*</span><span class='cvar'>@@MAX_INTELLIGENCE</span><span class='semicolon'>;</span>
@@ -958,7 +958,7 @@
 32</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/Dice.rb', line 30</span>
+      <pre class="code"><span class="info file"># File 'Dice.rb', line 30</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_randomPos'>randomPos</span><span class='lparen'>(</span><span class='id identifier rubyid_max'>max</span><span class='rparen'>)</span>
 	<span class='kw'>return</span> <span class='cvar'>@@generator</span><span class='period'>.</span><span class='id identifier rubyid_rand'>rand</span><span class='lparen'>(</span><span class='id identifier rubyid_max'>max</span><span class='rparen'>)</span><span class='semicolon'>;</span>
@@ -1017,7 +1017,7 @@
 56</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/Dice.rb', line 54</span>
+      <pre class="code"><span class="info file"># File 'Dice.rb', line 54</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_randomStrength'>randomStrength</span>
 	<span class='kw'>return</span> <span class='cvar'>@@generator</span><span class='period'>.</span><span class='id identifier rubyid_rand'>rand</span><span class='op'>*</span><span class='cvar'>@@MAX_STRENGTH</span><span class='semicolon'>;</span>
@@ -1076,7 +1076,7 @@
 65</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/Dice.rb', line 63</span>
+      <pre class="code"><span class="info file"># File 'Dice.rb', line 63</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_resurrectPlayer'>resurrectPlayer</span>
 	<span class='kw'>return</span> <span class='cvar'>@@generator</span><span class='period'>.</span><span class='id identifier rubyid_rand'>rand</span> <span class='op'>&lt;</span> <span class='cvar'>@@RESURRECT_PROB</span><span class='semicolon'>;</span>
@@ -1135,7 +1135,7 @@
 100</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/Dice.rb', line 98</span>
+      <pre class="code"><span class="info file"># File 'Dice.rb', line 98</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_shieldPower'>shieldPower</span>
 	<span class='kw'>return</span> <span class='cvar'>@@generator</span><span class='period'>.</span><span class='id identifier rubyid_rand'>rand</span> <span class='op'>*</span> <span class='cvar'>@@MAX_SHIELD</span><span class='semicolon'>;</span>
@@ -1194,7 +1194,7 @@
 79</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/Dice.rb', line 77</span>
+      <pre class="code"><span class="info file"># File 'Dice.rb', line 77</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_shieldsReward'>shieldsReward</span>
 	<span class='kw'>return</span> <span class='cvar'>@@generator</span><span class='period'>.</span><span class='id identifier rubyid_rand'>rand</span><span class='lparen'>(</span><span class='cvar'>@@SHIELDS_REWARD</span><span class='op'>+</span><span class='int'>1</span><span class='rparen'>)</span><span class='semicolon'>;</span>
@@ -1253,7 +1253,7 @@
 107</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/Dice.rb', line 105</span>
+      <pre class="code"><span class="info file"># File 'Dice.rb', line 105</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_usesLeft'>usesLeft</span>
 	<span class='kw'>return</span> <span class='cvar'>@@generator</span><span class='period'>.</span><span class='id identifier rubyid_rand'>rand</span><span class='lparen'>(</span><span class='cvar'>@@MAX_USES</span><span class='op'>+</span><span class='int'>1</span><span class='rparen'>)</span><span class='semicolon'>;</span>
@@ -1312,7 +1312,7 @@
 93</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/Dice.rb', line 91</span>
+      <pre class="code"><span class="info file"># File 'Dice.rb', line 91</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_weaponPower'>weaponPower</span>
 	<span class='kw'>return</span> <span class='cvar'>@@generator</span><span class='period'>.</span><span class='id identifier rubyid_rand'>rand</span> <span class='op'>*</span> <span class='cvar'>@@MAX_ATTACK</span><span class='semicolon'>;</span>
@@ -1371,7 +1371,7 @@
 72</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/Dice.rb', line 70</span>
+      <pre class="code"><span class="info file"># File 'Dice.rb', line 70</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_weaponsReward'>weaponsReward</span>
 	<span class='kw'>return</span> <span class='cvar'>@@generator</span><span class='period'>.</span><span class='id identifier rubyid_rand'>rand</span><span class='lparen'>(</span><span class='cvar'>@@WEAPONS_REWARD</span><span class='op'>+</span><span class='int'>1</span><span class='rparen'>)</span><span class='semicolon'>;</span>
@@ -1450,7 +1450,7 @@
 40</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/Dice.rb', line 38</span>
+      <pre class="code"><span class="info file"># File 'Dice.rb', line 38</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_whoStarts'>whoStarts</span><span class='lparen'>(</span><span class='id identifier rubyid_nPlayers'>nPlayers</span><span class='rparen'>)</span>
 	<span class='kw'>return</span> <span class='cvar'>@@generator</span><span class='period'>.</span><span class='id identifier rubyid_rand'>rand</span><span class='lparen'>(</span><span class='id identifier rubyid_nPlayers'>nPlayers</span><span class='rparen'>)</span><span class='semicolon'>;</span>
@@ -1465,9 +1465,9 @@
 </div>
 
       <div id="footer">
-  Generated by
-  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.26 (ruby-3.0.2).
+  Generated on Thu Nov 14 20:42:04 2024 by
+  <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.9.37 (ruby-3.2.3).
 </div>
 
     </div>

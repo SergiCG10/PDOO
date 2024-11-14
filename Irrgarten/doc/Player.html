@@ -94,7 +94,7 @@
   
   <dl>
     <dt>Defined in:</dt>
-    <dd>lib/Player.rb</dd>
+    <dd>Player.rb</dd>
   </dl>
   
 </div>
@@ -469,7 +469,31 @@
 
   
     <span class="summary_desc"><div class='inline'>
-<p>Implementación P3.</p>
+<p>Funcion manageHit.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#move-instance_method" title="#move (instance method)">#<strong>move</strong>(direction, validMoves)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Funcion move.</p>
 </div></span>
   
 </li>
@@ -518,6 +542,78 @@
   
     <span class="summary_desc"><div class='inline'>
 <p>Funcion newWeapon.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#receiveReward-instance_method" title="#receiveReward (instance method)">#<strong>receiveReward</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Funcion receiveReward.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#receiveShield-instance_method" title="#receiveShield (instance method)">#<strong>receiveShield</strong>(newS)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Funcion receiveShield.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#receiveWeapon-instance_method" title="#receiveWeapon (instance method)">#<strong>receiveWeapon</strong>(newW)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Funcion receiveWeapon.</p>
 </div></span>
   
 </li>
@@ -646,7 +742,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#toString-instance_method" title="#toString (instance method)">#<strong>toString</strong>  &#x21d2; Object </a>
+      <a href="#to_s-instance_method" title="#to_s (instance method)">#<strong>to_s</strong>  &#x21d2; Object </a>
     
 
     
@@ -765,7 +861,7 @@
 39</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/Player.rb', line 28</span>
+      <pre class="code"><span class="info file"># File 'Player.rb', line 28</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_nmb'>nmb</span><span class='comma'>,</span> <span class='id identifier rubyid_howsmart'>howsmart</span><span class='comma'>,</span> <span class='id identifier rubyid_howstrong'>howstrong</span><span class='rparen'>)</span>
 	<span class='ivar'>@name</span><span class='op'>=</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Player#</span><span class='tstring_end'>&quot;</span></span><span class='op'>+</span><span class='id identifier rubyid_nmb'>nmb</span>
@@ -817,12 +913,12 @@
       <pre class="lines">
 
 
-77
-78
-79</pre>
+42
+43
+44</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/Player.rb', line 77</span>
+      <pre class="code"><span class="info file"># File 'Player.rb', line 42</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_shields'>shields</span>
   <span class='ivar'>@shields</span>
@@ -860,12 +956,12 @@
       <pre class="lines">
 
 
-76
-77
-78</pre>
+41
+42
+43</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/Player.rb', line 76</span>
+      <pre class="code"><span class="info file"># File 'Player.rb', line 41</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_weapons'>weapons</span>
   <span class='ivar'>@weapons</span>
@@ -926,12 +1022,12 @@
       <pre class="lines">
 
 
-104
-105
-106</pre>
+123
+124
+125</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/Player.rb', line 104</span>
+      <pre class="code"><span class="info file"># File 'Player.rb', line 123</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_attack'>attack</span>
 	<span class='kw'>return</span> <span class='ivar'>@strength</span><span class='op'>+</span><span class='id identifier rubyid_sumWeapons'>sumWeapons</span>
@@ -985,12 +1081,12 @@
       <pre class="lines">
 
 
-94
-95
-96</pre>
+89
+90
+91</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/Player.rb', line 94</span>
+      <pre class="code"><span class="info file"># File 'Player.rb', line 89</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_dead'>dead</span>
 	<span class='ivar'>@health</span> <span class='op'>&lt;=</span><span class='int'>0</span>
@@ -1064,12 +1160,12 @@
       <pre class="lines">
 
 
-113
-114
-115</pre>
+132
+133
+134</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/Player.rb', line 113</span>
+      <pre class="code"><span class="info file"># File 'Player.rb', line 132</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_defend'>defend</span><span class='lparen'>(</span><span class='id identifier rubyid_receivedAttack'>receivedAttack</span><span class='rparen'>)</span>
 	<span class='kw'>return</span> <span class='id identifier rubyid_manageHit'>manageHit</span><span class='lparen'>(</span><span class='id identifier rubyid_receivedAttack'>receivedAttack</span><span class='rparen'>)</span>
@@ -1123,12 +1219,12 @@
       <pre class="lines">
 
 
-186
-187
-188</pre>
+256
+257
+258</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/Player.rb', line 186</span>
+      <pre class="code"><span class="info file"># File 'Player.rb', line 256</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_defensiveEnergy'>defensiveEnergy</span>
 	<span class='kw'>return</span> <span class='ivar'>@intelligence</span> <span class='op'>+</span> <span class='id identifier rubyid_sumShields'>sumShields</span>
@@ -1187,7 +1283,7 @@
 66</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/Player.rb', line 64</span>
+      <pre class="code"><span class="info file"># File 'Player.rb', line 64</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_getCol'>getCol</span>
 	<span class='ivar'>@col</span>
@@ -1246,7 +1342,7 @@
 74</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/Player.rb', line 72</span>
+      <pre class="code"><span class="info file"># File 'Player.rb', line 72</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_getNumber'>getNumber</span>
 	<span class='ivar'>@number</span>
@@ -1300,12 +1396,12 @@
       <pre class="lines">
 
 
-56
 57
-58</pre>
+58
+59</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/Player.rb', line 56</span>
+      <pre class="code"><span class="info file"># File 'Player.rb', line 57</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_getRow'>getRow</span>
 	<span class='ivar'>@row</span>
@@ -1341,12 +1437,12 @@
       <pre class="lines">
 
 
-203
-204
-205</pre>
+296
+297
+298</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/Player.rb', line 203</span>
+      <pre class="code"><span class="info file"># File 'Player.rb', line 296</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_gotWounded'>gotWounded</span>
 	<span class='ivar'>@health</span><span class='op'>-=</span><span class='int'>1</span>
@@ -1382,12 +1478,12 @@
       <pre class="lines">
 
 
-211
-212
-213</pre>
+304
+305
+306</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/Player.rb', line 211</span>
+      <pre class="code"><span class="info file"># File 'Player.rb', line 304</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_incConsecutiveHits'>incConsecutiveHits</span>
 	<span class='ivar'>@consecutiveHits</span><span class='op'>+=</span><span class='int'>1</span>
@@ -1409,13 +1505,51 @@
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Implementación P3</p>
+<p>Funcion manageHit. Gestiona el ataque recibido por el jugador Si el jugador recibe un ataque mayor que su inteligencia más la suma de la defensa de sus escudos, recibe uno de daño, si no, se resetea el numero de golpes consecutivos recibidos Si el numeo de golpes consecutivos alcanza @@HITS2LOSE el jugador pierde Si la vida del jugador es 0, el jugadir pierde tambien</p>
 
 
   </div>
 </div>
 <div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
   
+    <li>
+      
+        <span class='name'>receivedAttack</span>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Valor de ataque recibido</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        
+        <div class='inline'>
+<p>Booleano de si el jugador pierde o no</p>
+</div>
+      
+    </li>
+  
+</ul>
 
 </div><table class="source_code">
   <tr>
@@ -1423,15 +1557,154 @@
       <pre class="lines">
 
 
-191
-192
-193</pre>
+268
+269
+270
+271
+272
+273
+274
+275
+276
+277
+278
+279
+280
+281
+282
+283
+284
+285</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/Player.rb', line 191</span>
+      <pre class="code"><span class="info file"># File 'Player.rb', line 268</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_manageHit'>manageHit</span><span class='lparen'>(</span><span class='id identifier rubyid_receivedAttack'>receivedAttack</span><span class='rparen'>)</span>
-	<span class='kw'>return</span> <span class='kw'>false</span>
+	<span class='id identifier rubyid_defense'>defense</span> <span class='op'>=</span> <span class='id identifier rubyid_defensiveEnergy'>defensiveEnergy</span><span class='lparen'>(</span><span class='rparen'>)</span>
+			
+	<span class='kw'>if</span> <span class='id identifier rubyid_defense'>defense</span> <span class='op'>&lt;</span> <span class='id identifier rubyid_receivedAttack'>receivedAttack</span>
+		<span class='id identifier rubyid_gotWounded'>gotWounded</span><span class='lparen'>(</span><span class='rparen'>)</span>
+		<span class='id identifier rubyid_incConsecutiveHits'>incConsecutiveHits</span><span class='lparen'>(</span><span class='rparen'>)</span>
+	<span class='kw'>else</span>
+		<span class='id identifier rubyid_resetHits'>resetHits</span><span class='lparen'>(</span><span class='rparen'>)</span>
+	<span class='kw'>end</span>
+	
+	<span class='kw'>if</span> <span class='lparen'>(</span><span class='ivar'>@consecutiveHits</span> <span class='op'>==</span> <span class='cvar'>@@HITS2LOSE</span><span class='rparen'>)</span> <span class='op'>||</span> <span class='id identifier rubyid_dead'>dead</span><span class='lparen'>(</span><span class='rparen'>)</span>
+		<span class='id identifier rubyid_lose'>lose</span> <span class='op'>=</span> <span class='kw'>true</span>
+	<span class='kw'>else</span>
+		<span class='id identifier rubyid_lose'>lose</span> <span class='op'>=</span> <span class='kw'>false</span>
+	<span class='kw'>end</span>
+	
+	<span class='kw'>return</span> <span class='id identifier rubyid_lose'>lose</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="move-instance_method">
+  
+    #<strong>move</strong>(direction, validMoves)  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Funcion move. Mueve al personaje hacia direction, si no se puede, hacia una valida dentro de validMoves</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>direction</span>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Direccion preferente a moverse</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>validMoves</span>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Vector con las direcciones validas a moverse</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'Player.rb', line 97</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_move'>move</span><span class='lparen'>(</span><span class='id identifier rubyid_direction'>direction</span><span class='comma'>,</span> <span class='id identifier rubyid_validMoves'>validMoves</span><span class='rparen'>)</span>
+	
+	<span class='id identifier rubyid_size'>size</span> <span class='op'>=</span> <span class='id identifier rubyid_validMoves'>validMoves</span><span class='period'>.</span><span class='id identifier rubyid_size'>size</span>
+	<span class='id identifier rubyid_contained'>contained</span> <span class='op'>=</span> <span class='kw'>false</span>
+	<span class='id identifier rubyid_i'>i</span> <span class='op'>=</span> <span class='int'>0</span>
+	<span class='kw'>while</span> <span class='lparen'>(</span> <span class='id identifier rubyid_i'>i</span> <span class='op'>&lt;</span> <span class='id identifier rubyid_size'>size</span> <span class='op'>&amp;&amp;</span> <span class='op'>!</span><span class='id identifier rubyid_contained'>contained</span> <span class='rparen'>)</span> 
+		<span class='kw'>if</span> <span class='id identifier rubyid_validMoves'>validMoves</span><span class='lbracket'>[</span><span class='id identifier rubyid_i'>i</span><span class='rbracket'>]</span> <span class='op'>==</span> <span class='id identifier rubyid_direction'>direction</span>
+			<span class='id identifier rubyid_contained'>contained</span> <span class='op'>=</span> <span class='kw'>true</span>
+		<span class='kw'>end</span>
+		<span class='id identifier rubyid_i'>i</span> <span class='op'>+=</span> <span class='int'>1</span>
+	<span class='kw'>end</span>
+	<span class='kw'>if</span> <span class='lparen'>(</span><span class='id identifier rubyid_size'>size</span> <span class='op'>&gt;</span> <span class='int'>0</span> <span class='op'>&amp;&amp;</span> <span class='op'>!</span><span class='id identifier rubyid_contained'>contained</span><span class='rparen'>)</span>
+		<span class='id identifier rubyid_firstElement'>firstElement</span> <span class='op'>=</span> <span class='id identifier rubyid_validMoves'>validMoves</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span>
+		<span class='id identifier rubyid_move'>move</span> <span class='op'>=</span> <span class='id identifier rubyid_firstElement'>firstElement</span>
+	<span class='kw'>else</span>
+		<span class='id identifier rubyid_move'>move</span> <span class='op'>=</span> <span class='id identifier rubyid_direction'>direction</span>
+	<span class='kw'>end</span>
+	<span class='kw'>return</span> <span class='id identifier rubyid_move'>move</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -1482,12 +1755,12 @@
       <pre class="lines">
 
 
-151
-152
-153</pre>
+221
+222
+223</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/Player.rb', line 151</span>
+      <pre class="code"><span class="info file"># File 'Player.rb', line 221</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_newShield'>newShield</span>
 	<span class='kw'>return</span> <span class='const'><span class='object_link'><a href="Shield.html" title="Shield (class)">Shield</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="Shield.html#initialize-instance_method" title="Shield#initialize (method)">new</a></span></span><span class='lparen'>(</span><span class='const'><span class='object_link'><a href="Dice.html" title="Dice (class)">Dice</a></span></span><span class='period'>.</span><span class='id identifier rubyid_shieldPower'><span class='object_link'><a href="Dice.html#shieldPower-class_method" title="Dice.shieldPower (method)">shieldPower</a></span></span><span class='comma'>,</span> <span class='const'><span class='object_link'><a href="Dice.html" title="Dice (class)">Dice</a></span></span><span class='period'>.</span><span class='id identifier rubyid_usesLeft'><span class='object_link'><a href="Dice.html#usesLeft-class_method" title="Dice.usesLeft (method)">usesLeft</a></span></span><span class='rparen'>)</span>
@@ -1541,15 +1814,238 @@
       <pre class="lines">
 
 
-143
-144
-145</pre>
+213
+214
+215</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/Player.rb', line 143</span>
+      <pre class="code"><span class="info file"># File 'Player.rb', line 213</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_newWeapon'>newWeapon</span>
 	<span class='kw'>return</span> <span class='const'><span class='object_link'><a href="Weapon.html" title="Weapon (class)">Weapon</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="Weapon.html#initialize-instance_method" title="Weapon#initialize (method)">new</a></span></span><span class='lparen'>(</span><span class='const'><span class='object_link'><a href="Dice.html" title="Dice (class)">Dice</a></span></span><span class='period'>.</span><span class='id identifier rubyid_weaponPower'><span class='object_link'><a href="Dice.html#weaponPower-class_method" title="Dice.weaponPower (method)">weaponPower</a></span></span><span class='comma'>,</span> <span class='const'><span class='object_link'><a href="Dice.html" title="Dice (class)">Dice</a></span></span><span class='period'>.</span><span class='id identifier rubyid_usesLeft'><span class='object_link'><a href="Dice.html#usesLeft-class_method" title="Dice.usesLeft (method)">usesLeft</a></span></span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="receiveReward-instance_method">
+  
+    #<strong>receiveReward</strong>  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Funcion receiveReward. Le da al jugador armas, escudos y vida aleatorios</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'Player.rb', line 137</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_receiveReward'>receiveReward</span>
+	<span class='id identifier rubyid_nW'>nW</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="Dice.html" title="Dice (class)">Dice</a></span></span><span class='period'>.</span><span class='id identifier rubyid_weaponsReward'><span class='object_link'><a href="Dice.html#weaponsReward-class_method" title="Dice.weaponsReward (method)">weaponsReward</a></span></span><span class='lparen'>(</span><span class='rparen'>)</span>
+	<span class='id identifier rubyid_nS'>nS</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="Dice.html" title="Dice (class)">Dice</a></span></span><span class='period'>.</span><span class='id identifier rubyid_shieldsReward'><span class='object_link'><a href="Dice.html#shieldsReward-class_method" title="Dice.shieldsReward (method)">shieldsReward</a></span></span><span class='lparen'>(</span><span class='rparen'>)</span>
+	
+	<span class='id identifier rubyid_nW'>nW</span><span class='period'>.</span><span class='id identifier rubyid_times'>times</span> <span class='kw'>do</span>
+	    <span class='id identifier rubyid_w'>w</span> <span class='op'>=</span> <span class='id identifier rubyid_newWeapon'>newWeapon</span>
+		<span class='id identifier rubyid_receiveWeapon'>receiveWeapon</span><span class='lparen'>(</span><span class='id identifier rubyid_w'>w</span><span class='rparen'>)</span>
+	<span class='kw'>end</span>
+	
+	<span class='id identifier rubyid_nS'>nS</span><span class='period'>.</span><span class='id identifier rubyid_times'>times</span> <span class='kw'>do</span> 
+		<span class='id identifier rubyid_s'>s</span> <span class='op'>=</span> <span class='id identifier rubyid_newShield'>newShield</span>
+		<span class='id identifier rubyid_receiveShield'>receiveShield</span><span class='lparen'>(</span><span class='id identifier rubyid_s'>s</span><span class='rparen'>)</span>
+	<span class='kw'>end</span>
+	
+	<span class='id identifier rubyid_extraHealth'>extraHealth</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="Dice.html" title="Dice (class)">Dice</a></span></span><span class='period'>.</span><span class='id identifier rubyid_healthReward'><span class='object_link'><a href="Dice.html#healthReward-class_method" title="Dice.healthReward (method)">healthReward</a></span></span>
+	<span class='ivar'>@health</span> <span class='op'>+=</span> <span class='id identifier rubyid_extraHealth'>extraHealth</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="receiveShield-instance_method">
+  
+    #<strong>receiveShield</strong>(newS)  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Funcion receiveShield. Elimina los escudos que se deben de descartar y le da al jugador el escudo nuevo si se puede</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>newS</span>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Escudo nuevo para el jugador</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'Player.rb', line 197</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_receiveShield'>receiveShield</span><span class='lparen'>(</span><span class='id identifier rubyid_newS'>newS</span><span class='rparen'>)</span>
+	<span class='ivar'>@shields</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_s'>s</span><span class='op'>|</span> 
+		<span class='kw'>if</span> <span class='id identifier rubyid_s'>s</span><span class='period'>.</span><span class='id identifier rubyid_discard'>discard</span>
+			<span class='ivar'>@weapons</span><span class='period'>.</span><span class='id identifier rubyid_delete'>delete</span><span class='lparen'>(</span><span class='id identifier rubyid_s'>s</span><span class='rparen'>)</span>
+		<span class='kw'>end</span>
+	<span class='kw'>end</span>
+	
+	<span class='kw'>if</span> <span class='ivar'>@shields</span><span class='period'>.</span><span class='id identifier rubyid_size'>size</span> <span class='op'>&lt;</span> <span class='cvar'>@@MAX_SHIELDS</span>
+		<span class='ivar'>@shields</span><span class='period'>.</span><span class='id identifier rubyid_push'>push</span><span class='lparen'>(</span><span class='id identifier rubyid_newS'>newS</span><span class='rparen'>)</span>
+	<span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="receiveWeapon-instance_method">
+  
+    #<strong>receiveWeapon</strong>(newW)  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Funcion receiveWeapon. Elimina las armas que se deben de descartar y le da al jugador el arma nueva si se puede</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>newW</span>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Arma nueva para el jugador</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'Player.rb', line 182</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_receiveWeapon'>receiveWeapon</span><span class='lparen'>(</span><span class='id identifier rubyid_newW'>newW</span><span class='rparen'>)</span>
+	<span class='ivar'>@weapons</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_w'>w</span><span class='op'>|</span> 
+		<span class='kw'>if</span> <span class='id identifier rubyid_w'>w</span><span class='period'>.</span><span class='id identifier rubyid_discard'>discard</span>
+			<span class='ivar'>@weapons</span><span class='period'>.</span><span class='id identifier rubyid_delete'>delete</span><span class='lparen'>(</span><span class='id identifier rubyid_w'>w</span><span class='rparen'>)</span>
+		<span class='kw'>end</span>
+	<span class='kw'>end</span>
+	
+	<span class='kw'>if</span> <span class='ivar'>@weapons</span><span class='period'>.</span><span class='id identifier rubyid_size'>size</span> <span class='op'>&lt;</span> <span class='cvar'>@@MAX_WEAPONS</span>
+		<span class='ivar'>@weapons</span><span class='period'>.</span><span class='id identifier rubyid_push'>push</span><span class='lparen'>(</span><span class='id identifier rubyid_newW'>newW</span><span class='rparen'>)</span>
+	<span class='kw'>end</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -1582,12 +2078,12 @@
       <pre class="lines">
 
 
-197
-198
-199</pre>
+290
+291
+292</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/Player.rb', line 197</span>
+      <pre class="code"><span class="info file"># File 'Player.rb', line 290</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_resetHits'>resetHits</span>
 	<span class='ivar'>@consecutiveHits</span><span class='op'>=</span><span class='int'>0</span>
@@ -1623,15 +2119,15 @@
       <pre class="lines">
 
 
-45
-46
 47
 48
 49
-50</pre>
+50
+51
+52</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/Player.rb', line 45</span>
+      <pre class="code"><span class="info file"># File 'Player.rb', line 47</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_resurrect'>resurrect</span>
 	<span class='ivar'>@weapons</span><span class='period'>.</span><span class='id identifier rubyid_clear'>clear</span>
@@ -1706,13 +2202,13 @@
       <pre class="lines">
 
 
-84
-85
-86
-87</pre>
+80
+81
+82
+83</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/Player.rb', line 84</span>
+      <pre class="code"><span class="info file"># File 'Player.rb', line 80</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_setPos'>setPos</span><span class='lparen'>(</span><span class='id identifier rubyid_r'>r</span><span class='comma'>,</span><span class='id identifier rubyid_c'>c</span><span class='rparen'>)</span>
 	<span class='ivar'>@row</span><span class='op'>=</span><span class='id identifier rubyid_r'>r</span>
@@ -1767,16 +2263,16 @@
       <pre class="lines">
 
 
-173
-174
-175
-176
-177
-178
-179</pre>
+243
+244
+245
+246
+247
+248
+249</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/Player.rb', line 173</span>
+      <pre class="code"><span class="info file"># File 'Player.rb', line 243</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_sumShields'>sumShields</span>
 	<span class='id identifier rubyid_totalDefense'>totalDefense</span><span class='op'>=</span><span class='int'>0</span>
@@ -1834,16 +2330,16 @@
       <pre class="lines">
 
 
-160
-161
-162
-163
-164
-165
-166</pre>
+230
+231
+232
+233
+234
+235
+236</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/Player.rb', line 160</span>
+      <pre class="code"><span class="info file"># File 'Player.rb', line 230</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_sumWeapons'>sumWeapons</span>
 	<span class='id identifier rubyid_totalAttack'>totalAttack</span><span class='op'>=</span><span class='int'>0</span>
@@ -1858,9 +2354,9 @@
 </div>
     
       <div class="method_details ">
-  <h3 class="signature " id="toString-instance_method">
+  <h3 class="signature " id="to_s-instance_method">
   
-    #<strong>toString</strong>  &#x21d2; <tt>Object</tt> 
+    #<strong>to_s</strong>  &#x21d2; <tt>Object</tt> 
   
 
   
@@ -1901,42 +2397,42 @@
       <pre class="lines">
 
 
-121
-122
-123
-124
-125
-126
-127
-128
-129
-130
-131
-132
-133
-134
-135
-136
-137
-138</pre>
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/Player.rb', line 121</span>
+      <pre class="code"><span class="info file"># File 'Player.rb', line 160</span>
 
-<span class='kw'>def</span> <span class='id identifier rubyid_toString'>toString</span>
-	<span class='id identifier rubyid_info'>info</span> <span class='op'>=</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\n</span><span class='tstring_end'>&quot;</span></span><span class='op'>+</span><span class='ivar'>@name</span><span class='op'>+</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\n</span><span class='tstring_end'>&quot;</span></span>
-	<span class='id identifier rubyid_info'>info</span> <span class='op'>+=</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\nIntelligence: </span><span class='tstring_end'>&quot;</span></span> <span class='op'>+</span> <span class='ivar'>@intelligence</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span>
-	<span class='id identifier rubyid_info'>info</span> <span class='op'>+=</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\nStregth: </span><span class='tstring_end'>&quot;</span></span> <span class='op'>+</span> <span class='ivar'>@strength</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span>
-	<span class='id identifier rubyid_info'>info</span> <span class='op'>+=</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\nHealth: </span><span class='tstring_end'>&quot;</span></span> <span class='op'>+</span> <span class='ivar'>@health</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span>
-	<span class='id identifier rubyid_info'>info</span> <span class='op'>+=</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\nPosition: (</span><span class='tstring_end'>&quot;</span></span> <span class='op'>+</span> <span class='ivar'>@row</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span> <span class='op'>+</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>, </span><span class='tstring_end'>&quot;</span></span> <span class='op'>+</span> <span class='ivar'>@col</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span> <span class='op'>+</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>)</span><span class='tstring_end'>&quot;</span></span>
-	<span class='id identifier rubyid_info'>info</span> <span class='op'>+=</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\n\nWeapons:\n</span><span class='tstring_end'>&quot;</span></span>
+<span class='kw'>def</span> <span class='id identifier rubyid_to_s'>to_s</span>
+	<span class='id identifier rubyid_info'>info</span> <span class='op'>=</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\n\t</span><span class='tstring_end'>&quot;</span></span><span class='op'>+</span><span class='ivar'>@name</span><span class='op'>+</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\n</span><span class='tstring_end'>&quot;</span></span>
+	<span class='id identifier rubyid_info'>info</span> <span class='op'>+=</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\n\tIntelligence: </span><span class='tstring_end'>&quot;</span></span> <span class='op'>+</span> <span class='ivar'>@intelligence</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span>
+	<span class='id identifier rubyid_info'>info</span> <span class='op'>+=</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\n\tStregth: </span><span class='tstring_end'>&quot;</span></span> <span class='op'>+</span> <span class='ivar'>@strength</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span>
+	<span class='id identifier rubyid_info'>info</span> <span class='op'>+=</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\n\tHealth: </span><span class='tstring_end'>&quot;</span></span> <span class='op'>+</span> <span class='ivar'>@health</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span>
+	<span class='id identifier rubyid_info'>info</span> <span class='op'>+=</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\n\tPosition: (</span><span class='tstring_end'>&quot;</span></span> <span class='op'>+</span> <span class='ivar'>@row</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span> <span class='op'>+</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>, </span><span class='tstring_end'>&quot;</span></span> <span class='op'>+</span> <span class='ivar'>@col</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span> <span class='op'>+</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>)</span><span class='tstring_end'>&quot;</span></span>
+	<span class='id identifier rubyid_info'>info</span> <span class='op'>+=</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\n\n\tWeapons:\n</span><span class='tstring_end'>&quot;</span></span>
 	<span class='id identifier rubyid_weapons'>weapons</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_weapon'>weapon</span><span class='op'>|</span> 
-		<span class='id identifier rubyid_info'>info</span><span class='op'>+=</span><span class='id identifier rubyid_weapon'>weapon</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span>
+		<span class='id identifier rubyid_info'>info</span><span class='op'>+=</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\t</span><span class='tstring_end'>&quot;</span></span> <span class='op'>+</span> <span class='id identifier rubyid_weapon'>weapon</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span>
 		<span class='id identifier rubyid_info'>info</span><span class='op'>+=</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\n</span><span class='tstring_end'>&quot;</span></span>
 	<span class='kw'>end</span>
-	<span class='id identifier rubyid_info'>info</span> <span class='op'>+=</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\n\nShields:\n</span><span class='tstring_end'>&quot;</span></span>
+	<span class='id identifier rubyid_info'>info</span> <span class='op'>+=</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\n\n\tShields:\n</span><span class='tstring_end'>&quot;</span></span>
 	<span class='id identifier rubyid_shields'>shields</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_shield'>shield</span><span class='op'>|</span> 
-		<span class='id identifier rubyid_info'>info</span><span class='op'>+=</span><span class='id identifier rubyid_shield'>shield</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span>
+		<span class='id identifier rubyid_info'>info</span><span class='op'>+=</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\t</span><span class='tstring_end'>&quot;</span></span> <span class='op'>+</span> <span class='id identifier rubyid_shield'>shield</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span>
 		<span class='id identifier rubyid_info'>info</span><span class='op'>+=</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\n</span><span class='tstring_end'>&quot;</span></span>
 	<span class='kw'>end</span>
 	<span class='kw'>return</span> <span class='id identifier rubyid_info'>info</span>
@@ -1951,7 +2447,7 @@
 </div>
 
       <div id="footer">
-  Generated on Wed Nov  6 12:12:09 2024 by
+  Generated on Thu Nov 14 20:42:04 2024 by
   <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.37 (ruby-3.2.3).
 </div>
