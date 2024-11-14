@@ -98,15 +98,15 @@ class Game
 		nCols=7
 		@labyrinth=Labyrinth.new(nRows,nCols,nRows-1,nCols-1)
 		#Añadimos los muros
-		@labyrinth.addBlock(Orientations::VERTICAL, 0, 1, 2)
-		@labyrinth.addBlock(Orientations::HORIZONTAL, 1, 2, 2)
-		@labyrinth.addBlock(Orientations::HORIZONTAL, 0, 5, 1)
-		@labyrinth.addBlock(Orientations::VERTICAL, 2, 5, 2)
-		@labyrinth.addBlock(Orientations::HORIZONTAL, 3, 0, 2)
-		@labyrinth.addBlock(Orientations::HORIZONTAL, 3, 3, 2)
-		@labyrinth.addBlock(Orientations::HORIZONTAL, 5, 0, 4)
-		@labyrinth.addBlock(Orientations::HORIZONTAL, 5, 5, 2)
-		@labyrinth.addBlock(Orientations::VERTICAL, 4, 3, 2)
+		@labyrinth.addBlock(Orientation::VERTICAL, 0, 1, 2)
+		@labyrinth.addBlock(Orientation::HORIZONTAL, 1, 2, 2)
+		@labyrinth.addBlock(Orientation::HORIZONTAL, 0, 5, 1)
+		@labyrinth.addBlock(Orientation::VERTICAL, 2, 5, 2)
+		@labyrinth.addBlock(Orientation::HORIZONTAL, 3, 0, 2)
+		@labyrinth.addBlock(Orientation::HORIZONTAL, 3, 3, 2)
+		@labyrinth.addBlock(Orientation::HORIZONTAL, 5, 0, 4)
+		@labyrinth.addBlock(Orientation::HORIZONTAL, 5, 5, 2)
+		@labyrinth.addBlock(Orientation::VERTICAL, 4, 3, 2)
 				
 		nMonstruos=Dice.randomPos(5)+3
 		
