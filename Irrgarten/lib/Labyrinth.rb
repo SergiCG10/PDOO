@@ -35,7 +35,7 @@ class Labyrinth
      end
      
      # Esparce de forma aleatoria los Player por el laberinto
-     # @param players. Numero de player a colocar
+     # @param players Numero de player a colocar
     def spreadPlayers(players)
      	players.each do |p|
      		pos = randomEmptyPos
@@ -105,8 +105,8 @@ class Labyrinth
      end
      
      # Añade una serie de bloques a partir de la posicion especificada en una orientación.
-     # @param length. Numero de bloques que se colocan
-     # @param orientation. Orientacion en que se colocan los bloques
+     # @param length Numero de bloques que se colocan
+     # @param orientation Orientacion en que se colocan los bloques
      def addBlock(orientation, startRow, startCol, length)
      	
      	if orientation == Orientation::VERTICAL
