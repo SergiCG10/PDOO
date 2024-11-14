@@ -1,7 +1,7 @@
 require_relative 'Dice'
 require_relative 'Player'
 require_relative 'Directions'
-require_relative 'Orientations'
+require_relative 'Orientation'
 # Clase Labyrinth. Implementación de la clase Labyrinth, de sus métodos y variables.
 # 
 # @author Miguel Ángel Luque Gómez
@@ -84,7 +84,7 @@ class Labyrinth
      
      def addBlock(orientation, startRow, startCol, length)
      	
-     	if orientation == Orientations::VERTICAL
+     	if orientation == Orientation::VERTICAL
  			incRow = 1
  			incCol = 0
      	else
