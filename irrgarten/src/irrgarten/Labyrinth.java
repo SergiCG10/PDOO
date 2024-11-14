@@ -26,7 +26,7 @@ import java.util.ArrayList;
  */
 
 public class Labyrinth {
- private static final char BLOCK_CHAR = 'X';   // Representa un obstáculo
+   private static final char BLOCK_CHAR = 'X';   // Representa un obstáculo
    private static final char EMPTY_CHAR = '-';   // Casilla vacía
    private static final char MONSTER_CHAR = 'M'; // Casilla con un monstruo
    private static final char COMBAT_CHAR = 'C';  // Casilla con un combate
@@ -55,7 +55,6 @@ public class Labyrinth {
     * @param erow  Fila donde se encuentra la salida
     * @param ecol  Columna donde se encuentra la salida
     */
-   
    public Labyrinth(int nrows, int ncols, int erow, int ecol){
        nRows=nrows;
        nCols=ncols;
@@ -77,7 +76,6 @@ public class Labyrinth {
     * 
     * @return true si hay un jugador en la casilla de salida, false en caso contrario.
     */
-   
    public boolean haveAWinner(){
        return players[exitRow][exitCol]!=null;
    }
@@ -87,7 +85,6 @@ public class Labyrinth {
     * 
     * @return String que representa el estado del laberinto.
     */
-   
    public String toString(){
        String state="";
        for(int i=0;i<nRows;i++){
@@ -106,7 +103,6 @@ public class Labyrinth {
     * @param col     Columna en la que añadir el monstruo.
     * @param monster Monstruo a añadir.
     */
-   
    public void addMonster(int row, int col, Monster monster){
        if(posOK(row,col))
            if(emptyPos(row,col)){
@@ -123,89 +119,82 @@ public class Labyrinth {
    }
 
    /**
- * Verifica si una posición en el laberinto está dentro de los límites.
- * 
- * @param row Fila a verificar.
- * @param col Columna a verificar.
- * @return true si la posición está dentro de los límites del laberinto, false en caso contrario.
- */
-   
+    * Verifica si una posición en el laberinto está dentro de los límites.
+    * 
+    * @param row Fila a verificar.
+    * @param col Columna a verificar.
+    * @return true si la posición está dentro de los límites del laberinto, false en caso contrario.
+    */
    private boolean posOK(int row, int col){
       return(row>=0 && row <nRows && col>=0 && col<nCols); 
    }
    
- /**
- * Verifica si una posición en el laberinto está vacía.
- * 
- * @param row Fila a verificar.
- * @param col Columna a verificar.
- * @return true si la posición está vacía, false en caso contrario.
- */
-   
+    /**
+    * Verifica si una posición en el laberinto está vacía.
+    * 
+    * @param row Fila a verificar.
+    * @param col Columna a verificar.
+    * @return true si la posición está vacía, false en caso contrario.
+    */
    private boolean emptyPos(int row, int col){
        return(labyrinth[row][col]==EMPTY_CHAR);
    }
    
- /**
- * Verifica si una posición en el laberinto contiene un monstruo.
- * 
- * @param row Fila a verificar.
- * @param col Columna a verificar.
- * @return true si la posición contiene un monstruo, false en caso contrario.
- */
-   
+    /**
+    * Verifica si una posición en el laberinto contiene un monstruo.
+    * 
+    * @param row Fila a verificar.
+    * @param col Columna a verificar.
+    * @return true si la posición contiene un monstruo, false en caso contrario.
+    */
    private boolean monsterPos(int row, int col){
-       return(monsters[row][col] != null);
+       return(labyrinth[row][col] == MONSTER_CHAR);
    }
    
-/**
- * Verifica si una posición en el laberinto es la casilla de salida.
- * 
- * @param row Fila a verificar.
- * @param col Columna a verificar.
- * @return true si la posición es la casilla de salida, false en caso contrario.
- */
-   
+    /**
+     * Verifica si una posición en el laberinto es la casilla de salida.
+     * 
+     * @param row Fila a verificar.
+     * @param col Columna a verificar.
+     * @return true si la posición es la casilla de salida, false en caso contrario.
+     */
    private boolean exitPos(int row, int col){
        return(labyrinth[row][col]==EXIT_CHAR);
    }
    
- /**
- * Verifica si una posición en el laberinto contiene un combate, es decir, un monstruo y un jugador.
- * 
- * @param row Fila a verificar.
- * @param col Columna a verificar.
- * @return true si la posición contiene un combate, false en caso contrario.
- */
-   
+    /**
+     * Verifica si una posición en el laberinto contiene un combate, es decir, un monstruo y un jugador.
+     * 
+     * @param row Fila a verificar.
+     * @param col Columna a verificar.
+     * @return true si la posición contiene un combate, false en caso contrario.
+     */
    private boolean combatPos(int row, int col){
        return(labyrinth[row][col]==COMBAT_CHAR);
    }
    
- /**
- * Verifica si un jugador puede moverse a una posición en el laberinto.
- * Un jugador puede moverse si la posición está dentro de los límites y 
- * está vacía, contiene un monstruo o es la salida.
- * 
- * @param row Fila a verificar.
- * @param col Columna a verificar.
- * @return true si el jugador puede moverse a la posición, false en caso contrario.
- */
-   
+    /**
+     * Verifica si un jugador puede moverse a una posición en el laberinto.
+     * Un jugador puede moverse si la posición está dentro de los límites y 
+     * está vacía, contiene un monstruo o es la salida.
+     * 
+     * @param row Fila a verificar.
+     * @param col Columna a verificar.
+     * @return true si el jugador puede moverse a la posición, false en caso contrario.
+     */
    private boolean canStepOn(int row, int col){
        return(posOK(row,col) && (emptyPos(row,col) || 
               monsterPos(row,col) || exitPos(row,col))); 
    }
    
- /**
- * Actualiza el estado de una posición antigua en el laberinto.
- * Si la posición contiene un combate, la actualiza para que contenga solo un monstruo.
- * Si no, la marca como vacía.
- * 
- * @param row Fila a actualizar.
- * @param col Columna a actualizar.
- */
-   
+    /**
+     * Actualiza el estado de una posición antigua en el laberinto.
+     * Si la posición contiene un combate, la actualiza para que contenga solo un monstruo.
+     * Si no, la marca como vacía.
+     * 
+     * @param row Fila a actualizar.
+     * @param col Columna a actualizar.
+     */
    private void updateOldPos(int row, int col){
        if(posOK(row,col)){
            if(labyrinth[row][col]== COMBAT_CHAR){
@@ -217,15 +206,14 @@ public class Labyrinth {
        }
    }
    
- /**
- * Calcula la nueva posición al moverse en una dirección desde una posición dada.
- * 
- * @param row       Fila de la posición inicial.
- * @param col       Columna de la posición inicial.
- * @param direction Dirección en la que se desea mover.
- * @return Un array de dos enteros, donde el primer valor es la nueva fila y el segundo la nueva columna.
- */
-   
+    /**
+     * Calcula la nueva posición al moverse en una dirección desde una posición dada.
+     * 
+     * @param row       Fila de la posición inicial.
+     * @param col       Columna de la posición inicial.
+     * @param direction Dirección en la que se desea mover.
+     * @return Un array de dos enteros, donde el primer valor es la nueva fila y el segundo la nueva columna.
+     */
    private int[] dir2Pos(int row, int col, Directions direction){
        int pos[]=new int[2];
        if(Directions.UP==direction){
@@ -247,13 +235,12 @@ public class Labyrinth {
        return pos;
    }
  
- /**
- * Genera una posición aleatoria en el laberinto que esté vacía.
- * Utiliza un dado para generar una fila y columna aleatoria, y repite hasta encontrar una posición vacía.
- * 
- * @return Un array de dos enteros, donde el primer valor es la fila y el segundo la columna de una posición vacía.
- */
-
+    /**
+     * Genera una posición aleatoria en el laberinto que esté vacía.
+     * Utiliza un dado para generar una fila y columna aleatoria, y repite hasta encontrar una posición vacía.
+     * 
+     * @return Un array de dos enteros, donde el primer valor es la fila y el segundo la columna de una posición vacía.
+     */
     private int[] randomEmptyPos(){
         int pos[]=new int[2];
         pos[ROW]=Dice.randomPos(nRows);
@@ -264,7 +251,16 @@ public class Labyrinth {
         }
         return pos;
     }
-    //P3
+    
+    /**
+     * Añade @length bloques al laberinto a partir de una posición inicial en 
+     * una orientación específica
+     * 
+     * @param orientation Vertical u horizontal. Determina la orientación a colocar los muros
+     * @param startRow Valor de la fila de inicio a comenzar a colocar muross
+     * @param startCol Valor de la columna de inicio a comenzar a colocar muros
+     * @param length Número de bloques a colocar
+     */
     public void addBlock(Orientation orientation, int startRow,int startCol, int length){
 
         int incRow;
@@ -286,7 +282,18 @@ public class Labyrinth {
         }
     }
     
-    //P3
+    /**
+     * Actualiza las casillas de la que viene y a la que va el personaje al moverse.
+     *      - Actualizamos la casilla de la que viene para que quede como estaba antes
+     *      - Si la casilla a la que se dirige estaba vacía, coloca el identificador del personaje
+     *      - Si la casilla a la que se dirige tenía un monstruo, coloca el caracter de combate
+     * @param oldRow Numero de fila de la que venia
+     * @param oldCol Numero de columna de la que venia
+     * @param row Numero de fila a la que va
+     * @param col Numero de columna a la que va
+     * @param player Jugador que se mueve
+     * @return Devuelve una variable monster con la información del monstruo si habia uno, si no null
+     */
     private Monster putPlayer2D(int oldRow, int oldCol, int row, int col, Player player)
     {
         Monster output=null;
@@ -317,7 +324,13 @@ public class Labyrinth {
         
     }
     
-    //P3
+    /**
+     * Mueve al personaje hacia una direccion 
+     * 
+     * @param direction Direccion del movimiento
+     * @param player Jugador que se mueve
+     * @return Información del monstruo que había en la casilla, si no hay, null
+     */
     public Monster putPlayer(Directions direction, Player player)
     {
         int oldRow=player.getRow();
@@ -327,6 +340,11 @@ public class Labyrinth {
         return monster;
     }
     
+    /**
+     * Esparce a los jugadores por el laberinto hacia posiciones aleatorias y vacías
+     * 
+     * @param players Array con los jugadores a repartir 
+     */
     public void spreadPlayers(ArrayList<Player> players)
     {
         for(int i=0;i<players.size();i++){
@@ -336,7 +354,12 @@ public class Labyrinth {
         }
     }
     
-    //P3
+    /**
+     * Devuelve un array con las posiciones válidas a moverse desde una casilla
+     * @param row Numero de fila
+     * @param col Numero de columna
+     * @return Direcciones válidas a las que moverse
+     */
     public ArrayList<Directions> validMoves(int row, int col)
     {
         ArrayList<Directions> dir=new ArrayList<>();
@@ -351,15 +374,27 @@ public class Labyrinth {
         return dir;
     }
     
+    /**
+     * Funcion getter del numero de filas del laberinto
+     * @return Numero de filas
+     */
     public int getRows(){
         return nRows;
     }
     
+    /**
+     * Funcion getter del numero de columnas del laberinto
+     * @return Numero de columnas
+     */
     public int getCols(){
         return nCols;
     }
+    
     ////Funciones adicionales para crear, cargar y guardar laberintos////
     
+    /**
+     * Funcion extra para crear un laberinto
+     */
     public void createLabyrinth(){
         String saveRoute = "../labyrinths/labyrinth";
         
@@ -452,6 +487,10 @@ public class Labyrinth {
         saveLabyrinth(saveRoute);
     }
     
+    /**
+     * Funcion extra para cargar un laberinto de un fichero
+     * @param route ruta del fichero en el que se encuentra el laberinto
+     */
     public void loadLabyrinth(String route){
         File fichero = new File(route);
         try{
@@ -487,7 +526,11 @@ public class Labyrinth {
             e.printStackTrace();
         }
     }
-            
+         
+    /**
+     * Funcion extra para guardar laberintos en un fichero
+     * @param route ruta del fichero en el que guardar el laberinto
+     */
     public void saveLabyrinth(String route){
         File fichero = new File(route);
         try{
@@ -509,6 +552,10 @@ public class Labyrinth {
         
     }
     
+    /**
+     * Funcion extra para representar un laberinto con otros caracteres
+     * @return string del laberinto 
+     */
     public String toRealRepresentation(){
         String laberinto = "";
         for(int i =0; i < nCols + 2; i++){

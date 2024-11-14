@@ -106,9 +106,24 @@ public class Game {
     
     
     private void configureLabyrinth(){
-        labyrinth = new Labyrinth(1,1,0,0);
-        this.labyrinth.loadLabyrinth("../labyrinths/lab.txt");
-        int nMonstruos = Dice.randomPos(5)+3;
+        int nRows=7;
+        int nCols=7;
+        labyrinth= new Labyrinth(nRows,nCols,nRows-1,nCols-1);
+        
+        //Añadimos los muros
+        
+        labyrinth.addBlock(Orientation.VERTICAL, 0, 1, 2);
+        labyrinth.addBlock(Orientation.HORIZONTAL, 1, 2, 2);
+        labyrinth.addBlock(Orientation.HORIZONTAL, 0, 5, 1);
+        labyrinth.addBlock(Orientation.VERTICAL, 2, 5, 2);
+        labyrinth.addBlock(Orientation.HORIZONTAL, 3, 0, 2);
+        labyrinth.addBlock(Orientation.HORIZONTAL, 3, 3, 2);
+        labyrinth.addBlock(Orientation.HORIZONTAL, 5, 0, 4);
+        labyrinth.addBlock(Orientation.HORIZONTAL, 5, 5, 2);
+        labyrinth.addBlock(Orientation.VERTICAL, 4, 3, 2);
+        
+        int nMonstruos = Dice.randomPos(nRows)+3;
+        
         Monster monster;
         int pos[];
         for(int i = 0; i < nMonstruos; i++ ){

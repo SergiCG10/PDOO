@@ -144,7 +144,7 @@ class Labyrinth
      end
      
      def monsterPos(row, col)
-     	return (@monsters[row][col] != nil)
+     	return (@labyrinth[row][col] == @@MONSTER_CHAR)
      end
      
      def exitPos(row, col)
