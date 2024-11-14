@@ -38,8 +38,8 @@ class Player
 		@shields=Array.new
 	end
 	
-	attr_accessor: weapons
-	attr_acessor: shields
+	attr_accessor :weapons
+	attr_accessor :shields
      
      # Funcion resurrect. Resucita al jugador, perdiendo las armas y escudos 
      # que poseía y recuperando la salud máxima, además de resetear el número de

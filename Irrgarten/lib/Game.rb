@@ -43,7 +43,7 @@ class Game
 	
 	# Mientras el jugador esté vivo, intenta moverse en la direccion pasada por parametro. Si no puede, se mueve en una de las posibles y comprueba si se produce combate.
 	# Si el jugador está muerto, se comprueba si revive. La función devuelve true si se ha alcanzado el final del juego
-	# @param preferredDirection. Dirección a la que se pretende mover el Player.
+	# @param preferredDirection Dirección a la que se pretende mover el Player.
 	# @return [Boolean] true si el juego ha terminado, de lo contrario false
 	def next_step (preferredDirection)
 	  @log=""
@@ -131,7 +131,7 @@ class Game
 	
 
     #Devuelve el resultado  del ultimo step 
-    #@param preferredDirection. Dirección preferible
+    #@param preferredDirection Dirección preferible
     #@return la dirección final   
 	def actualDirection(preferredDirection)
 		r = @currentPlayer.getRow
