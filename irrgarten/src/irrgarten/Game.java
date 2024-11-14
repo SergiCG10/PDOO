@@ -55,7 +55,15 @@ public class Game {
         return labyrinth.haveAWinner();
     }
     
-    //Practica 3
+    /**
+     * Controla el movimiento del jugador.
+     *  - Si no está muerto se mueve, si entra a la casilla de un jugador comienza un combate
+     *  - Si está muerto comprueba si resucita
+     * Por último comprueba si hay un ganador
+     * 
+     * @param preferredDirection Dirección preferente a moverse por el jugador
+     * @return False si el juego no termina, true si si
+     */
     public boolean nextStep(Directions preferredDirection){
         log="";
         boolean dead=currentPlayer.dead();
@@ -150,11 +158,10 @@ public class Game {
         currentPlayer = players.get(currentPlayerIndex);
     }
     
-    //Practica 3
     /**
      * Funcion actualDirection. Devuelve el resultado  del ultimo step 
-     * @param preferredDirection
-     * @return 
+     * @param preferredDirection Direccion preferente a moverse
+     * @return direccion a la que finalmente se mueve
      */
     private Directions actualDirection(Directions preferredDirection)
     {
@@ -165,11 +172,16 @@ public class Game {
         return dir;
     }
     
-    //Practica 3
     /**
      * Funcion Combat. Devuelve el gameCharacter ganador de la batalla
-     * @param monster
-     * @return 
+     *  La batalla se dearrolla en MAX_ROUNDS rondas, comienza el jugador atacando, 
+     *  y posteriormente se realizan rondas de ataque primero del monstruo y después el jugador
+     * 
+     *  El primero que alcance 0 de vida pierde, o si el jugador recibe el numero 
+     *  de golpes consecutivos indicado
+     * 
+     * @param monster monstruo con el que lucha
+     * @return ganador del combate
      */
     private GameCharacter combat(Monster monster)
     {
@@ -177,7 +189,6 @@ public class Game {
         GameCharacter winner=GameCharacter.PLAYER;
         float playerAttack=currentPlayer.attack();
         System.out.print("Jugador "+(this.currentPlayerIndex+1)+" hace "+playerAttack+" daño\n");
-        rounds++;
         boolean lose=monster.defend(playerAttack);
         if(lose)
             System.out.print("Monstruo muere\n");
@@ -198,7 +209,10 @@ public class Game {
         return winner;
     }
     
-    //Practica 3
+    /**
+     * Funcion que le da recompensas al jugador por ganar un combate y registra el ganador del mismo en el log
+     * @param winner Ganador del combate
+     */
     private void manageReward(GameCharacter winner){
         if(winner==GameCharacter.PLAYER){
             currentPlayer.receiveReward();
@@ -208,7 +222,9 @@ public class Game {
             this.logMonsterWon();
     }
     
-    //Practica 3
+    /**
+     * Funcion que controla la resurreción del jugador y almacena en el log si el jugador resucita o pierde turno
+     */
     private void manageResurrection(){
         boolean resurrect=Dice.resurrectPlayer();
         if(resurrect){

@@ -109,7 +109,12 @@ public class Player {
         return health <= 0;
     }
     
-    //IMPLEMENTACION P3
+    /**
+     * Mueve al personaje en una dirección, si esa dirección no es posible se mueve hacia una válida
+     * @param direction Direccion preferente a moverse
+     * @param validMoves Vector con direcciones posibles para moverse
+     * @return direccion a la que se mueve finalmente
+     */
     public Directions move(Directions direction, ArrayList<Directions> validMoves )
     {
         Directions move;
@@ -148,7 +153,9 @@ public class Player {
         return manageHit(receivedAttack);
     }
     
-    //IMPLEMENTACION P3
+    /**
+     * Le da al jugador armas escudos y vida aleatoris como recompensa
+     */
     public void receiveReward()
     {
         int wReward=Dice.weaponsReward();
@@ -196,11 +203,14 @@ public class Player {
         return info;
     }
     
-    //IMPLEMENTACION P3
+    /**
+     * Comprueba si algún arma se descarta, la elimina, y posteriormente le da el arma nueva al jugador
+     * @param w Arma a recibir por el jugador
+     */
     private void receiveWeapon(Weapon w)
     {
         for(int i=0;i<weapons.size();i++){
-            Weapon wi=weapons.get(i);   //el diag dice algo de next pero no me sale la funcion
+            Weapon wi=weapons.get(i); 
             boolean discard=wi.discard();
             if(discard)
                 weapons.remove(wi);
@@ -210,7 +220,10 @@ public class Player {
             weapons.add(w);
     }
     
-    //IMPLEMENTACION P3
+    /**
+     * Comprueba si algún escudo se descarta, lo elimina, y posteriormente le da el escudo nuevo al jugador
+     * @param s Escudo a recibir por el jugador
+     */
     private void receiveShield(Shield s)
     {
         for(int i=0;i<shields.size();i++){
@@ -278,7 +291,20 @@ public class Player {
         return intelligence + sumShields();
     }  
     
-    //IMPLEMENTACION P3
+    /**
+     * Administra el daño recibido por el jugador y las consecuencias del mismo.
+     * - Si el daño es mayor que la suma de su inteligencia más la defensa 
+     *   de sus escudos, recibe uno de daño e incrementa el numero de golpes 
+     *   consecutivos recibidos
+     * - Si el daño es menor que la suma de su inteligencia más la defensa 
+     *   resetea los golpes consecutivos recibidos a 0
+     * Después comprueba:
+     *   - Si alcanza el numero de golpes consecutivos, pierde
+     *   - Si tiene 0 de vida pierde
+     *      
+     * @param receivedAttack Valor del ataque recibido
+     * @return Si el jugador ha perdido o no
+     */
     private boolean manageHit(float receivedAttack){
         float defense=this.defensiveEnergy();
         if(defense < receivedAttack){
