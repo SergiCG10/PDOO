@@ -1,7 +1,7 @@
 package irrgarten;
 
 /**
- * Clase Player. Esta clase contiene la implementación de la variable player y sus 
+ * Clase Monster. Esta clase contiene la implementación de la variable monster y sus 
  * funciones básicas para la utilización de la clase
  * 
  * @author Miguel Ángel Luque Gómez
