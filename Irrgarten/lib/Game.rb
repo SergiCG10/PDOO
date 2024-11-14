@@ -16,7 +16,7 @@ require_relative 'GameCharacter'
 class Game
 	@@MAX_ROUNDS=10
 	  
-	  # Inicializa el juego, creando jugadores y monstruos, configurando el laberinto, y asignando el turno inicial.
+    # Inicializa el juego, creando jugadores y monstruos, configurando el laberinto, y asignando el turno inicial.
 	def initialize (nplayers)
 		@players=Array.new(nplayers)
 		@monsters=Array.new
@@ -36,12 +36,11 @@ class Game
 	end
 	
 	# Indica si el juego ha terminado, delegando en el método del laberinto que verifica la presencia de un ganador.
-  # @return [Boolean] true si hay un ganador, de lo contrario false.
+    # @return [Boolean] true si hay un ganador, de lo contrario false.
 	def finished
 		@labyrinth.haveAWinner
 	end
 	
-	#P3
 	# Mientras el jugador esté vivo, intenta moverse en la direccion pasada por parametro. Si no puede, se mueve en una de las posibles y comprueba si se produce combate.
 	# Si el jugador está muerto, se comprueba si revive. La función devuelve true si se ha alcanzado el final del juego
 	# @param preferredDirection. Dirección a la que se pretende mover el Player.
@@ -74,7 +73,7 @@ class Game
 	end
 	
 	# Genera una instancia de GameState con toda la información del estado actual del juego.
-  # @return [GameState] El estado actual del juego.
+    # @return [GameState] El estado actual del juego.
 	def game_state
 		allPlayers=""
 		allMonsters=""
@@ -92,7 +91,7 @@ class Game
 	private
 	
 	# Configura el laberinto, añadiendo obstáculos y monstruos.
-  # Los monstruos se guardan tanto en el laberinto como en el contenedor de monstruos de la clase.
+    # Los monstruos se guardan tanto en el laberinto como en el contenedor de monstruos de la clase.
 	def configureLabyrinth
 		nRows=7
 		nCols=7
@@ -119,7 +118,7 @@ class Game
 		end
 	end
 	
-	  # Cambia el turno al siguiente jugador en la lista, actualizando los atributos de turno actual.
+	# Cambia el turno al siguiente jugador en la lista, actualizando los atributos de turno actual.
 	def nextPlayer
 		@players[@currentPlayerIndex]= @currentPlayer
 		if @currentPlayerIndex+1==@players.size
@@ -131,9 +130,9 @@ class Game
 	end
 	
 
-  #Devuelve el resultado  del ultimo step 
-  #@param preferredDirection. Dirección preferible
-  #@return la dirección final   
+    #Devuelve el resultado  del ultimo step 
+    #@param preferredDirection. Dirección preferible
+    #@return la dirección final   
 	def actualDirection(preferredDirection)
 		r = @currentPlayer.getRow
 		c = @currentPlayer.getCol
@@ -144,10 +143,9 @@ class Game
 	end
 	
     
-  # Funcion Combat. Devuelve el gameCharacter ganador de la batalla
-  # @param monster
-  # @return gameCharacter ganador
-     
+	# Funcion Combat. Devuelve el gameCharacter ganador de la batalla
+	# @param monster
+	# @return gameCharacter ganador
 	def combat(monster)
 		rounds = 0
 		winner = GameCharacter::PLAYER
@@ -196,39 +194,39 @@ class Game
 		end
 	end
 	
-	  # Registra en el log que el jugador ha ganado el combate.
+	# Registra en el log que el jugador ha ganado el combate.
 	def logPlayerWon
 		@log+="El jugador ha ganado el combate\n"
 	end
 	
-	  # Registra en el log que el monstruo ha ganado el combate.
+	# Registra en el log que el monstruo ha ganado el combate.
 	def logMonsterWon
 		@log+="El monstruo ha ganado el combate\n"
 	end
 	
-	  # Registra en el log que el jugador ha resucitado.
+	# Registra en el log que el jugador ha resucitado.
 	def logResurrected
 		@log+="El jugador ha resucitado\n"
 	end
 	
-	  # Registra en el log que el jugador ha perdido el turno debido a que está muerto.
+	# Registra en el log que el jugador ha perdido el turno debido a que está muerto.
 	def logPlayerSkipTurn
 		@log += "El jugador ha perdido turno por estar muerto\n"
 	end
 	
-	  # Registra en el log que el jugador no ha seguido las instrucciones del jugador humano.
+	# Registra en el log que el jugador no ha seguido las instrucciones del jugador humano.
 	def logPlayerNoOrders
 		@log += "El jugador no ha podido seguir las instrucciones\n"
 	end
 	
-	  # Registra en el log que el jugador se movió a una celda vacía o que no pudo moverse.
+	# Registra en el log que el jugador se movió a una celda vacía o que no pudo moverse.
 	def logNoMonster
 		@log += "El jugador se ha movido a una celda vacía o no ha podido moverse\n"
 	end
 	
 	# Registra en el log el número de rondas completadas de combate.
-  # @param rounds [Integer] Número de rondas completadas.
-  # @param max [Integer] Número máximo de rondas permitidas.
+    # @param rounds [Integer] Número de rondas completadas.
+    # @param max [Integer] Número máximo de rondas permitidas.
 	def logRounds(rounds, max)
 		@log+="Se han producido " + rounds.to_s + " de " + max.to_s + "\n"
 	end
