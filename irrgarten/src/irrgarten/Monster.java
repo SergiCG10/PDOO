@@ -66,7 +66,7 @@ public class Monster {
      * @return Info del monstruo
      */
     public String toString(){
-        return "M[ name: "+name+"\nintelligence: "+intelligence+"\nstregth: "+strength+"\nrow: "+row+"\ncol: "+col+"\nhealth: "+health+"]\n\n";
+        return "M[ name: "+name+" intelligence: "+intelligence+" stregth: "+strength+" row: "+row+" col: "+col+" health: "+health+"]\n\n";
     }
     
     /**
