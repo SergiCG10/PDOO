@@ -25,7 +25,6 @@ class Player
      # @param nmb Número del jugador
      # @param howsmart Cómo de inteligente es
      # @param howstrong Cómo de fuerte es    
-     #
 	def initialize(nmb, howsmart, howstrong)
 		@name="Player#"+nmb
 		@number=nmb
@@ -38,34 +37,34 @@ class Player
 		@weapons=Array.new
 		@shields=Array.new
 	end
-     #
+	
+	attr_accessor: weapons
+	attr_acessor: shields
+     
      # Funcion resurrect. Resucita al jugador, perdiendo las armas y escudos 
      # que poseía y recuperando la salud máxima, además de resetear el número de
      # golpes recibidos.
-     #
 	def resurrect
 		@weapons.clear
 		@shields.clear
 		@health=@@INITIAL_HEALTH
 		#resetHits
 	end
-     #
+     
      # Funcion getRow. Devuelve la fila en la que se encuentra el jugador
      # 
      # @return Número de fila del jugador 
-     #
 	def getRow
 		@row
 	end
-     #
+     
      # Funcion getCol. Devuelve la columna en la que se encuentra el jugador
      # 
      # @return Número de columna del jugador 
-     #
 	def getCol
 		@col
 	end
-     #	
+     
      #Funcion getNumber. Devuelve el número del jugador
      #
      #@return Número del jugador 
@@ -73,21 +72,16 @@ class Player
 	def getNumber
 		@number
 	end
-	
-	attr_accessor :weapons
-	attr_accessor :shields
-     #
+    
      # Funcion setPos. Establece la posición del jugador
      # 
      # @param r Número de fila
      # @param c Número de columna
-     #
 	def setPos(r,c)
 		@row=r
 		@col=c
 	end
      
-     #
      # Funcion dead. Devuelve si el jugador está o no muerto
      # 
      # @return true si está muerto, false si no
@@ -96,6 +90,10 @@ class Player
 		@health <=0
 	end
 	
+	# Funcion move. Mueve al personaje hacia direction, si no se puede, hacia una valida dentro de validMoves
+	#
+	# @param direction Direccion preferente a moverse
+	# @param validMoves Vector con las direcciones validas a moverse
 	def move(direction, validMoves)
 		
 		size = validMoves.size
@@ -135,6 +133,7 @@ class Player
 		return manageHit(receivedAttack)
 	end
 	
+	# Funcion receiveReward. Le da al jugador armas, escudos y vida aleatorios
 	def receiveReward
 		nW = Dice.weaponsReward()
 		nS = Dice.shieldsReward()
@@ -177,6 +176,9 @@ class Player
 		return info
 	end
 	
+	# Funcion receiveWeapon. Elimina las armas que se deben de descartar y le da al jugador el arma nueva si se puede
+	#
+	# @param newW Arma nueva para el jugador
 	def receiveWeapon(newW)
 		@weapons.each do |w| 
 			if w.discard
@@ -189,6 +191,9 @@ class Player
 		end
 	end
 	
+	# Funcion receiveShield. Elimina los escudos que se deben de descartar y le da al jugador el escudo nuevo si se puede
+	#
+	# @param newS Escudo nuevo para el jugador
 	def receiveShield(newS)
 		@shields.each do |s| 
 			if s.discard
@@ -252,7 +257,14 @@ class Player
 		return @intelligence + sumShields
 	end
 	
-	#Implementación P3
+	#Funcion manageHit. Gestiona el ataque recibido por el jugador
+	# Si el jugador recibe un ataque mayor que su inteligencia más la suma de la defensa de sus escudos, recibe uno de daño, si no, se resetea el numero de golpes consecutivos recibidos
+	# Si el numeo de golpes consecutivos alcanza @@HITS2LOSE el jugador pierde
+	# Si la vida del jugador es 0, el jugadir pierde tambien
+	# 
+	# @param receivedAttack Valor de ataque recibido
+	# @return Booleano de si el jugador pierde o no
+	#
 	def manageHit(receivedAttack)
 		defense = defensiveEnergy()
 				
