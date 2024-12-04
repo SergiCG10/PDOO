@@ -37,21 +37,14 @@ class Player < LabyrinthCharacter
 		@shields=Array.new
 	end
 	
-	#PREGUNTAR COMO SE HACE
 	def copy(other)
 		super
 		@number = other.number
 		@consecutiveHits=other.consecutiveHits
 		
-		@weapons=Array.new
-		for i in 0..other.weapons.size
-			@weapons.push( other.weapons[i])
-		end 
-		
-		@shields=Array.new
-		for i in 0..other.shields.size
-			@shields.push( other.shields[i])
-		end
+		@weapons = other.weapons
+		@shields = other.shields
+			
 	end
      
      # Funcion resurrect. Resucita al jugador, perdiendo las armas y escudos 

@@ -9,6 +9,9 @@ require_relative 'CombatElement'
 # correo e.sergiocg10@go.ugr.es
 #
 class Weapon < CombatElement
+
+	public_class_method :new	
+	
     # Constructor por parámetro de la clase Weapon
     # @param pw daño del arma a crear
     # @param u usos del arma a crear
@@ -23,7 +26,7 @@ class Weapon < CombatElement
     # @return Valor de ataque. 0 si no le quedan usos, power si no.
     #
     def attack
-    	return super
+    	return produceEffect
     end
     
     # Funcion toString de la clase Weapon. Muestra los valores de la clase

@@ -4,7 +4,7 @@ class LabyrinthCharacter
 	attr_reader :name 
 	attr_reader :intelligence 
 	attr_reader :strength 
-	attr_reader :health
+	attr_accessor :health
 	attr_reader :row
 	attr_reader :col
 	
@@ -17,13 +17,13 @@ class LabyrinthCharacter
 		@col = @@INVALID_POS
 	end
 	
-	##PREGUNTA, como se hace?
 	def copy(other)
 		@name = other.name
 		@intelligence = other.intelligence
 		@strength = other.strength
 		@health = other.health
-		setPos(other.row, other.col)
+		@row = other.row
+		@col = other.col
 	end
 	
 	# Devuelve true si muere el monstruo
@@ -31,31 +31,6 @@ class LabyrinthCharacter
     	return @health <= 0;
     end
     
-    #PREGUNTAR AL PROFESOR SI CON ATTR_ACCESSOR SIRVE O HAY QUE PONER ESTO PARA QUE SEA PROTECTED
-    def getRow
-    	return @row
-    end
-    
-	def getCol
-		return @col
-	end
-	
-	def getIntelligence
-		return @intelligence
-	end
-	
-	def getStrength
-		return @strength
-	end
-	
-	def getHealth
-		return @health
-	end
-	
-	def setHealth(hp)
-		@health = hp
-	end
-
 	# Funcion setPos. Establece la posición del jugador
     # 
     # @param r Número de fila
@@ -78,14 +53,6 @@ class LabyrinthCharacter
 		@health -= 1
 	end
 	
-	#PREGUNTAR SI ESTO ESTÁ BIEN ASÍ (ATTACK y DEFEND)
-	def attack
-		raise NotImplementedError, "El metodo attack no está implementado para CombatElement"
-	end
-	
-	def defend
-		raise NotImplementedError, "El metodo defend no está implementado para CombatElement"
-	end
-	
-	protected :getIntelligence, :getStrength, :getHealth, :setHealth, :gotWounded
+	protected :intelligence, :strength, :health, :gotWounded
+	private_class_method :new
 end

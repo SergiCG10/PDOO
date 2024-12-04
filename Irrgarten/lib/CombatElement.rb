@@ -10,19 +10,11 @@ class CombatElement
 	def produceEffect
 		eff=0;
         if( @uses > 0 )
-            eff=@effect;
+            eff = @effect;
             @uses -= 1;
         end
         
         return eff;
-	end
-	
-	def protect #PREGUNTAR AL PROFESOR
-		produceEffect
-	end
-	
-	def attack #PREGUNTAR AL PROFESOR
-		produce effect
 	end
 	
 	def to_s

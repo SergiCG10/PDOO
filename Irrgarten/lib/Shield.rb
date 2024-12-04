@@ -10,6 +10,9 @@ require_relative 'Dice'
 # correo e.sergiocg10@go.ugr.es
 #
 class Shield < CombatElement
+
+	public_class_method :new		
+	
     # Constructor por parámetro de la clase Shield
     # @param pr defensa del escudo a crear
     # @param u usos del escudo a crear
@@ -23,7 +26,7 @@ class Shield < CombatElement
     # @return Valor de denfesa. 0 si no le quedan usos, protection si no.
     #
     def protect
-    	return super
+    	return produceEffect
     end
     
     # Funcion toString de la clase Shield. Muestra los valores de la clase
