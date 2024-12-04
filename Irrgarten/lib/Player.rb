@@ -14,6 +14,9 @@ require_relative 'Shield'
 require_relative "Directions"
 
 class Player < LabyrinthCharacter
+
+	public_class_method :new
+	
 	@@MAX_WEAPONS=2
 	@@MAX_SHIELDS=3
 	@@INITIAL_HEALTH=3

@@ -11,6 +11,8 @@ require_relative 'LabyrinthCharacter'
 # correo e.sergiocg10@go.ugr.es
 
 class Monster < LabyrinthCharacter
+    public_class_method :new
+    
     @@INITIAL_HEALTH = 5;
     
     # Constructor de monster.
