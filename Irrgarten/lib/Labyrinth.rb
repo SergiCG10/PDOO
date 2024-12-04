@@ -160,6 +160,11 @@ class Labyrinth
      def getCols
      	return @nCols
      end
+     #establece en el laberinto el nuevo fuzzyplayer
+     #@param player FuzzyPlayer que se va a incluir
+     def convertToFuzzy(player)
+        players[player.row][player.col]=player
+     end
      
 private 
 

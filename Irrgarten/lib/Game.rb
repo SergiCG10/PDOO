@@ -188,6 +188,9 @@ class Game
 		resurrect = Dice.resurrectPlayer
 		if resurrect
 			@currentPlayer.resurrect
+			fuzzyplayer=FuzzyPlayer.new(@currentPlayer)
+			@labyrinth.convertToFuzzy(fuzzyplayer)
+			@players[@currentPlayerIndex]=fuzzyplayer
 			logResurrected
 		else
 			logPlayerSkipTurn
