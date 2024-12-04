@@ -11,51 +11,23 @@ package irrgarten;
  * correo e.sergiocg10@go.ugr.es
  * 
  */
-public class Weapon {
+public class Weapon extends CombatElement{
     
-    
-    private float power;        //Valor de daño del arma
-    private int uses;           //Número de usos disponibles del arma
-
-     /**
-     * Constructor por parámetro de la clase Weapon
-     * @param p daño del arma a crear
-     * @param us usos del arma a crear
-     */
-    public Weapon(float p, int us){
-        power=p;
-        uses=us;
+    public Weapon(float defense, int us){
+        super(defense, us);
     }
     
-    /**
-     * Función Attack. Devuelve el valor de daño del arma
-     * y decrementa su uso en uno
-     * @return Valor de ataque. 0 si no le quedan usos, power si no.
-     */
     public float attack(){
-        float damage=0f;
-        if(uses>0){
-            damage=power;
-            uses--;
-        }
-        
-        return damage;
+        return super.produceEffect();
     }
     
+    @Override
     /**
-     * Funcion toString de la clase Weapon. Muestra los valores de la clase
-     * en un string en el formato [power, uses].
+     * Funcion toString de la clase Shield. Muestra los valores de la clase
+     * en un string en el formato [protection, uses].
      * @return String con la información de la clase
      */
     public String toString(){
-        return "W["+power+", "+uses+"]\n";
-    }
-    
-    /**
-     * Funcion discard. Devuelve si se debe de descartar el arma.
-     * @return True si se descarta, false si no.
-     */
-    public boolean discard(){
-        return Dice.discardElement(uses);
+        return "W" + super.toString();
     }
 }

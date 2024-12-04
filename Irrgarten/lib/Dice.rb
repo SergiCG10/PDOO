@@ -133,5 +133,15 @@ class Dice
     	end
     	return discard; 
     end
+    
+    #P4
+    def self.nextStep(preference, validMoves, intelligence)
+    	if @@generator.rand * @@MAX_INTELLIGENCE < intelligence
+    		dir = preference
+    	else
+    		pos = generator.rand * validMoves.length
+    		dir = validMoves[pos]
+    	end
+    end
 end
 

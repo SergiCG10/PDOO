@@ -10,85 +10,52 @@ package irrgarten;
  * @author Sergio Calvo González
  * correo: e.sergiocg10@go.ugr.es
  */
-public class Monster {
-    private static final int INVALID_POS=-1;    //Variable que indica la posición inicial del monstruo
-    private static final int INITIAL_HEALTH=5;  //Salud inicial del monstruo
-    private String name;                        //Nombre del monstruo
-    private float strength;                     //Fuerza del monstruo
-    private float intelligence;                 //Inteligencia del monstruo
-    private float health;                       //Vida actual del monstruo
-    private int row;                            //Fila del monstruo
-    private int col;                            //Columna del monstruo
+public class Monster extends LabyrinthCharacter{
+    private static final int INITIAL_HEALTH=5;  //Salud inicial 
     
     /**
      * Constructor de la clase Monster.
-     * @param n nombre del monstruo
-     * @param intel inteligencia del monstruo
-     * @param str fuerza del monstruo
+     * @param hownamed nombre del monstruo
+     * @param howsmart inteligencia del monstruo
+     * @param howstrong fuerza del monstruo
      */
-    public Monster(String n, float intel, float str){
-        name=n;
-        intelligence=intel;
-        strength=str;
-        row=INVALID_POS;
-        col=INVALID_POS;
-        health=(float)INITIAL_HEALTH;
+    public Monster(String hownamed, float howsmart, float howstrong){
+        super(hownamed, howsmart, howstrong, (float)INITIAL_HEALTH);
     }
     
-    /**
-     * Funcion dead. Devuelve si el monstruo está muerto o no
-     * @return True si está muerto, false si no
-     */
-    public boolean dead(){
-        return (health<=0);
-    }
-    
+    @Override
     /**
      * Funcion attack. Devuelve el ataque del monstruo
      * @return Valor aleatorio entre 0 y strength
      */
     public float attack(){
-        return Dice.intensity(strength);
+        return Dice.intensity(this.getStrength());
     }
     
-    /**
-     * Función setPos. Establece la posición del monstruo
-     * @param r Número de fila
-     * @param c Número de columna
-     */
-    public void setPos(int r, int c){
-        row=r;
-        col=c;
-    }
-    
+    @Override
     /**
      * Funcion toString. Devuelve toda la información de la clase monstruo en un string
      * @return Info del monstruo
      */
     public String toString(){
-        return "M[ name: "+name+" intelligence: "+intelligence+" stregth: "+strength+" row: "+row+" col: "+col+" health: "+health+"]\n\n";
+        return "\n" + super.toString();
     }
     
-    /**
-     * Funcion gotWounded. Resta uno de vida al monstruo.
-     */
-    public void gotWounded(){
-        health--;
-    }
+    @Override
     public boolean defend(float receivedAttack){
         boolean isDead=this.dead();
         if(!isDead)
         {
-            float defensiveEnergy=Dice.intensity(intelligence);
+            float defensiveEnergy=Dice.intensity(this.getIntelligence());
             if(defensiveEnergy < receivedAttack){
                 System.out.print("\tMonstruo pierde 1 corazon\n");
                 this.gotWounded();
                 isDead=this.dead();
                 if(isDead)
-                    System.out.print("\nMonstruo "+this.name+ " muere\n");
+                    System.out.print("\nMonstruo muere\n");
             }
             else
-                System.out.print("\tMonstruo "+this.name+" se defiende\n");
+                System.out.print("\tMonstruo se defiende\n");
         }
         return isDead;
     }

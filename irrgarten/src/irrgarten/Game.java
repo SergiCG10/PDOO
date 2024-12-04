@@ -36,7 +36,6 @@ public class Game {
             // Al valor de 1 en ascii (49), le sumamos i para obtener el valor de jugador en forma de char
             char c = (char)(i + '1'); 
             Player p = new Player(c ,Dice.randomIntelligence(), Dice.randomStrength() );
-            p.receiveReward();
             players.add(p);
         }
             this.labyrinth.spreadPlayers(players);
@@ -119,7 +118,7 @@ public class Game {
         labyrinth= new Labyrinth(nRows,nCols,nRows-1,nCols-1);
         
         //Añadimos los muros
-        
+        /**
         labyrinth.addBlock(Orientation.VERTICAL, 0, 1, 2);
         labyrinth.addBlock(Orientation.HORIZONTAL, 1, 2, 2);
         labyrinth.addBlock(Orientation.HORIZONTAL, 0, 5, 1);
@@ -129,18 +128,20 @@ public class Game {
         labyrinth.addBlock(Orientation.HORIZONTAL, 5, 0, 4);
         labyrinth.addBlock(Orientation.HORIZONTAL, 5, 5, 2);
         labyrinth.addBlock(Orientation.VERTICAL, 4, 3, 2);
-        
-        int nMonstruos = Dice.randomPos(nRows)+3;
-        
-        Monster monster;
+        */
+        //int nMonstruos = Dice.randomPos(nRows)+3;
+        Monster monster = new Monster ("Dragon", 100f, 100f);
+        labyrinth.addMonster(1, 1, monster);
+        monsters.add(monster);
+        /**
         int pos[];
         for(int i = 0; i < nMonstruos; i++ ){
-            monster = new Monster ("Orco", Dice.randomIntelligence(), Dice.randomIntelligence());
-            int r = Dice.randomPos( labyrinth.getRows() );
-            int c = Dice.randomPos( labyrinth.getCols() );
+            monster = new Monster ("Orco", Dice.randomStrength(), Dice.randomIntelligence());
+            r = Dice.randomPos( labyrinth.getRows() );
+            c = Dice.randomPos( labyrinth.getCols() );
             labyrinth.addMonster(r, c, monster);
             monsters.add(monster);
-        }    
+        }*/    
     }
     
     /**
@@ -148,13 +149,9 @@ public class Game {
      * y pasa al siguiente jugador. 
      */
     private void nextPlayer(){
-        players.set(currentPlayerIndex, currentPlayer);//Intercambiamos la variable de jugador actual por el jugador correspondiente en el vector
-        
-        if(currentPlayerIndex + 1 == players.size()){
-            currentPlayerIndex = 0;
-        }else{
-            currentPlayerIndex++;
-        }
+               
+        currentPlayerIndex = (currentPlayerIndex + 1) % players.size();
+
         currentPlayer = players.get(currentPlayerIndex);
     }
     
@@ -167,7 +164,7 @@ public class Game {
     {
         int row=currentPlayer.getRow();
         int col=currentPlayer.getCol();
-        ArrayList<Directions> validMoves=labyrinth.validMoves(row, col);
+        ArrayList<Directions> validMoves = labyrinth.validMoves(row, col);
         Directions dir=currentPlayer.move(preferredDirection, validMoves);
         return dir;
     }
@@ -230,6 +227,10 @@ public class Game {
         if(resurrect){
             this.currentPlayer.resurrect();
             this.logResurrected();
+       
+            FuzzyPlayer fp = new FuzzyPlayer(currentPlayer);
+            players.set(currentPlayerIndex, fp);
+            this.labyrinth.convertToFuzzy(fp);
         }else
             this.logPlayerSkipTurn();
     }

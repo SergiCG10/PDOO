@@ -1,5 +1,5 @@
 require_relative 'Dice'
-
+require_relative 'CombatElement'
 # Clase Weapon. Implementación de la clase Weapon, de sus métodos y variables.
 # 
 # @author Miguel Ángel Luque Gómez
@@ -8,14 +8,13 @@ require_relative 'Dice'
 # @author Sergio Calvo González
 # correo e.sergiocg10@go.ugr.es
 #
-class Weapon
+class Weapon < CombatElement
     # Constructor por parámetro de la clase Weapon
     # @param pw daño del arma a crear
     # @param u usos del arma a crear
     #
     def initialize(pw, u)
-    	@power=pw
-    	@uses=u
+    	super
     end
     
     
@@ -24,13 +23,7 @@ class Weapon
     # @return Valor de ataque. 0 si no le quedan usos, power si no.
     #
     def attack
-    	damage=0;
-        if( @uses > 0 )
-            damage=@power;
-            @uses -= 1;
-        end
-        
-        return damage;
+    	return super
     end
     
     # Funcion toString de la clase Weapon. Muestra los valores de la clase
@@ -38,14 +31,6 @@ class Weapon
     # @return String con la información de la clase
     #
     def to_s
-    	return "[" + @power.to_s +  ", " + @uses.to_s + "]"; 
-    end 
-    
-    # Funcion discard. Devuelve si se debe de descartar el arma.
-    # @return True si se descarta, false si no.
-    #
-    def discard
-    	return Dice.discardElement(@uses)
-    end
-     
+    	return "W" + super; 
+    end      
 end

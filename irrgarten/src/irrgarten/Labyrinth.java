@@ -302,8 +302,9 @@ public class Labyrinth {
         Monster output=null;
         if(this.canStepOn(row, col)){
             if(this.posOK(oldRow, oldCol)){
-                Player p=players[oldRow][oldCol];
-                if(p==player){
+                System.out.print(players[oldRow][oldCol].toString());
+                if(players[oldRow][oldCol]==player){ //P5
+                    System.out.print("\nEntramos en PUTPLAYER2D\n");
                     this.updateOldPos(oldRow, oldCol);
                     players[oldRow][oldCol]=null;
                 }
@@ -351,9 +352,8 @@ public class Labyrinth {
     public void spreadPlayers(ArrayList<Player> players)
     {
         for(int i=0;i<players.size();i++){
-            Player p=players.get(i);
             int [] pos=this.randomEmptyPos();
-            Monster monster=this.putPlayer2D(-1, -1, pos[ROW], pos[COL], p);
+            Monster monster=this.putPlayer2D(-1, -1, pos[ROW], pos[COL], players.get(i));
         }
     }
     
@@ -391,6 +391,10 @@ public class Labyrinth {
      */
     public int getCols(){
         return nCols;
+    }
+    
+    public void convertToFuzzy(FuzzyPlayer p){
+        players[p.getRow()][p.getCol()] = p;
     }
     
     ////Funciones adicionales para crear, cargar y guardar laberintos////

@@ -8,38 +8,51 @@
 # @author Sergio Calvo González
 # correo e.sergiocg10@go.ugr.es
  
+require_relative 'LabyrinthCharacter'
 require_relative 'Weapon'
 require_relative 'Shield'
 require_relative "Directions"
 
-class Player
-	
-	@@INVALID_POS=-1
+class Player < LabyrinthCharacter
 	@@MAX_WEAPONS=2
 	@@MAX_SHIELDS=3
 	@@INITIAL_HEALTH=3
 	@@HITS2LOSE=3	
-     
+    
+    attr_accessor :number
+    attr_accessor :consecutiveHits  	
+	attr_accessor :weapons
+	attr_accessor :shields
+	
      # Constructor por parámetro de la clase Player.
      # 
      # @param nmb Número del jugador
      # @param howsmart Cómo de inteligente es
      # @param howstrong Cómo de fuerte es    
-	def initialize(nmb, howsmart, howstrong)
-		@name="Player#"+nmb
+	def initialize(nmb, howSmart, howStrong)
+		super("Player#"+nmb, howSmart, howStrong, @@INITIAL_HEALTH)
 		@number=nmb
-		@intelligence=howsmart
-		@strength=howstrong
-		@health=@@INITIAL_HEALTH
-		@row=@@INVALID_POS
-		@col=@@INVALID_POS
 		@consecutiveHits=0
 		@weapons=Array.new
 		@shields=Array.new
 	end
 	
-	attr_accessor :weapons
-	attr_accessor :shields
+	#PREGUNTAR COMO SE HACE
+	def copy(other)
+		super
+		@number = other.number
+		@consecutiveHits=other.consecutiveHits
+		
+		@weapons=Array.new
+		for i in 0..other.weapons.size
+			@weapons.push( other.weapons[i])
+		end 
+		
+		@shields=Array.new
+		for i in 0..other.shields.size
+			@shields.push( other.shields[i])
+		end
+	end
      
      # Funcion resurrect. Resucita al jugador, perdiendo las armas y escudos 
      # que poseía y recuperando la salud máxima, además de resetear el número de
@@ -48,21 +61,7 @@ class Player
 		@weapons.clear
 		@shields.clear
 		@health=@@INITIAL_HEALTH
-		#resetHits
-	end
-     
-     # Funcion getRow. Devuelve la fila en la que se encuentra el jugador
-     # 
-     # @return Número de fila del jugador 
-	def getRow
-		@row
-	end
-     
-     # Funcion getCol. Devuelve la columna en la que se encuentra el jugador
-     # 
-     # @return Número de columna del jugador 
-	def getCol
-		@col
+		resetHits
 	end
      
      #Funcion getNumber. Devuelve el número del jugador
@@ -71,23 +70,6 @@ class Player
      #
 	def getNumber
 		@number
-	end
-    
-     # Funcion setPos. Establece la posición del jugador
-     # 
-     # @param r Número de fila
-     # @param c Número de columna
-	def setPos(r,c)
-		@row=r
-		@col=c
-	end
-     
-     # Funcion dead. Devuelve si el jugador está o no muerto
-     # 
-     # @return true si está muerto, false si no
-     #
-	def dead
-		@health <=0
 	end
 	
 	# Funcion move. Mueve al personaje hacia direction, si no se puede, hacia una valida dentro de validMoves
@@ -158,19 +140,15 @@ class Player
      # @return String con toda la información del jugador
      #
 	def to_s
-		info ="\n\t"+@name+"\n"
-		info +="\n\tIntelligence: " + @intelligence.to_s
-		info +="\n\tStregth: " + @strength.to_s
-		info +="\n\tHealth: " + @health.to_s
-		info +="\n\tPosition: (" + @row.to_s + ", " + @col.to_s + ")"
-		info +="\n\n\tWeapons:\n"
+		info = super
+		info +="\n\nWeapons:\n"
 		weapons.each do |weapon| 
-			info+="\t" + weapon.to_s
+			info+= weapon.to_s
 			info+="\n"
 		end
-		info +="\n\n\tShields:\n"
+		info +="\n\nShields:\n"
 		shields.each do |shield| 
-			info+="\t" + shield.to_s
+			info+= + shield.to_s
 			info+="\n"
 		end
 		return info
@@ -266,16 +244,16 @@ class Player
 	# @return Booleano de si el jugador pierde o no
 	#
 	def manageHit(receivedAttack)
-		defense = defensiveEnergy()
+		defense = defensiveEnergy
 				
 		if defense < receivedAttack
-			gotWounded()
-			incConsecutiveHits()
+			gotWounded
+			incConsecutiveHits
 		else
-			resetHits()
+			resetHits
 		end
 		
-		if (@consecutiveHits == @@HITS2LOSE) || dead()
+		if (@consecutiveHits == @@HITS2LOSE) || dead
 			lose = true
 		else
 			lose = false
@@ -290,12 +268,6 @@ class Player
 	def resetHits
 		@consecutiveHits=0
 	end
-     #	  
-     # Funcion gotWounded. Resta uno de vida al jugador
-     #
-	def gotWounded
-		@health-=1
-	end
      
      #
      # Funcion incConsecutiveHits. Incrementa el número de golpes consecutivos
@@ -304,22 +276,7 @@ class Player
 	def incConsecutiveHits
 		@consecutiveHits+=1
 	end
-		
+	
+	protected :sumWeapons, :sumShields, :defensiveEnergy
+	private :receiveWeapon, :receiveShield, :newWeapon, :newShield, :manageHit, :resetHits, :incConsecutiveHits
 end
-
-#w1=p.newWeapon
-#w2=p.newWeapon
-#s1=p.newShield
-#s2=p.newShield
-#s3=p.newShield
-#p.shields.push(s1)
-#p.shields.push(s2)
-#p.shields.push(s3)
-#puts p.toString
-#puts "\nsuma defensa escudos"
-#sum=p.sumShields
-#puts sum
-#puts "defensive energy" 
-#puts p.defensiveEnergy
-
-

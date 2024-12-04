@@ -1,3 +1,4 @@
+require_relative 'CombatElement'
 require_relative 'Dice'
 
 # Clase Shield. Implementación de la clase Shield, de sus métodos y variables.
@@ -8,14 +9,13 @@ require_relative 'Dice'
 # @author Sergio Calvo González
 # correo e.sergiocg10@go.ugr.es
 #
-class Shield
+class Shield < CombatElement
     # Constructor por parámetro de la clase Shield
     # @param pr defensa del escudo a crear
     # @param u usos del escudo a crear
     #
     def initialize(pr, u)
-    	@protection=pr
-    	@uses=u
+    	super
     end
     
     # Función Protect. Devuelve el valor de defensa del escudo
@@ -23,13 +23,7 @@ class Shield
     # @return Valor de denfesa. 0 si no le quedan usos, protection si no.
     #
     def protect
-    	defense=0;
-        if( @uses > 0 )
-            defense=@protection;
-            @uses -= 1;
-        end
-        
-        return defense;
+    	return super
     end
     
     # Funcion toString de la clase Shield. Muestra los valores de la clase
@@ -37,14 +31,7 @@ class Shield
     # @return String con la información de la clase
     #
     def to_s
-    	return "[" + @protection.to_s +  ", " + @uses.to_s + "]"; 
+    	return "S" + super; 
     end  
-    
-    # Funcion discard. Devuelve si se debe de descartar el escudo.
-    # @return True si se descarta, false si no.
-    #
-    def discard
-    	return Dice.discardElement(@uses)
-    end
 end
 

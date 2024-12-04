@@ -1,6 +1,6 @@
 package irrgarten;
 import java.util.Random;
-
+import java.util.ArrayList;
  /**
  * Clase Dice. Representación de la clase dice con sus métodos y variables 
  * 
@@ -147,6 +147,18 @@ public class Dice {
         }
         double discard_Prob=1.0-((double)usesLeft/MAX_USES);
         return generator.nextDouble()<discard_Prob;
+    }
+    
+    //P4
+    public static Directions nextStep(Directions preference, ArrayList<Directions> validMoves, float intelligence){
+        Directions dir;
+        if( generator.nextFloat()*MAX_INTELLIGENCE < intelligence){
+            dir = preference;
+        }else{
+            int pos = generator.nextInt(validMoves.size());
+            dir = validMoves.get(pos) ;
+        }
+        return dir;
     }
 }
     
