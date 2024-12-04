@@ -139,7 +139,7 @@ class Dice
     	if @@generator.rand * @@MAX_INTELLIGENCE < intelligence
     		dir = preference
     	else
-    		pos = generator.rand * validMoves.length
+    		pos = @@generator.rand * validMoves.length
     		dir = validMoves[pos]
     	end
     end

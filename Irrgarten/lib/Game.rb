@@ -13,6 +13,7 @@ require_relative 'GameState'
 require_relative 'Labyrinth'
 require_relative 'Orientation'
 require_relative 'GameCharacter'
+require_relative 'FuzzyPlayer'
 class Game
 	@@MAX_ROUNDS=10
 	  
@@ -26,7 +27,6 @@ class Game
 			c=(i+1).to_s
 			p=Player.new(c,Dice.randomIntelligence,Dice.randomStrength)	
 			@players[i]=p
-			p.receiveReward
 		end
 		
 		@labyrinth.spreadPlayers(@players)
@@ -97,35 +97,33 @@ class Game
 		nCols=7
 		@labyrinth=Labyrinth.new(nRows,nCols,nRows-1,nCols-1)
 		#Añadimos los muros
-		@labyrinth.addBlock(Orientation::VERTICAL, 0, 1, 2)
-		@labyrinth.addBlock(Orientation::HORIZONTAL, 1, 2, 2)
-		@labyrinth.addBlock(Orientation::HORIZONTAL, 0, 5, 1)
-		@labyrinth.addBlock(Orientation::VERTICAL, 2, 5, 2)
-		@labyrinth.addBlock(Orientation::HORIZONTAL, 3, 0, 2)
-		@labyrinth.addBlock(Orientation::HORIZONTAL, 3, 3, 2)
-		@labyrinth.addBlock(Orientation::HORIZONTAL, 5, 0, 4)
-		@labyrinth.addBlock(Orientation::HORIZONTAL, 5, 5, 2)
-		@labyrinth.addBlock(Orientation::VERTICAL, 4, 3, 2)
+		#@labyrinth.addBlock(Orientation::VERTICAL, 0, 1, 2)
+		#@labyrinth.addBlock(Orientation::HORIZONTAL, 1, 2, 2)
+		#@labyrinth.addBlock(Orientation::HORIZONTAL, 0, 5, 1)
+		#@labyrinth.addBlock(Orientation::VERTICAL, 2, 5, 2)
+		#@labyrinth.addBlock(Orientation::HORIZONTAL, 3, 0, 2)
+		#@labyrinth.addBlock(Orientation::HORIZONTAL, 3, 3, 2)
+		#@labyrinth.addBlock(Orientation::HORIZONTAL, 5, 0, 4)
+		#@labyrinth.addBlock(Orientation::HORIZONTAL, 5, 5, 2)
+		#@labyrinth.addBlock(Orientation::VERTICAL, 4, 3, 2)
 				
-		nMonstruos=Dice.randomPos(5)+3
+		#nMonstruos=Dice.randomPos(5)+3
+		monster = Monster.new("Dragon", 10, 10)
+		@labyrinth.addMonster(0,0,monster)
+		@monsters.push(monster)
 		
-		for i in 0..nMonstruos-1
-		  monster=Monster.new("Orco", Dice.randomIntelligence, Dice.randomStrength)
-		  r = Dice.randomPos( @labyrinth.getRows ) 
-		  c = Dice.randomPos( @labyrinth.getCols )
-		  @labyrinth.addMonster(r, c, monster)
-		  @monsters.push(monster)
-		end
+		#for i in 0..nMonstruos-1
+		#  monster=Monster.new("Orco", Dice.randomIntelligence, Dice.randomStrength)
+		#  r = Dice.randomPos( @labyrinth.nRows ) 
+		#  c = Dice.randomPos( @labyrinth.nCols )
+		#  @labyrinth.addMonster(r, c, monster)
+		#  @monsters.push(monster)
+		#end
 	end
 	
 	# Cambia el turno al siguiente jugador en la lista, actualizando los atributos de turno actual.
 	def nextPlayer
-		@players[@currentPlayerIndex]= @currentPlayer
-		if @currentPlayerIndex+1==@players.size
-			@currentPlayerIndex=0
-		else
-			@currentPlayerIndex+=1
-		end
+		@currentPlayerIndex = (@currentPlayerIndex+1) % @players.size
 		@currentPlayer=@players[@currentPlayerIndex]
 	end
 	
@@ -134,8 +132,8 @@ class Game
     #@param preferredDirection Dirección preferible
     #@return la dirección final   
 	def actualDirection(preferredDirection)
-		r = @currentPlayer.getRow
-		c = @currentPlayer.getCol
+		r = @currentPlayer.row
+		c = @currentPlayer.col
 		
 		validMoves = @labyrinth.validMoves(r,c)
 		dir = @currentPlayer.move(preferredDirection, validMoves)

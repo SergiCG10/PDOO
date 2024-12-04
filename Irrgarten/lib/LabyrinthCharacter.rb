@@ -41,7 +41,7 @@ class LabyrinthCharacter
 	end
 	
 	def to_s
-		info ="\n"+@name+":\n"
+		info ="\n\n"+@name+":\n"
 		info +="\nIntelligence: " + @intelligence.to_s
 		info +="\nStregth: " + @strength.to_s
 		info +="\nHealth: " + @health.to_s

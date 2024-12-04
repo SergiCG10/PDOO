@@ -12,6 +12,10 @@ require_relative 'Orientation'
 #
 
 class Labyrinth
+
+	 attr_reader :nRows
+	 attr_reader :nCols
+	 
      @@BLOCK_CHAR = 'X';
      @@EMPTY_CHAR = '-';
      @@MONSTER_CHAR = 'M';
@@ -97,8 +101,8 @@ class Labyrinth
       # - Llama a `putPlayer2D` para realizar el movimiento y gestionar la posición anterior y la interacción en la nueva posición.
       # - Retorna el monstruo encontrado en la nueva posición si ocurre un combate; de lo contrario, retorna nil.
      def putPlayer(direction, player)
-     	oldRow = player.getRow
-     	oldCol = player.getCol
+     	oldRow = player.row
+     	oldCol = player.col
      	newPos = dir2Pos(oldRow, oldCol, direction)
      	m = putPlayer2D(oldRow, oldCol, newPos[@@ROW], newPos[@@COL], player)
      	return m 	
@@ -151,19 +155,10 @@ class Labyrinth
      	return output
      end
      
-     # Devuelve el numero de filas del laberinto
-     def getRows
-     	return @nRows
-     end
-     
-     #Devuelve el numero de columnas del laberinto
-     def getCols
-     	return @nCols
-     end
      #establece en el laberinto el nuevo fuzzyplayer
      #@param player FuzzyPlayer que se va a incluir
      def convertToFuzzy(player)
-        players[player.row][player.col]=player
+        @players[player.row][player.col]=player
      end
      
 private 
@@ -296,7 +291,7 @@ private
      			@labyrinth[row][col] = @@COMBAT_CHAR
      			output = @monsters[row][col]
      		else
-     			number = player.getNumber
+     			number = player.number
      			@labyrinth[row][col] = number
      		end
      		@players[row][col] = player

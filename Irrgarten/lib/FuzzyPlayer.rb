@@ -7,16 +7,16 @@ class FuzzyPlayer < Player
 	end
 	
 	def move(direction, validMoves)
-		move = Dice.nextStep(super, validMoves, getIntelligence)
+		move = Dice.nextStep(super, validMoves, intelligence)
 		return move
 	end
 	
 	def attack
-		return Dice.intensity(getStrength) + sumWeapons
+		return Dice.intensity(strength) + sumWeapons
 	end
 	
 	def defensiveEnergy
-		return Dice.intensity(getIntelligence) + sumShields
+		return Dice.intensity(intelligence) + sumShields
 	end
 	
 	def to_s

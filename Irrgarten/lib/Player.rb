@@ -22,7 +22,7 @@ class Player < LabyrinthCharacter
 	@@INITIAL_HEALTH=3
 	@@HITS2LOSE=3	
     
-    attr_accessor :number
+    attr_accessor :number 
     attr_accessor :consecutiveHits  	
 	attr_accessor :weapons
 	attr_accessor :shields
@@ -58,14 +58,6 @@ class Player < LabyrinthCharacter
 		@shields.clear
 		@health=@@INITIAL_HEALTH
 		resetHits
-	end
-     
-     #Funcion getNumber. Devuelve el número del jugador
-     #
-     #@return Número del jugador 
-     #
-	def getNumber
-		@number
 	end
 	
 	# Funcion move. Mueve al personaje hacia direction, si no se puede, hacia una valida dentro de validMoves
