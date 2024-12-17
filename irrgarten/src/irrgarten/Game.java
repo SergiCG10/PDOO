@@ -118,7 +118,6 @@ public class Game {
         labyrinth= new Labyrinth(nRows,nCols,nRows-1,nCols-1);
         
         //Añadimos los muros
-        /**
         labyrinth.addBlock(Orientation.VERTICAL, 0, 1, 2);
         labyrinth.addBlock(Orientation.HORIZONTAL, 1, 2, 2);
         labyrinth.addBlock(Orientation.HORIZONTAL, 0, 5, 1);
@@ -128,12 +127,10 @@ public class Game {
         labyrinth.addBlock(Orientation.HORIZONTAL, 5, 0, 4);
         labyrinth.addBlock(Orientation.HORIZONTAL, 5, 5, 2);
         labyrinth.addBlock(Orientation.VERTICAL, 4, 3, 2);
-        */
-        //int nMonstruos = Dice.randomPos(nRows)+3;
-        Monster monster = new Monster ("Dragon", 100f, 100f);
-        labyrinth.addMonster(1, 1, monster);
-        monsters.add(monster);
-        /**
+        
+        int nMonstruos = Dice.randomPos(nRows)+3;
+        Monster monster;
+        int r, c;
         int pos[];
         for(int i = 0; i < nMonstruos; i++ ){
             monster = new Monster ("Orco", Dice.randomStrength(), Dice.randomIntelligence());
@@ -141,7 +138,7 @@ public class Game {
             c = Dice.randomPos( labyrinth.getCols() );
             labyrinth.addMonster(r, c, monster);
             monsters.add(monster);
-        }*/    
+        } 
     }
     
     /**

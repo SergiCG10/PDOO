@@ -25,7 +25,7 @@ abstract public class CardDeck<T>{
     }
     
     public T nextCard(){
-        if(cardDeck.isEmpty() ){
+        if(cardDeck.size() == 0 ){
             this.addCards();
             Collections.shuffle(cardDeck);
         }

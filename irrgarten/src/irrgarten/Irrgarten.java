@@ -1,5 +1,5 @@
 package irrgarten;
-import UI.TextUI;
+import UI.*;
 import Controller.Controller;
 
 /**
@@ -20,8 +20,8 @@ public class Irrgarten {
     public static void main(String[] args) {
         //TestP1.tP1();
         //TestP2.tP2();       
-        Game game=new Game(2);
-        TextUI view=new TextUI();
+        Game game=new Game(4);
+        GraphicUI view=new GraphicUI();
         Controller controller=new Controller(game, view);
         controller.play();
     }

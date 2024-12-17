@@ -38,6 +38,8 @@ public class Player extends LabyrinthCharacter{
     Player(char nmb, float howsmart, float howstrong){
         super("Player#"+nmb, howsmart, howstrong, (float)INITIAL_HEALTH);
         number = nmb;
+        weaponCardDeck = new WeaponCardDeck();
+        shieldCardDeck = new ShieldCardDeck();
     }
     
     //P5

@@ -57,7 +57,7 @@ module UI
 
     def show_game(game_state)
 		puts "\nJugadores:\n"+game_state.getPlayers()
-        puts "\nMonstruos:\n\n"+game_state.getMonsters()
+        puts "\nMonstruos:\n"+game_state.getMonsters()
         puts "\nJugador actual:"+ (game_state.getCurrentPlayer() + 1).to_s
         puts "\nWinner:"+game_state.getWinner().to_s
         if(!game_state.getWinner())

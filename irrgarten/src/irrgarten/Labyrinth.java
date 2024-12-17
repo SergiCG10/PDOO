@@ -302,9 +302,7 @@ public class Labyrinth {
         Monster output=null;
         if(this.canStepOn(row, col)){
             if(this.posOK(oldRow, oldCol)){
-                System.out.print(players[oldRow][oldCol].toString());
                 if(players[oldRow][oldCol]==player){ //P5
-                    System.out.print("\nEntramos en PUTPLAYER2D\n");
                     this.updateOldPos(oldRow, oldCol);
                     players[oldRow][oldCol]=null;
                 }
@@ -583,7 +581,7 @@ public class Labyrinth {
                 }else if (labyrinth[i][j]== EXIT_CHAR){
                     laberinto += " ✪";
                 }else{
-                    laberinto += " "+labyrinth[i][j];
+                    laberinto += " "+labyrinth[i][j] + " ";
                 }
             }
             laberinto += " ■\n";
