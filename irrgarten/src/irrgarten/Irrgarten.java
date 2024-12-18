@@ -20,7 +20,7 @@ public class Irrgarten {
     public static void main(String[] args) {
         //TestP1.tP1();
         //TestP2.tP2();       
-        Game game=new Game(4);
+        Game game=new Game(1);
         GraphicUI view=new GraphicUI();
         Controller controller=new Controller(game, view);
         controller.play();

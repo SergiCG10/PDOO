@@ -29,4 +29,5 @@ class CombatElement
     end
     
 	protected :produceEffect
+	private_class_method :new
 end
